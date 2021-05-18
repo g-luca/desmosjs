@@ -6,7 +6,7 @@ import Desmosjs from "../src/desmosjs"
  */
 describe("Dummy test", () => {
   it("Desmosjs is instantiable", () => {
-    expect(new Desmosjs()).toBeInstanceOf(Desmosjs)
-  })
+    expect(new Desmosjs()).toBeInstanceOf(Desmosjs);
+  });
 
-})
+});

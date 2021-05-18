@@ -26,6 +26,6 @@ exec('git config user.name "lucagraziotti"')
 exec('git config user.email "luca.g@protonmail.ch"')
 exec('git commit -m "docs(docs): update gh-pages"')
 exec(
-  `git push --force --quiet "https://${ghToken}@${repository}" master:gh-pages`
+  `git push --force --quiet "https://github.com/g-luca/desmosjs" master:gh-pages`
 )
 echo("Docs deployed!!")

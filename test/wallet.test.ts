@@ -44,7 +44,7 @@ describe("Wallet test", () => {
         expect(signedTx.$tx.$memo).toBe(memo);
         expect(hashedSignature).toBe("0RT3Jy93bJjaltSM0S+mNuEM7fQKCA7Z2PHzVc/mspdC2ygxFzFpldCzDHExgO51/VkcLTV7739e5W4RffEJFQ==");
 
-    })
+    });
 
 
-})
+});
