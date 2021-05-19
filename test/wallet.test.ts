@@ -1,11 +1,6 @@
-import { Wallet } from "../src/Cosmos/Wallet"
-import { Transaction } from "../src/Cosmos/Transaction"
-import { MsgSend } from "../src/Cosmos/types/msgs/MsgSend"
-import { Desmos } from "../src/Desmos/Desmos";
-import { Coin } from "../src/Cosmos/types/Coin";
-import { DesmosCoins } from "../src/Desmos/types/DesmosCoins";
-import { StdMsg } from "../src/Cosmos/types/stdMsg";
 import { CosmosBaseAccount } from "../src/Cosmos/types/CosmosBaseAccount";
+import { StdMsg } from "../src/Cosmos/types/stdMsg";
+import { Coin, DesmosCoins, DesmosJS, MsgSend, Transaction, Wallet } from "../src/DesmosJS";
 
 
 /**
@@ -21,9 +16,9 @@ describe("Wallet test", () => {
 
 
     it("Address regex", () => {
-        expect(Desmos.addressRegex.test("")).toBeFalsy();
-        expect(Desmos.addressRegex.test("1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeFalsy();
-        expect(Desmos.addressRegex.test("desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeTruthy();
+        expect(DesmosJS.addressRegex.test("")).toBeFalsy();
+        expect(DesmosJS.addressRegex.test("1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeFalsy();
+        expect(DesmosJS.addressRegex.test("desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeTruthy();
     });
 
     it("Correct wallet generation", () => {
@@ -38,11 +33,13 @@ describe("Wallet test", () => {
      * Test the correct transaction signature generation
      */
     it("Correct transaction sign MsgSend", async () => {
+        const desmosJS = new DesmosJS();
+
         const wallet: Wallet = new Wallet(mnemonic);
         const memo = "test msgSend";
         const amount = new Coin("1000000", DesmosCoins.udaric);
         const msgSend = new MsgSend(wallet.address, "desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08", [amount]);
-        const transaction: Transaction = new Transaction(new StdMsg(MsgSend.type, msgSend), memo, Desmos.defaultFee);
+        const transaction: Transaction = new Transaction(new StdMsg(MsgSend.type, msgSend), memo, DesmosJS.defaultFee);
         const signedTx = await transaction.sign(wallet, new CosmosBaseAccount(0, wallet.address, 100, 0));
         const hashedSignature = signedTx.$tx.$signatures?.[0].$signature;
         expect(signedTx.$tx.$memo).toBe(memo);
