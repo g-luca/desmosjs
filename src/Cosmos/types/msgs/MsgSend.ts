@@ -1,7 +1,7 @@
-import Coin from '../Coin';
-import IMsg from './IMsg';
+import { Coin } from '../Coin';
+import { IMsg } from './IMsg';
 
-export default class MsgSend extends IMsg {
+export class MsgSend extends IMsg {
     public static type = "cosmos-sdk/MsgSend";
     private amount: Coin[];
     private from_address: string;

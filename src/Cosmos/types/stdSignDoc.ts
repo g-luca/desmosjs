@@ -1,4 +1,4 @@
-export default class StdSignDoc {
+export class StdSignDoc {
     private account_number: string;
     private chain_id: string;
     private fee: any;
@@ -7,6 +7,7 @@ export default class StdSignDoc {
     private sequence: string;
 
     constructor($accountNumber: string, $sequence: string, $chainId: string, $memo: string, $fee: any, $msgs: any) {
+        // the alphabetical order is foundamental to be a valid Doc
         this.account_number = $accountNumber;
         this.chain_id = $chainId;
         this.fee = $fee;

@@ -1,4 +1,4 @@
-export default class CosmosBaseAccount {
+export class CosmosBaseAccount {
     private _height = 0;
     private _address = '';
     private _accountNumber = 0;

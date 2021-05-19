@@ -1,16 +1,16 @@
-import Fee from "./Fee";
-import Signature from "./Signature";
-import stdMsg from "./stdMsg";
+import { Fee } from "./Fee";
+import { Signature } from "./Signature";
+import { StdMsg } from "./stdMsg";
 
 
-export default class StdTx {
-    private msg: stdMsg[];
+export class StdTx {
+    private msg: StdMsg[];
     private fee: Fee;
     private signatures?: Signature[];
     private memo: string;
 
 
-    constructor($msg: stdMsg[], $memo: string, $fee: Fee) {
+    constructor($msg: StdMsg[], $memo: string, $fee: Fee) {
         this.msg = $msg;
         this.fee = $fee;
         this.memo = $memo;
@@ -20,7 +20,7 @@ export default class StdTx {
      * Getter $msg
      * @return {stdMsg[]}
      */
-    public get $msg(): stdMsg[] {
+    public get $msg(): StdMsg[] {
         return this.msg;
     }
 

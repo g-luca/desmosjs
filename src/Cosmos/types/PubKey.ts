@@ -1,4 +1,4 @@
-export default class PubKey {
+export class PubKey {
     private type: string;
     private value: string;
 

@@ -1,4 +1,4 @@
-export default class LcdEndpoints {
+export class LcdEndpoints {
     public static auth = 'auth/accounts/';
     public static txs = 'txs';
 }

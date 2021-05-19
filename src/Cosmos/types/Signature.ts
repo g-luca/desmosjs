@@ -1,6 +1,6 @@
-import PubKey from "./PubKey";
+import { PubKey } from "./PubKey";
 
-export default class Signature {
+export class Signature {
     private pub_key: PubKey;
     private signature: string;
 

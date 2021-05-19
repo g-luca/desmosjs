@@ -3,7 +3,7 @@ import { ECPair, bip32 } from 'bitcoinjs-lib';
 import { toWords, encode } from 'bech32';
 import { pointFromScalar } from 'tiny-secp256k1';
 
-export default class Wallet {
+export class Wallet {
     private _path: string;
     private _bech32Prefix: string;
     private _chainId: string;
@@ -42,7 +42,6 @@ export default class Wallet {
      */
     private walletFromMnemonic(mnemonic: string): boolean {
         if (!validateMnemonic(mnemonic)) {
-            console.error("Invalid mnemonic");
             return false;
         }
         try {
@@ -59,8 +58,6 @@ export default class Wallet {
             this._publicKey = pointFromScalar(this._privateKey) as Uint8Array;
             this._publicKeyB64 = Buffer.from(this._publicKey).toString('base64');
         } catch (e) {
-            console.log(e);
-            console.error("cannot retrieve keys or address from mnemonic");
             return false;
         }
         return true;

@@ -1,9 +1,9 @@
-import LcdEndpoints from "./LcdEndpoints";
-import Transaction from "./Transaction";
-import CosmosBaseAccount from "./types/CosmosBaseAccount";
-import Wallet from "./Wallet";
+import { LcdEndpoints } from "./LcdEndpoints";
+import { Transaction } from "./Transaction";
+import { CosmosBaseAccount } from "./types/CosmosBaseAccount";
+import { Wallet } from "./Wallet";
 
-export default class Network {
+export class Network {
     private _lcdClientEndpoint: string;
 
 

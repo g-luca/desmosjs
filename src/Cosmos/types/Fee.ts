@@ -1,6 +1,6 @@
-import Coin from "./Coin";
+import { Coin } from "./Coin";
 
-export default class Fee {
+export class Fee {
     private amount: Coin[];
     private gas: string;
 

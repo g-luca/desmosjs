@@ -1,4 +1,4 @@
-import Desmosjs from "../src/desmosjs"
+import { DesmosJS } from "../src/DesmosJS"
 
 
 /**
@@ -6,7 +6,7 @@ import Desmosjs from "../src/desmosjs"
  */
 describe("Dummy test", () => {
   it("Desmosjs is instantiable", () => {
-    expect(new Desmosjs()).toBeInstanceOf(Desmosjs);
+    expect(new DesmosJS()).toBeInstanceOf(DesmosJS);
   });
 
 });

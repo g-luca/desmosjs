@@ -1,4 +1,4 @@
-export default class Coin {
+export class Coin {
     private amount: string;
     private denom: string;
 

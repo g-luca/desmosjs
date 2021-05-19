@@ -1,6 +1,6 @@
-import IMsg from "./msgs/IMsg";
+import { IMsg } from "./msgs/IMsg";
 
-export default class StdMsg {
+export class StdMsg {
     private type = "cosmos-sdk/MsgSend";
     private value: IMsg;
 

@@ -1,24 +1,24 @@
 import { BroadcastMode } from "./types/BroadcastMode";
-import Fee from "./types/Fee";
-import Wallet from "./Wallet";
-import CosmosBaseAccount from "./types/CosmosBaseAccount";
-import PubKey from "./types/PubKey";
-import Signature from "./types/Signature";
-import stdMsg from "./types/stdMsg";
-import StdSignDoc from "./types/stdSignDoc";
-import stdTx from "./types/stdTx";
+import { Fee } from "./types/Fee";
+import { Wallet } from "./Wallet";
+import { CosmosBaseAccount } from "./types/CosmosBaseAccount";
+import { PubKey } from "./types/PubKey";
+import { Signature } from "./types/Signature";
+import { StdMsg } from "./types/stdMsg";
+import { StdSignDoc } from "./types/stdSignDoc";
+import { StdTx } from "./types/stdTx";
 
 import { crypto } from "bitcoinjs-lib";
 import { sign } from "tiny-secp256k1";
 
 
-export default class Transaction {
-    private tx: stdTx;
+export class Transaction {
+    private tx: StdTx;
     private mode: BroadcastMode;
 
-    constructor($msg: stdMsg, $memo: string, $fee: Fee, $mode = BroadcastMode.sync) {
+    constructor($msg: StdMsg, $memo: string, $fee: Fee, $mode = BroadcastMode.sync) {
         this.mode = $mode;
-        this.tx = new stdTx([$msg], $memo, $fee);
+        this.tx = new StdTx([$msg], $memo, $fee);
     }
 
 
@@ -50,9 +50,9 @@ export default class Transaction {
 
     /**
      * Getter $tx
-     * @return {stdTx}
+     * @return {StdTx}
      */
-    public get $tx(): stdTx {
+    public get $tx(): StdTx {
         return this.tx;
     }
 }

@@ -1,11 +1,11 @@
-import Wallet from "../src/Cosmos/Wallet"
-import Transaction from "../src/Cosmos/Transaction"
-import MsgSend from "../src/Cosmos/types/msgs/MsgSend"
-import Fee from "../src/Cosmos/types/Fee";
-import Coin from "../src/Cosmos/types/Coin";
+import { Wallet } from "../src/Cosmos/Wallet"
+import { Transaction } from "../src/Cosmos/Transaction"
+import { MsgSend } from "../src/Cosmos/types/msgs/MsgSend"
+import { Desmos } from "../src/Desmos/Desmos";
+import { Coin } from "../src/Cosmos/types/Coin";
 import { DesmosCoins } from "../src/Desmos/types/DesmosCoins";
-import StdMsg from "../src/Cosmos/types/stdMsg";
-import CosmosBaseAccount from "../src/Cosmos/types/CosmosBaseAccount";
+import { StdMsg } from "../src/Cosmos/types/stdMsg";
+import { CosmosBaseAccount } from "../src/Cosmos/types/CosmosBaseAccount";
 
 
 /**
@@ -20,6 +20,11 @@ describe("Wallet test", () => {
     });
 
 
+    it("Address regex", () => {
+        expect(Desmos.addressRegex.test("")).toBeFalsy();
+        expect(Desmos.addressRegex.test("1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeFalsy();
+        expect(Desmos.addressRegex.test("desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeTruthy();
+    });
 
     it("Correct wallet generation", () => {
         const wallet: Wallet = new Wallet(mnemonic);
@@ -36,13 +41,12 @@ describe("Wallet test", () => {
         const wallet: Wallet = new Wallet(mnemonic);
         const memo = "test msgSend";
         const amount = new Coin("1000000", DesmosCoins.udaric);
-        const fee: Fee = new Fee([new Coin("200", DesmosCoins.udaric)], "20000");
         const msgSend = new MsgSend(wallet.address, "desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08", [amount]);
-        const transaction: Transaction = new Transaction(new StdMsg(MsgSend.type, msgSend), memo, fee);
+        const transaction: Transaction = new Transaction(new StdMsg(MsgSend.type, msgSend), memo, Desmos.defaultFee);
         const signedTx = await transaction.sign(wallet, new CosmosBaseAccount(0, wallet.address, 100, 0));
         const hashedSignature = signedTx.$tx.$signatures?.[0].$signature;
         expect(signedTx.$tx.$memo).toBe(memo);
-        expect(hashedSignature).toBe("0RT3Jy93bJjaltSM0S+mNuEM7fQKCA7Z2PHzVc/mspdC2ygxFzFpldCzDHExgO51/VkcLTV7739e5W4RffEJFQ==");
+        expect(hashedSignature).toBe("WT14Gt9gAO2AyBcl2ggbqnkTqTB090vg7Zl7OU4F/FgJcAVW8gVTEcKE0AXOU5NXwYV7urHlPabcHjVp7s+U5A==");
 
     });
 
