@@ -33,8 +33,6 @@ describe("Wallet test", () => {
      * Test the correct transaction signature generation
      */
     it("Correct transaction sign MsgSend", async () => {
-        const desmosJS = new DesmosJS();
-
         const wallet: Wallet = new Wallet(mnemonic);
         const memo = "test msgSend";
         const amount = new Coin("1000000", DesmosCoins.udaric);

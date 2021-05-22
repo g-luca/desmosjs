@@ -3,12 +3,13 @@ import { Transaction } from "./Cosmos/Transaction";
 import { Coin } from "./Cosmos/types/Coin";
 import { Fee } from "./Cosmos/types/Fee";
 import { MsgSend } from "./Cosmos/types/msgs/MsgSend";
+import { StdMsg } from "./Cosmos/types/stdMsg";
 import { Wallet } from "./Cosmos/Wallet";
 import { DesmosCoins } from "./Desmos/types/DesmosCoins";
 
 // Expose Classes
 export {
-    Network, Transaction, Coin, Fee, Wallet, DesmosCoins, MsgSend
+    Network, Transaction, Coin, Fee, Wallet, DesmosCoins, MsgSend, StdMsg
 }
 
 export class DesmosJS {
