@@ -82,7 +82,7 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@types/jest": "^26.0.23",
-    "@types/node": "^15.3.0",
+    "@types/node": "^15.3.1",
     "@types/tiny-secp256k1": "^1.0.0",
     "colors": "^1.4.0",
     "commitizen": "^4.2.4",
