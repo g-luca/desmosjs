@@ -1,10 +1,10 @@
 {
   "name": "desmosjs",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "Desmos TS/JS Web client",
   "keywords": [],
-  "main": "dist/lib/desmosjs.js",
-  "typings": "dist/types/desmosjs.d.ts",
+  "main": "dist/lib/DesmosJS.js",
+  "typings": "dist/types/DesmosJS.d.ts",
   "files": [
     "dist"
   ],
