@@ -6,10 +6,12 @@ import { MsgSend } from "./Cosmos/types/msgs/MsgSend";
 import { StdMsg } from "./Cosmos/types/stdMsg";
 import { Wallet } from "./Cosmos/Wallet";
 import { DesmosCoins } from "./Desmos/types/DesmosCoins";
+import { bip32 } from 'bitcoinjs-lib';
+import bip39 from "bip39";
 
 // Expose Classes
 export {
-    Network, Transaction, Coin, Fee, Wallet, DesmosCoins, MsgSend, StdMsg
+    Network, Transaction, Coin, Fee, Wallet, DesmosCoins, MsgSend, StdMsg, bip39, bip32
 }
 
 export class DesmosJS {
