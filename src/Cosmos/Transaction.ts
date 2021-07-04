@@ -9,7 +9,7 @@ import { StdSignDoc } from "./types/stdSignDoc";
 import { StdTx } from "./types/stdTx";
 
 import { crypto } from "bitcoinjs-lib";
-import { sign } from "tiny-secp256k1";
+import { sign, pointFromScalar } from "tiny-secp256k1";
 
 
 export class Transaction {
@@ -22,6 +22,12 @@ export class Transaction {
     }
 
 
+    /**
+     * Sign a Transaction from a Wallet
+     * @param wallet Wallet
+     * @param account Cosmos account related info
+     * @returns the signed transaction
+     */
     public async sign(wallet: Wallet, account: CosmosBaseAccount): Promise<Transaction> {
         const accountNumber: string = account.accountNumber.toString();
         const chainId: string = wallet.chainId;
@@ -37,6 +43,28 @@ export class Transaction {
         const signature = new Signature(signedHashB64, new PubKey(wallet.publicKeyB64), accountNumber, chainId, sequence);
         this.tx.$signatures = [signature];
         return this;
+    }
+
+
+    /**
+     * Sign a Transaction from a give private key
+     * @param privKey Private Key Buffer 
+     * @param account Cosmos account related info
+     * @param chainId chain string id
+     * @returns the signed transaction
+     */
+    public async signWithPrivKey(privKey: Buffer, account: CosmosBaseAccount, chainId: string): Promise<Transaction> {
+        const accountNumber: string = account.accountNumber.toString();
+        const sequence: string = account.sequence.toString();
+        const signDoc: StdSignDoc = new StdSignDoc(accountNumber, sequence, chainId, this.$tx.$memo, this.$tx.$fee, this.$tx.$msg);
+        const hash: Buffer = crypto.sha256(Buffer.from(JSON.stringify(signDoc))); // hash the doc
+        const signedHash: Buffer = sign(hash, privKey); // sign the hash with the private key
+
+        const signedHashB64: string = signedHash.toString('base64'); // convert the signed hash to Base64        
+        const signature = new Signature(signedHashB64, new PubKey(Buffer.from(pointFromScalar(privKey) as Buffer).toString()), accountNumber, chainId, sequence);
+        this.tx.$signatures = [signature];
+        return this;
+
     }
 
     /**

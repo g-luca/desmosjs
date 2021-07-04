@@ -30,7 +30,7 @@ describe("Wallet test", () => {
 
 
     /**
-     * Test the correct transaction signature generation
+     * Test the correct transaction signature generation from a wallet
      */
     it("Correct transaction sign MsgSend", async () => {
         const wallet: Wallet = new Wallet(mnemonic);
@@ -39,6 +39,28 @@ describe("Wallet test", () => {
         const msgSend = new MsgSend(wallet.address, "desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08", [amount]);
         const transaction: Transaction = new Transaction(new StdMsg(MsgSend.type, msgSend), memo, DesmosJS.defaultFee);
         const signedTx = await transaction.sign(wallet, new CosmosBaseAccount(0, wallet.address, 100, 0));
+        const hashedSignature = signedTx.$tx.$signatures?.[0].$signature;
+        expect(signedTx.$tx.$memo).toBe(memo);
+        expect(hashedSignature).toBe("WT14Gt9gAO2AyBcl2ggbqnkTqTB090vg7Zl7OU4F/FgJcAVW8gVTEcKE0AXOU5NXwYV7urHlPabcHjVp7s+U5A==");
+
+    });
+
+
+
+    /**
+     * Test the correct transaction signature generation from a Private Key
+     */
+    it("Correct transaction sign MsgSend", async () => {
+        const wallet: Wallet = new Wallet(mnemonic); // only used to generate the privKey
+        const privKey = wallet.privateKey;
+
+        const memo = "test msgSend";
+        const amount = new Coin("1000000", DesmosCoins.udaric);
+        const msgSend = new MsgSend(wallet.address, "desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08", [amount]);
+        const transaction: Transaction = new Transaction(new StdMsg(MsgSend.type, msgSend), memo, DesmosJS.defaultFee);
+
+
+        const signedTx = await transaction.signWithPrivKey(privKey, new CosmosBaseAccount(0, wallet.address, 100, 0), 'morpheus-apollo-1');
         const hashedSignature = signedTx.$tx.$signatures?.[0].$signature;
         expect(signedTx.$tx.$memo).toBe(memo);
         expect(hashedSignature).toBe("WT14Gt9gAO2AyBcl2ggbqnkTqTB090vg7Zl7OU4F/FgJcAVW8gVTEcKE0AXOU5NXwYV7urHlPabcHjVp7s+U5A==");
