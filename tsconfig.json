@@ -17,6 +17,10 @@
     ]
   },
   "include": [
-    "src"
+    "src",
+  ],
+  "exclude": [
+    "src/lib/proto/cosmos",
+    "src/lib/proto/tendermint"
   ]
 }
