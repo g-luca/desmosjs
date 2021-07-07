@@ -11,4 +11,3 @@ compiled
 .rpt2_cache
 docs
 *.proto
-src/lib/proto
