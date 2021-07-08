@@ -2,6 +2,7 @@ import { validateMnemonic, mnemonicToSeedSync } from "bip39";
 import { ECPair, bip32 } from 'bitcoinjs-lib';
 import { toWords, encode } from 'bech32';
 import { pointFromScalar } from 'tiny-secp256k1';
+import { Any } from "../lib/proto/google/protobuf/any";
 
 export class Wallet {
     private _path: string;
@@ -11,7 +12,7 @@ export class Wallet {
     private _mnemonic: string;
     private _address: string = '';
 
-    private _publicKey: Uint8Array = new Uint8Array(0);
+    private _publicKey: Any = { typeUrl: '/cosmos.crypto.secp256k1.PubKey', value: new Uint8Array() };
     private _publicKeyB64: string = '';
 
     private _privateKey: Buffer = Buffer.from("");
@@ -55,8 +56,8 @@ export class Wallet {
             this._privateKey = ecpair.privateKey as Buffer;
 
 
-            this._publicKey = pointFromScalar(this._privateKey) as Uint8Array;
-            this._publicKeyB64 = Buffer.from(this._publicKey).toString('base64');
+            this._publicKey.value = pointFromScalar(this._privateKey) as Uint8Array;
+            this._publicKeyB64 = Buffer.from(this._publicKey.value).toString('base64');
         } catch (e) {
             return false;
         }
@@ -107,12 +108,11 @@ export class Wallet {
 
     /**
      * Getter publicKey
-     * @return {string }
+     * @return {Any }
      */
-    public get publicKey(): Uint8Array {
+    public get publicKey(): Any {
         return this._publicKey;
     }
-
 
     /**
      * Getter publicKeyB64

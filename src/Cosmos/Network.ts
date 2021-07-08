@@ -1,3 +1,4 @@
+import { BroadcastMode } from "../lib/proto/cosmos/tx/v1beta1/service";
 import { LcdEndpoints } from "./LcdEndpoints";
 import { Transaction } from "./Transaction";
 import { CosmosBaseAccount } from "./types/CosmosBaseAccount";
@@ -22,11 +23,24 @@ export class Network {
 
     /**
      * Broadcast a valid signed Transaction to the blockchain through the LCD endpoint
-     * @param tx Signed Transaction
-     * @returns 
+     * @param signedTxBytes Signed Transaction bytes
+     * @param broadCastMode BroadcastMode, default BROADCAST_MODE_SYNC
+     * @returns call reponse
      */
-    public async broadcast(tx: Transaction): Promise<any> {
-        return this.postLcd(`${LcdEndpoints.txs}`, tx);
+    public async broadcast(signedTxBytes: any, broadCastMode: BroadcastMode = BroadcastMode.BROADCAST_MODE_SYNC) {
+        const txBytesBase64 = Buffer.from(signedTxBytes, 'binary').toString('base64');
+
+        const url = this.lcdClientEndpoint + '/cosmos/tx/v1beta1/txs';
+        try {
+            return await (await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ tx_bytes: txBytesBase64, mode: broadCastMode }),
+            })).json();
+        } catch (e) {
+            console.error("Network error");
+            return false;
+        }
     }
 
 
