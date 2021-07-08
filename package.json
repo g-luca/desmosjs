@@ -1,6 +1,6 @@
 {
   "name": "desmosjs",
-  "version": "0.1.12",
+  "version": "0.1.2",
   "description": "Desmos TS/JS Web client",
   "keywords": [],
   "main": "dist/lib/DesmosJS.js",
@@ -111,14 +111,13 @@
     "tslint-config-standard": "^9.0.0",
     "typedoc": "^0.20.36",
     "typedoc-plugin-rename-defaults": "^0.1.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "ts-proto": "^1.82.0",
+    "google-protobuf": "^3.17.3"
   },
   "dependencies": {
-    "@improbable-eng/grpc-web": "^0.14.0",
     "bip39": "^3.0.4",
     "bitcoinjs-lib": "^5.2.0",
-    "google-protobuf": "^3.17.3",
-    "long": "^4.0.0",
-    "ts-proto": "^1.82.0"
+    "long": "^4.0.0"
   }
 }
