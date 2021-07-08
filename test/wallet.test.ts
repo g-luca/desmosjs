@@ -1,12 +1,5 @@
-import { DesmosJS, Transaction, Wallet } from "../src/DesmosJS";
-import { Coin } from "../src/lib/proto/cosmos/base/v1beta1/coin";
-import { AuthInfo, Fee, SignerInfo, TxBody } from "../src/lib/proto/cosmos/tx/v1beta1/tx";
-import { MsgSend } from "../src/lib/proto/cosmos/bank/v1beta1/tx";
+import { DesmosJS, Transaction, Wallet, DesmosTypes, CosmosTypes } from "../src/DesmosJS";
 import { Any } from "../src/lib/proto/google/protobuf/any";
-import { SignMode } from "../src/lib/proto/cosmos/tx/signing/v1beta1/signing";
-import { BroadcastMode } from "../src/lib/proto/cosmos/tx/v1beta1/service";
-
-
 /**
  * Wallet tests
  */
@@ -20,7 +13,7 @@ describe("Wallet test", () => {
 
 
     it("Address regex", () => {
-        SignerInfo
+        CosmosTypes.SignerInfo
         expect(DesmosJS.addressRegex.test("")).toBeFalsy();
         expect(DesmosJS.addressRegex.test("1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeFalsy();
         expect(DesmosJS.addressRegex.test("desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeTruthy();
@@ -39,33 +32,33 @@ describe("Wallet test", () => {
     */
     it("Correct transaction sign MsgSend", async () => {
         const wallet: Wallet = new Wallet(mnemonic);
-        const amount: Coin[] = [{ denom: "daric", amount: "1" }];
-        const msgSend: MsgSend = {
+        const amount: CosmosTypes.Coin[] = [{ denom: "daric", amount: "1" }];
+        const msgSend: CosmosTypes.MsgSend = {
             fromAddress: wallet.address,
             toAddress: "desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08",
             amount: amount,
         };
         const msgSendAny: Any = {
             typeUrl: "/cosmos.bank.v1beta1.MsgSend",
-            value: MsgSend.encode(msgSend).finish()
+            value: CosmosTypes.MsgSend.encode(msgSend).finish()
         };
 
-        const txBody: TxBody = { messages: [msgSendAny], memo: "", extensionOptions: [], nonCriticalExtensionOptions: [], timeoutHeight: 0 };
+        const txBody: CosmosTypes.TxBody = { messages: [msgSendAny], memo: "", extensionOptions: [], nonCriticalExtensionOptions: [], timeoutHeight: 0 };
 
-        const signerInfo: SignerInfo = {
+        const signerInfo: CosmosTypes.SignerInfo = {
             publicKey: wallet.publicKey,
-            modeInfo: { single: { mode: SignMode.SIGN_MODE_DIRECT } },
+            modeInfo: { single: { mode: CosmosTypes.SignMode.SIGN_MODE_DIRECT } },
             sequence: 100
         };
 
-        const feeValue: Fee = {
+        const feeValue: CosmosTypes.Fee = {
             amount: [{ denom: "udaric", amount: "200" }],
             gasLimit: 200000,
             payer: "",
             granter: ""
         };
 
-        const authInfo: AuthInfo = { signerInfos: [signerInfo], fee: feeValue };
+        const authInfo: CosmosTypes.AuthInfo = { signerInfos: [signerInfo], fee: feeValue };
 
         // -------------------------------- sign --------------------------------
         const signedTxBytes = Transaction.sign(txBody, authInfo, 0, wallet.privateKey);

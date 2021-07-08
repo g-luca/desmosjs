@@ -9,7 +9,7 @@ import DesmosTypes from "./Cosmos/DesmosTypes";
 
 // Expose Classes
 export {
-    Network, Transaction, Wallet, bip39, bip32, Secp256k1, /* DesmosTypes, CosmosTypes */
+    Network, Transaction, Wallet, bip39, bip32, Secp256k1, DesmosTypes, CosmosTypes
 }
 
 export class DesmosJS {
