@@ -1,11 +1,11 @@
-import { Network } from "./Cosmos/Network";
-import { Transaction } from "./Cosmos/Transaction";
-import { Wallet } from "./Cosmos/Wallet";
+import { Network } from "./types/Network";
+import { Transaction } from "./types/Transaction";
+import { Wallet } from "./types/Wallet";
 import { bip32 } from 'bitcoinjs-lib';
 import bip39 from "bip39";
 import * as Secp256k1 from "tiny-secp256k1";
-import CosmosTypes from "./Cosmos/CosmosTypes";
-import DesmosTypes from "./Cosmos/DesmosTypes";
+import CosmosTypes from "./types/CosmosTypes";
+import DesmosTypes from "./types/DesmosTypes";
 
 // Expose Classes
 export {

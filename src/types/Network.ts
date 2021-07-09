@@ -1,7 +1,7 @@
 import { BroadcastMode } from "../lib/proto/cosmos/tx/v1beta1/service";
 import { LcdEndpoints } from "./LcdEndpoints";
 import { Transaction } from "./Transaction";
-import { CosmosBaseAccount } from "./types/CosmosBaseAccount";
+import { CosmosBaseAccount } from "./CosmosBaseAccount";
 
 export class Network {
     private _lcdClientEndpoint: string;
