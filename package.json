@@ -1,6 +1,6 @@
 {
   "name": "desmosjs",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Desmos TS/JS Web client",
   "keywords": [],
   "main": "dist/lib/DesmosJS.js",

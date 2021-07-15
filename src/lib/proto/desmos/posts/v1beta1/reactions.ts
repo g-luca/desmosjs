@@ -15,21 +15,12 @@ export interface RegisteredReaction {
   creator: string
 }
 
-/** RegisteredReactions wraps a list of registered reactions */
-export interface RegisteredReactions {
-  reactions: RegisteredReaction[]
-}
-
 /** PostReaction is a struct of a user reaction to a post */
 export interface PostReaction {
+  postId: string
   shortCode: string
   value: string
   owner: string
-}
-
-/** PostReactions wraps a list of post reactions */
-export interface PostReactions {
-  reactions: PostReaction[]
 }
 
 const baseRegisteredReaction: object = {
@@ -146,87 +137,26 @@ export const RegisteredReaction = {
   },
 }
 
-const baseRegisteredReactions: object = {}
-
-export const RegisteredReactions = {
-  encode(
-    message: RegisteredReactions,
-    writer: Writer = Writer.create()
-  ): Writer {
-    for (const v of message.reactions) {
-      RegisteredReaction.encode(v!, writer.uint32(10).fork()).ldelim()
-    }
-    return writer
-  },
-
-  decode(input: Reader | Uint8Array, length?: number): RegisteredReactions {
-    const reader = input instanceof Reader ? input : new Reader(input)
-    let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseRegisteredReactions } as RegisteredReactions
-    message.reactions = []
-    while (reader.pos < end) {
-      const tag = reader.uint32()
-      switch (tag >>> 3) {
-        case 1:
-          message.reactions.push(
-            RegisteredReaction.decode(reader, reader.uint32())
-          )
-          break
-        default:
-          reader.skipType(tag & 7)
-          break
-      }
-    }
-    return message
-  },
-
-  fromJSON(object: any): RegisteredReactions {
-    const message = { ...baseRegisteredReactions } as RegisteredReactions
-    message.reactions = []
-    if (object.reactions !== undefined && object.reactions !== null) {
-      for (const e of object.reactions) {
-        message.reactions.push(RegisteredReaction.fromJSON(e))
-      }
-    }
-    return message
-  },
-
-  toJSON(message: RegisteredReactions): unknown {
-    const obj: any = {}
-    if (message.reactions) {
-      obj.reactions = message.reactions.map((e) =>
-        e ? RegisteredReaction.toJSON(e) : undefined
-      )
-    } else {
-      obj.reactions = []
-    }
-    return obj
-  },
-
-  fromPartial(object: DeepPartial<RegisteredReactions>): RegisteredReactions {
-    const message = { ...baseRegisteredReactions } as RegisteredReactions
-    message.reactions = []
-    if (object.reactions !== undefined && object.reactions !== null) {
-      for (const e of object.reactions) {
-        message.reactions.push(RegisteredReaction.fromPartial(e))
-      }
-    }
-    return message
-  },
+const basePostReaction: object = {
+  postId: '',
+  shortCode: '',
+  value: '',
+  owner: '',
 }
-
-const basePostReaction: object = { shortCode: '', value: '', owner: '' }
 
 export const PostReaction = {
   encode(message: PostReaction, writer: Writer = Writer.create()): Writer {
+    if (message.postId !== '') {
+      writer.uint32(10).string(message.postId)
+    }
     if (message.shortCode !== '') {
-      writer.uint32(10).string(message.shortCode)
+      writer.uint32(18).string(message.shortCode)
     }
     if (message.value !== '') {
-      writer.uint32(18).string(message.value)
+      writer.uint32(26).string(message.value)
     }
     if (message.owner !== '') {
-      writer.uint32(26).string(message.owner)
+      writer.uint32(34).string(message.owner)
     }
     return writer
   },
@@ -239,12 +169,15 @@ export const PostReaction = {
       const tag = reader.uint32()
       switch (tag >>> 3) {
         case 1:
-          message.shortCode = reader.string()
+          message.postId = reader.string()
           break
         case 2:
-          message.value = reader.string()
+          message.shortCode = reader.string()
           break
         case 3:
+          message.value = reader.string()
+          break
+        case 4:
           message.owner = reader.string()
           break
         default:
@@ -257,6 +190,11 @@ export const PostReaction = {
 
   fromJSON(object: any): PostReaction {
     const message = { ...basePostReaction } as PostReaction
+    if (object.postId !== undefined && object.postId !== null) {
+      message.postId = String(object.postId)
+    } else {
+      message.postId = ''
+    }
     if (object.shortCode !== undefined && object.shortCode !== null) {
       message.shortCode = String(object.shortCode)
     } else {
@@ -277,6 +215,7 @@ export const PostReaction = {
 
   toJSON(message: PostReaction): unknown {
     const obj: any = {}
+    message.postId !== undefined && (obj.postId = message.postId)
     message.shortCode !== undefined && (obj.shortCode = message.shortCode)
     message.value !== undefined && (obj.value = message.value)
     message.owner !== undefined && (obj.owner = message.owner)
@@ -285,6 +224,11 @@ export const PostReaction = {
 
   fromPartial(object: DeepPartial<PostReaction>): PostReaction {
     const message = { ...basePostReaction } as PostReaction
+    if (object.postId !== undefined && object.postId !== null) {
+      message.postId = object.postId
+    } else {
+      message.postId = ''
+    }
     if (object.shortCode !== undefined && object.shortCode !== null) {
       message.shortCode = object.shortCode
     } else {
@@ -299,70 +243,6 @@ export const PostReaction = {
       message.owner = object.owner
     } else {
       message.owner = ''
-    }
-    return message
-  },
-}
-
-const basePostReactions: object = {}
-
-export const PostReactions = {
-  encode(message: PostReactions, writer: Writer = Writer.create()): Writer {
-    for (const v of message.reactions) {
-      PostReaction.encode(v!, writer.uint32(10).fork()).ldelim()
-    }
-    return writer
-  },
-
-  decode(input: Reader | Uint8Array, length?: number): PostReactions {
-    const reader = input instanceof Reader ? input : new Reader(input)
-    let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...basePostReactions } as PostReactions
-    message.reactions = []
-    while (reader.pos < end) {
-      const tag = reader.uint32()
-      switch (tag >>> 3) {
-        case 1:
-          message.reactions.push(PostReaction.decode(reader, reader.uint32()))
-          break
-        default:
-          reader.skipType(tag & 7)
-          break
-      }
-    }
-    return message
-  },
-
-  fromJSON(object: any): PostReactions {
-    const message = { ...basePostReactions } as PostReactions
-    message.reactions = []
-    if (object.reactions !== undefined && object.reactions !== null) {
-      for (const e of object.reactions) {
-        message.reactions.push(PostReaction.fromJSON(e))
-      }
-    }
-    return message
-  },
-
-  toJSON(message: PostReactions): unknown {
-    const obj: any = {}
-    if (message.reactions) {
-      obj.reactions = message.reactions.map((e) =>
-        e ? PostReaction.toJSON(e) : undefined
-      )
-    } else {
-      obj.reactions = []
-    }
-    return obj
-  },
-
-  fromPartial(object: DeepPartial<PostReactions>): PostReactions {
-    const message = { ...basePostReactions } as PostReactions
-    message.reactions = []
-    if (object.reactions !== undefined && object.reactions !== null) {
-      for (const e of object.reactions) {
-        message.reactions.push(PostReaction.fromPartial(e))
-      }
     }
     return message
   },

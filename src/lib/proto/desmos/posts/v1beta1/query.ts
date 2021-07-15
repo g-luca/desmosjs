@@ -7,45 +7,29 @@ import {
 } from '../../../cosmos/base/query/v1beta1/pagination'
 import { Post } from '../../../desmos/posts/v1beta1/posts'
 import { Params } from '../../../desmos/posts/v1beta1/params'
-import { Timestamp } from '../../../google/protobuf/timestamp'
 import { UserAnswer } from '../../../desmos/posts/v1beta1/polls'
 import {
-  PostReaction,
   RegisteredReaction,
+  PostReaction,
 } from '../../../desmos/posts/v1beta1/reactions'
 import { Report } from '../../../desmos/posts/v1beta1/report'
 
 export const protobufPackage = 'desmos.posts.v1beta1'
 
-/** QueryPostsParams represent the parameters used to query for posts */
-export interface QueryPostsParams {
-  page: number
-  limit: number
-  sortBy: string
-  sortOrder: string
-  parentId: string
-  creationTime?: Date
-  subspace: string
-  creator: string
-  hashtags: string[]
-}
-
 /** QueryPostsRequest is the request type for the Query/Posts RPC method. */
 export interface QueryPostsRequest {
-  sortBy: string
-  sortOrder: string
-  parentId: string
-  creationTime?: Date
-  subspace: string
-  creator: string
-  hashtags: string[]
+  /**
+   * SubspaceId represents the ID of the subspace to which to query the posts
+   * for. Providing an empty or invalid subspace id will return an error.
+   */
+  subspaceId: string
   /** pagination defines an optional pagination for the request. */
   pagination?: PageRequest
 }
 
 /** QueryPostsResponse is the response type for the Query/Posts RPC method */
 export interface QueryPostsResponse {
-  posts: QueryPostResponse[]
+  posts: Post[]
   pagination?: PageResponse
 }
 
@@ -57,40 +41,46 @@ export interface QueryPostRequest {
 /** QueryPostResponse is the response type for the Query/Post RPC method */
 export interface QueryPostResponse {
   post?: Post
-  pollAnswers: UserAnswer[]
-  reactions: PostReaction[]
-  children: string[]
 }
 
 /**
- * QueryPollAnswersRequest is the request type for the Query/PollAnswers RPC
+ * QueryUserAnswersRequest is the request type for the Query/UserAnswers RPC
  * method.
  */
-export interface QueryPollAnswersRequest {
+export interface QueryUserAnswersRequest {
   postId: string
+  user: string
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequest
 }
 
 /**
- * QueryPollAnswersResponse is the response type for the Query/PollAnswers RPC
+ * QueryUserAnswersResponse is the response type for the Query/UserAnswers RPC
  * method
  */
-export interface QueryPollAnswersResponse {
-  postId: string
+export interface QueryUserAnswersResponse {
   answers: UserAnswer[]
+  pagination?: PageResponse
 }
 
 /**
  * QueryRegisteredReactionsRequest is the request type for the
  * Query/RegisteredReactions RPC method.
  */
-export interface QueryRegisteredReactionsRequest {}
+export interface QueryRegisteredReactionsRequest {
+  /** subspace to query the registered reactions for */
+  subspaceId: string
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequest
+}
 
 /**
  * QueryRegisteredReactionsResponse is the response type for the
  * Query/RegisteredReactions RPC method
  */
 export interface QueryRegisteredReactionsResponse {
-  registeredReactions: RegisteredReaction[]
+  reactions: RegisteredReaction[]
+  pagination?: PageResponse
 }
 
 /** QueryParamsRequest is the request type for the Query/Params RPC method. */
@@ -117,256 +107,53 @@ export interface QueryReportsResponse {
   reports: Report[]
 }
 
-const baseQueryPostsParams: object = {
-  page: 0,
-  limit: 0,
-  sortBy: '',
-  sortOrder: '',
-  parentId: '',
-  subspace: '',
-  creator: '',
-  hashtags: '',
+/**
+ * QueryPostReactionsRequest is the request type for the Query/PostReactions RPC
+ * method.
+ */
+export interface QueryPostReactionsRequest {
+  postId: string
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequest
 }
 
-export const QueryPostsParams = {
-  encode(message: QueryPostsParams, writer: Writer = Writer.create()): Writer {
-    if (message.page !== 0) {
-      writer.uint32(8).uint64(message.page)
-    }
-    if (message.limit !== 0) {
-      writer.uint32(16).uint64(message.limit)
-    }
-    if (message.sortBy !== '') {
-      writer.uint32(26).string(message.sortBy)
-    }
-    if (message.sortOrder !== '') {
-      writer.uint32(34).string(message.sortOrder)
-    }
-    if (message.parentId !== '') {
-      writer.uint32(42).string(message.parentId)
-    }
-    if (message.creationTime !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.creationTime),
-        writer.uint32(50).fork()
-      ).ldelim()
-    }
-    if (message.subspace !== '') {
-      writer.uint32(58).string(message.subspace)
-    }
-    if (message.creator !== '') {
-      writer.uint32(66).string(message.creator)
-    }
-    for (const v of message.hashtags) {
-      writer.uint32(74).string(v!)
-    }
-    return writer
-  },
-
-  decode(input: Reader | Uint8Array, length?: number): QueryPostsParams {
-    const reader = input instanceof Reader ? input : new Reader(input)
-    let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseQueryPostsParams } as QueryPostsParams
-    message.hashtags = []
-    while (reader.pos < end) {
-      const tag = reader.uint32()
-      switch (tag >>> 3) {
-        case 1:
-          message.page = longToNumber(reader.uint64() as Long)
-          break
-        case 2:
-          message.limit = longToNumber(reader.uint64() as Long)
-          break
-        case 3:
-          message.sortBy = reader.string()
-          break
-        case 4:
-          message.sortOrder = reader.string()
-          break
-        case 5:
-          message.parentId = reader.string()
-          break
-        case 6:
-          message.creationTime = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          )
-          break
-        case 7:
-          message.subspace = reader.string()
-          break
-        case 8:
-          message.creator = reader.string()
-          break
-        case 9:
-          message.hashtags.push(reader.string())
-          break
-        default:
-          reader.skipType(tag & 7)
-          break
-      }
-    }
-    return message
-  },
-
-  fromJSON(object: any): QueryPostsParams {
-    const message = { ...baseQueryPostsParams } as QueryPostsParams
-    message.hashtags = []
-    if (object.page !== undefined && object.page !== null) {
-      message.page = Number(object.page)
-    } else {
-      message.page = 0
-    }
-    if (object.limit !== undefined && object.limit !== null) {
-      message.limit = Number(object.limit)
-    } else {
-      message.limit = 0
-    }
-    if (object.sortBy !== undefined && object.sortBy !== null) {
-      message.sortBy = String(object.sortBy)
-    } else {
-      message.sortBy = ''
-    }
-    if (object.sortOrder !== undefined && object.sortOrder !== null) {
-      message.sortOrder = String(object.sortOrder)
-    } else {
-      message.sortOrder = ''
-    }
-    if (object.parentId !== undefined && object.parentId !== null) {
-      message.parentId = String(object.parentId)
-    } else {
-      message.parentId = ''
-    }
-    if (object.creationTime !== undefined && object.creationTime !== null) {
-      message.creationTime = fromJsonTimestamp(object.creationTime)
-    } else {
-      message.creationTime = undefined
-    }
-    if (object.subspace !== undefined && object.subspace !== null) {
-      message.subspace = String(object.subspace)
-    } else {
-      message.subspace = ''
-    }
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = String(object.creator)
-    } else {
-      message.creator = ''
-    }
-    if (object.hashtags !== undefined && object.hashtags !== null) {
-      for (const e of object.hashtags) {
-        message.hashtags.push(String(e))
-      }
-    }
-    return message
-  },
-
-  toJSON(message: QueryPostsParams): unknown {
-    const obj: any = {}
-    message.page !== undefined && (obj.page = message.page)
-    message.limit !== undefined && (obj.limit = message.limit)
-    message.sortBy !== undefined && (obj.sortBy = message.sortBy)
-    message.sortOrder !== undefined && (obj.sortOrder = message.sortOrder)
-    message.parentId !== undefined && (obj.parentId = message.parentId)
-    message.creationTime !== undefined &&
-      (obj.creationTime = message.creationTime.toISOString())
-    message.subspace !== undefined && (obj.subspace = message.subspace)
-    message.creator !== undefined && (obj.creator = message.creator)
-    if (message.hashtags) {
-      obj.hashtags = message.hashtags.map((e) => e)
-    } else {
-      obj.hashtags = []
-    }
-    return obj
-  },
-
-  fromPartial(object: DeepPartial<QueryPostsParams>): QueryPostsParams {
-    const message = { ...baseQueryPostsParams } as QueryPostsParams
-    message.hashtags = []
-    if (object.page !== undefined && object.page !== null) {
-      message.page = object.page
-    } else {
-      message.page = 0
-    }
-    if (object.limit !== undefined && object.limit !== null) {
-      message.limit = object.limit
-    } else {
-      message.limit = 0
-    }
-    if (object.sortBy !== undefined && object.sortBy !== null) {
-      message.sortBy = object.sortBy
-    } else {
-      message.sortBy = ''
-    }
-    if (object.sortOrder !== undefined && object.sortOrder !== null) {
-      message.sortOrder = object.sortOrder
-    } else {
-      message.sortOrder = ''
-    }
-    if (object.parentId !== undefined && object.parentId !== null) {
-      message.parentId = object.parentId
-    } else {
-      message.parentId = ''
-    }
-    if (object.creationTime !== undefined && object.creationTime !== null) {
-      message.creationTime = object.creationTime
-    } else {
-      message.creationTime = undefined
-    }
-    if (object.subspace !== undefined && object.subspace !== null) {
-      message.subspace = object.subspace
-    } else {
-      message.subspace = ''
-    }
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = object.creator
-    } else {
-      message.creator = ''
-    }
-    if (object.hashtags !== undefined && object.hashtags !== null) {
-      for (const e of object.hashtags) {
-        message.hashtags.push(e)
-      }
-    }
-    return message
-  },
+/**
+ * QueryPostReactionsResponse is the response type for the Query/PostReactions
+ * RPC method
+ */
+export interface QueryPostReactionsResponse {
+  reactions: PostReaction[]
+  pagination?: PageResponse
 }
 
-const baseQueryPostsRequest: object = {
-  sortBy: '',
-  sortOrder: '',
-  parentId: '',
-  subspace: '',
-  creator: '',
-  hashtags: '',
+/**
+ * QueryPostCommentsRequest is the request type for the Query/PostComments RPC
+ * method.
+ */
+export interface QueryPostCommentsRequest {
+  postId: string
+  /** pagination defines an optional pagination for the request. */
+  pagination?: PageRequest
 }
+
+/**
+ * QueryPostCommentsResponse is the response type for the Query/PostComments RPC
+ * method.
+ */
+export interface QueryPostCommentsResponse {
+  comments: Post[]
+  pagination?: PageResponse
+}
+
+const baseQueryPostsRequest: object = { subspaceId: '' }
 
 export const QueryPostsRequest = {
   encode(message: QueryPostsRequest, writer: Writer = Writer.create()): Writer {
-    if (message.sortBy !== '') {
-      writer.uint32(10).string(message.sortBy)
-    }
-    if (message.sortOrder !== '') {
-      writer.uint32(18).string(message.sortOrder)
-    }
-    if (message.parentId !== '') {
-      writer.uint32(26).string(message.parentId)
-    }
-    if (message.creationTime !== undefined) {
-      Timestamp.encode(
-        toTimestamp(message.creationTime),
-        writer.uint32(34).fork()
-      ).ldelim()
-    }
-    if (message.subspace !== '') {
-      writer.uint32(42).string(message.subspace)
-    }
-    if (message.creator !== '') {
-      writer.uint32(50).string(message.creator)
-    }
-    for (const v of message.hashtags) {
-      writer.uint32(58).string(v!)
+    if (message.subspaceId !== '') {
+      writer.uint32(10).string(message.subspaceId)
     }
     if (message.pagination !== undefined) {
-      PageRequest.encode(message.pagination, writer.uint32(66).fork()).ldelim()
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim()
     }
     return writer
   },
@@ -375,34 +162,13 @@ export const QueryPostsRequest = {
     const reader = input instanceof Reader ? input : new Reader(input)
     let end = length === undefined ? reader.len : reader.pos + length
     const message = { ...baseQueryPostsRequest } as QueryPostsRequest
-    message.hashtags = []
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
         case 1:
-          message.sortBy = reader.string()
+          message.subspaceId = reader.string()
           break
         case 2:
-          message.sortOrder = reader.string()
-          break
-        case 3:
-          message.parentId = reader.string()
-          break
-        case 4:
-          message.creationTime = fromTimestamp(
-            Timestamp.decode(reader, reader.uint32())
-          )
-          break
-        case 5:
-          message.subspace = reader.string()
-          break
-        case 6:
-          message.creator = reader.string()
-          break
-        case 7:
-          message.hashtags.push(reader.string())
-          break
-        case 8:
           message.pagination = PageRequest.decode(reader, reader.uint32())
           break
         default:
@@ -415,41 +181,10 @@ export const QueryPostsRequest = {
 
   fromJSON(object: any): QueryPostsRequest {
     const message = { ...baseQueryPostsRequest } as QueryPostsRequest
-    message.hashtags = []
-    if (object.sortBy !== undefined && object.sortBy !== null) {
-      message.sortBy = String(object.sortBy)
+    if (object.subspaceId !== undefined && object.subspaceId !== null) {
+      message.subspaceId = String(object.subspaceId)
     } else {
-      message.sortBy = ''
-    }
-    if (object.sortOrder !== undefined && object.sortOrder !== null) {
-      message.sortOrder = String(object.sortOrder)
-    } else {
-      message.sortOrder = ''
-    }
-    if (object.parentId !== undefined && object.parentId !== null) {
-      message.parentId = String(object.parentId)
-    } else {
-      message.parentId = ''
-    }
-    if (object.creationTime !== undefined && object.creationTime !== null) {
-      message.creationTime = fromJsonTimestamp(object.creationTime)
-    } else {
-      message.creationTime = undefined
-    }
-    if (object.subspace !== undefined && object.subspace !== null) {
-      message.subspace = String(object.subspace)
-    } else {
-      message.subspace = ''
-    }
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = String(object.creator)
-    } else {
-      message.creator = ''
-    }
-    if (object.hashtags !== undefined && object.hashtags !== null) {
-      for (const e of object.hashtags) {
-        message.hashtags.push(String(e))
-      }
+      message.subspaceId = ''
     }
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromJSON(object.pagination)
@@ -461,18 +196,7 @@ export const QueryPostsRequest = {
 
   toJSON(message: QueryPostsRequest): unknown {
     const obj: any = {}
-    message.sortBy !== undefined && (obj.sortBy = message.sortBy)
-    message.sortOrder !== undefined && (obj.sortOrder = message.sortOrder)
-    message.parentId !== undefined && (obj.parentId = message.parentId)
-    message.creationTime !== undefined &&
-      (obj.creationTime = message.creationTime.toISOString())
-    message.subspace !== undefined && (obj.subspace = message.subspace)
-    message.creator !== undefined && (obj.creator = message.creator)
-    if (message.hashtags) {
-      obj.hashtags = message.hashtags.map((e) => e)
-    } else {
-      obj.hashtags = []
-    }
+    message.subspaceId !== undefined && (obj.subspaceId = message.subspaceId)
     message.pagination !== undefined &&
       (obj.pagination = message.pagination
         ? PageRequest.toJSON(message.pagination)
@@ -482,41 +206,10 @@ export const QueryPostsRequest = {
 
   fromPartial(object: DeepPartial<QueryPostsRequest>): QueryPostsRequest {
     const message = { ...baseQueryPostsRequest } as QueryPostsRequest
-    message.hashtags = []
-    if (object.sortBy !== undefined && object.sortBy !== null) {
-      message.sortBy = object.sortBy
+    if (object.subspaceId !== undefined && object.subspaceId !== null) {
+      message.subspaceId = object.subspaceId
     } else {
-      message.sortBy = ''
-    }
-    if (object.sortOrder !== undefined && object.sortOrder !== null) {
-      message.sortOrder = object.sortOrder
-    } else {
-      message.sortOrder = ''
-    }
-    if (object.parentId !== undefined && object.parentId !== null) {
-      message.parentId = object.parentId
-    } else {
-      message.parentId = ''
-    }
-    if (object.creationTime !== undefined && object.creationTime !== null) {
-      message.creationTime = object.creationTime
-    } else {
-      message.creationTime = undefined
-    }
-    if (object.subspace !== undefined && object.subspace !== null) {
-      message.subspace = object.subspace
-    } else {
-      message.subspace = ''
-    }
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = object.creator
-    } else {
-      message.creator = ''
-    }
-    if (object.hashtags !== undefined && object.hashtags !== null) {
-      for (const e of object.hashtags) {
-        message.hashtags.push(e)
-      }
+      message.subspaceId = ''
     }
     if (object.pagination !== undefined && object.pagination !== null) {
       message.pagination = PageRequest.fromPartial(object.pagination)
@@ -535,7 +228,7 @@ export const QueryPostsResponse = {
     writer: Writer = Writer.create()
   ): Writer {
     for (const v of message.posts) {
-      QueryPostResponse.encode(v!, writer.uint32(10).fork()).ldelim()
+      Post.encode(v!, writer.uint32(10).fork()).ldelim()
     }
     if (message.pagination !== undefined) {
       PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim()
@@ -552,7 +245,7 @@ export const QueryPostsResponse = {
       const tag = reader.uint32()
       switch (tag >>> 3) {
         case 1:
-          message.posts.push(QueryPostResponse.decode(reader, reader.uint32()))
+          message.posts.push(Post.decode(reader, reader.uint32()))
           break
         case 2:
           message.pagination = PageResponse.decode(reader, reader.uint32())
@@ -570,7 +263,7 @@ export const QueryPostsResponse = {
     message.posts = []
     if (object.posts !== undefined && object.posts !== null) {
       for (const e of object.posts) {
-        message.posts.push(QueryPostResponse.fromJSON(e))
+        message.posts.push(Post.fromJSON(e))
       }
     }
     if (object.pagination !== undefined && object.pagination !== null) {
@@ -584,9 +277,7 @@ export const QueryPostsResponse = {
   toJSON(message: QueryPostsResponse): unknown {
     const obj: any = {}
     if (message.posts) {
-      obj.posts = message.posts.map((e) =>
-        e ? QueryPostResponse.toJSON(e) : undefined
-      )
+      obj.posts = message.posts.map((e) => (e ? Post.toJSON(e) : undefined))
     } else {
       obj.posts = []
     }
@@ -602,7 +293,7 @@ export const QueryPostsResponse = {
     message.posts = []
     if (object.posts !== undefined && object.posts !== null) {
       for (const e of object.posts) {
-        message.posts.push(QueryPostResponse.fromPartial(e))
+        message.posts.push(Post.fromPartial(e))
       }
     }
     if (object.pagination !== undefined && object.pagination !== null) {
@@ -669,21 +360,12 @@ export const QueryPostRequest = {
   },
 }
 
-const baseQueryPostResponse: object = { children: '' }
+const baseQueryPostResponse: object = {}
 
 export const QueryPostResponse = {
   encode(message: QueryPostResponse, writer: Writer = Writer.create()): Writer {
     if (message.post !== undefined) {
       Post.encode(message.post, writer.uint32(10).fork()).ldelim()
-    }
-    for (const v of message.pollAnswers) {
-      UserAnswer.encode(v!, writer.uint32(18).fork()).ldelim()
-    }
-    for (const v of message.reactions) {
-      PostReaction.encode(v!, writer.uint32(26).fork()).ldelim()
-    }
-    for (const v of message.children) {
-      writer.uint32(34).string(v!)
     }
     return writer
   },
@@ -692,23 +374,11 @@ export const QueryPostResponse = {
     const reader = input instanceof Reader ? input : new Reader(input)
     let end = length === undefined ? reader.len : reader.pos + length
     const message = { ...baseQueryPostResponse } as QueryPostResponse
-    message.pollAnswers = []
-    message.reactions = []
-    message.children = []
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
         case 1:
           message.post = Post.decode(reader, reader.uint32())
-          break
-        case 2:
-          message.pollAnswers.push(UserAnswer.decode(reader, reader.uint32()))
-          break
-        case 3:
-          message.reactions.push(PostReaction.decode(reader, reader.uint32()))
-          break
-        case 4:
-          message.children.push(reader.string())
           break
         default:
           reader.skipType(tag & 7)
@@ -720,28 +390,10 @@ export const QueryPostResponse = {
 
   fromJSON(object: any): QueryPostResponse {
     const message = { ...baseQueryPostResponse } as QueryPostResponse
-    message.pollAnswers = []
-    message.reactions = []
-    message.children = []
     if (object.post !== undefined && object.post !== null) {
       message.post = Post.fromJSON(object.post)
     } else {
       message.post = undefined
-    }
-    if (object.pollAnswers !== undefined && object.pollAnswers !== null) {
-      for (const e of object.pollAnswers) {
-        message.pollAnswers.push(UserAnswer.fromJSON(e))
-      }
-    }
-    if (object.reactions !== undefined && object.reactions !== null) {
-      for (const e of object.reactions) {
-        message.reactions.push(PostReaction.fromJSON(e))
-      }
-    }
-    if (object.children !== undefined && object.children !== null) {
-      for (const e of object.children) {
-        message.children.push(String(e))
-      }
     }
     return message
   },
@@ -750,149 +402,45 @@ export const QueryPostResponse = {
     const obj: any = {}
     message.post !== undefined &&
       (obj.post = message.post ? Post.toJSON(message.post) : undefined)
-    if (message.pollAnswers) {
-      obj.pollAnswers = message.pollAnswers.map((e) =>
-        e ? UserAnswer.toJSON(e) : undefined
-      )
-    } else {
-      obj.pollAnswers = []
-    }
-    if (message.reactions) {
-      obj.reactions = message.reactions.map((e) =>
-        e ? PostReaction.toJSON(e) : undefined
-      )
-    } else {
-      obj.reactions = []
-    }
-    if (message.children) {
-      obj.children = message.children.map((e) => e)
-    } else {
-      obj.children = []
-    }
     return obj
   },
 
   fromPartial(object: DeepPartial<QueryPostResponse>): QueryPostResponse {
     const message = { ...baseQueryPostResponse } as QueryPostResponse
-    message.pollAnswers = []
-    message.reactions = []
-    message.children = []
     if (object.post !== undefined && object.post !== null) {
       message.post = Post.fromPartial(object.post)
     } else {
       message.post = undefined
     }
-    if (object.pollAnswers !== undefined && object.pollAnswers !== null) {
-      for (const e of object.pollAnswers) {
-        message.pollAnswers.push(UserAnswer.fromPartial(e))
-      }
-    }
-    if (object.reactions !== undefined && object.reactions !== null) {
-      for (const e of object.reactions) {
-        message.reactions.push(PostReaction.fromPartial(e))
-      }
-    }
-    if (object.children !== undefined && object.children !== null) {
-      for (const e of object.children) {
-        message.children.push(e)
-      }
-    }
     return message
   },
 }
 
-const baseQueryPollAnswersRequest: object = { postId: '' }
+const baseQueryUserAnswersRequest: object = { postId: '', user: '' }
 
-export const QueryPollAnswersRequest = {
+export const QueryUserAnswersRequest = {
   encode(
-    message: QueryPollAnswersRequest,
+    message: QueryUserAnswersRequest,
     writer: Writer = Writer.create()
   ): Writer {
     if (message.postId !== '') {
       writer.uint32(10).string(message.postId)
     }
-    return writer
-  },
-
-  decode(input: Reader | Uint8Array, length?: number): QueryPollAnswersRequest {
-    const reader = input instanceof Reader ? input : new Reader(input)
-    let end = length === undefined ? reader.len : reader.pos + length
-    const message = {
-      ...baseQueryPollAnswersRequest,
-    } as QueryPollAnswersRequest
-    while (reader.pos < end) {
-      const tag = reader.uint32()
-      switch (tag >>> 3) {
-        case 1:
-          message.postId = reader.string()
-          break
-        default:
-          reader.skipType(tag & 7)
-          break
-      }
+    if (message.user !== '') {
+      writer.uint32(18).string(message.user)
     }
-    return message
-  },
-
-  fromJSON(object: any): QueryPollAnswersRequest {
-    const message = {
-      ...baseQueryPollAnswersRequest,
-    } as QueryPollAnswersRequest
-    if (object.postId !== undefined && object.postId !== null) {
-      message.postId = String(object.postId)
-    } else {
-      message.postId = ''
-    }
-    return message
-  },
-
-  toJSON(message: QueryPollAnswersRequest): unknown {
-    const obj: any = {}
-    message.postId !== undefined && (obj.postId = message.postId)
-    return obj
-  },
-
-  fromPartial(
-    object: DeepPartial<QueryPollAnswersRequest>
-  ): QueryPollAnswersRequest {
-    const message = {
-      ...baseQueryPollAnswersRequest,
-    } as QueryPollAnswersRequest
-    if (object.postId !== undefined && object.postId !== null) {
-      message.postId = object.postId
-    } else {
-      message.postId = ''
-    }
-    return message
-  },
-}
-
-const baseQueryPollAnswersResponse: object = { postId: '' }
-
-export const QueryPollAnswersResponse = {
-  encode(
-    message: QueryPollAnswersResponse,
-    writer: Writer = Writer.create()
-  ): Writer {
-    if (message.postId !== '') {
-      writer.uint32(10).string(message.postId)
-    }
-    for (const v of message.answers) {
-      UserAnswer.encode(v!, writer.uint32(18).fork()).ldelim()
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(26).fork()).ldelim()
     }
     return writer
   },
 
-  decode(
-    input: Reader | Uint8Array,
-    length?: number
-  ): QueryPollAnswersResponse {
+  decode(input: Reader | Uint8Array, length?: number): QueryUserAnswersRequest {
     const reader = input instanceof Reader ? input : new Reader(input)
     let end = length === undefined ? reader.len : reader.pos + length
     const message = {
-      ...baseQueryPollAnswersResponse,
-    } as QueryPollAnswersResponse
-    message.answers = []
+      ...baseQueryUserAnswersRequest,
+    } as QueryUserAnswersRequest
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
@@ -900,7 +448,10 @@ export const QueryPollAnswersResponse = {
           message.postId = reader.string()
           break
         case 2:
-          message.answers.push(UserAnswer.decode(reader, reader.uint32()))
+          message.user = reader.string()
+          break
+        case 3:
+          message.pagination = PageRequest.decode(reader, reader.uint32())
           break
         default:
           reader.skipType(tag & 7)
@@ -910,27 +461,127 @@ export const QueryPollAnswersResponse = {
     return message
   },
 
-  fromJSON(object: any): QueryPollAnswersResponse {
+  fromJSON(object: any): QueryUserAnswersRequest {
     const message = {
-      ...baseQueryPollAnswersResponse,
-    } as QueryPollAnswersResponse
-    message.answers = []
+      ...baseQueryUserAnswersRequest,
+    } as QueryUserAnswersRequest
     if (object.postId !== undefined && object.postId !== null) {
       message.postId = String(object.postId)
     } else {
       message.postId = ''
     }
-    if (object.answers !== undefined && object.answers !== null) {
-      for (const e of object.answers) {
-        message.answers.push(UserAnswer.fromJSON(e))
+    if (object.user !== undefined && object.user !== null) {
+      message.user = String(object.user)
+    } else {
+      message.user = ''
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromJSON(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+
+  toJSON(message: QueryUserAnswersRequest): unknown {
+    const obj: any = {}
+    message.postId !== undefined && (obj.postId = message.postId)
+    message.user !== undefined && (obj.user = message.user)
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageRequest.toJSON(message.pagination)
+        : undefined)
+    return obj
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryUserAnswersRequest>
+  ): QueryUserAnswersRequest {
+    const message = {
+      ...baseQueryUserAnswersRequest,
+    } as QueryUserAnswersRequest
+    if (object.postId !== undefined && object.postId !== null) {
+      message.postId = object.postId
+    } else {
+      message.postId = ''
+    }
+    if (object.user !== undefined && object.user !== null) {
+      message.user = object.user
+    } else {
+      message.user = ''
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromPartial(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+}
+
+const baseQueryUserAnswersResponse: object = {}
+
+export const QueryUserAnswersResponse = {
+  encode(
+    message: QueryUserAnswersResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    for (const v of message.answers) {
+      UserAnswer.encode(v!, writer.uint32(10).fork()).ldelim()
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim()
+    }
+    return writer
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryUserAnswersResponse {
+    const reader = input instanceof Reader ? input : new Reader(input)
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = {
+      ...baseQueryUserAnswersResponse,
+    } as QueryUserAnswersResponse
+    message.answers = []
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        case 1:
+          message.answers.push(UserAnswer.decode(reader, reader.uint32()))
+          break
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32())
+          break
+        default:
+          reader.skipType(tag & 7)
+          break
       }
     }
     return message
   },
 
-  toJSON(message: QueryPollAnswersResponse): unknown {
+  fromJSON(object: any): QueryUserAnswersResponse {
+    const message = {
+      ...baseQueryUserAnswersResponse,
+    } as QueryUserAnswersResponse
+    message.answers = []
+    if (object.answers !== undefined && object.answers !== null) {
+      for (const e of object.answers) {
+        message.answers.push(UserAnswer.fromJSON(e))
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromJSON(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+
+  toJSON(message: QueryUserAnswersResponse): unknown {
     const obj: any = {}
-    message.postId !== undefined && (obj.postId = message.postId)
     if (message.answers) {
       obj.answers = message.answers.map((e) =>
         e ? UserAnswer.toJSON(e) : undefined
@@ -938,37 +589,47 @@ export const QueryPollAnswersResponse = {
     } else {
       obj.answers = []
     }
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageResponse.toJSON(message.pagination)
+        : undefined)
     return obj
   },
 
   fromPartial(
-    object: DeepPartial<QueryPollAnswersResponse>
-  ): QueryPollAnswersResponse {
+    object: DeepPartial<QueryUserAnswersResponse>
+  ): QueryUserAnswersResponse {
     const message = {
-      ...baseQueryPollAnswersResponse,
-    } as QueryPollAnswersResponse
+      ...baseQueryUserAnswersResponse,
+    } as QueryUserAnswersResponse
     message.answers = []
-    if (object.postId !== undefined && object.postId !== null) {
-      message.postId = object.postId
-    } else {
-      message.postId = ''
-    }
     if (object.answers !== undefined && object.answers !== null) {
       for (const e of object.answers) {
         message.answers.push(UserAnswer.fromPartial(e))
       }
     }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromPartial(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
     return message
   },
 }
 
-const baseQueryRegisteredReactionsRequest: object = {}
+const baseQueryRegisteredReactionsRequest: object = { subspaceId: '' }
 
 export const QueryRegisteredReactionsRequest = {
   encode(
-    _: QueryRegisteredReactionsRequest,
+    message: QueryRegisteredReactionsRequest,
     writer: Writer = Writer.create()
   ): Writer {
+    if (message.subspaceId !== '') {
+      writer.uint32(10).string(message.subspaceId)
+    }
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim()
+    }
     return writer
   },
 
@@ -984,6 +645,12 @@ export const QueryRegisteredReactionsRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
+        case 1:
+          message.subspaceId = reader.string()
+          break
+        case 2:
+          message.pagination = PageRequest.decode(reader, reader.uint32())
+          break
         default:
           reader.skipType(tag & 7)
           break
@@ -992,24 +659,49 @@ export const QueryRegisteredReactionsRequest = {
     return message
   },
 
-  fromJSON(_: any): QueryRegisteredReactionsRequest {
+  fromJSON(object: any): QueryRegisteredReactionsRequest {
     const message = {
       ...baseQueryRegisteredReactionsRequest,
     } as QueryRegisteredReactionsRequest
+    if (object.subspaceId !== undefined && object.subspaceId !== null) {
+      message.subspaceId = String(object.subspaceId)
+    } else {
+      message.subspaceId = ''
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromJSON(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
     return message
   },
 
-  toJSON(_: QueryRegisteredReactionsRequest): unknown {
+  toJSON(message: QueryRegisteredReactionsRequest): unknown {
     const obj: any = {}
+    message.subspaceId !== undefined && (obj.subspaceId = message.subspaceId)
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageRequest.toJSON(message.pagination)
+        : undefined)
     return obj
   },
 
   fromPartial(
-    _: DeepPartial<QueryRegisteredReactionsRequest>
+    object: DeepPartial<QueryRegisteredReactionsRequest>
   ): QueryRegisteredReactionsRequest {
     const message = {
       ...baseQueryRegisteredReactionsRequest,
     } as QueryRegisteredReactionsRequest
+    if (object.subspaceId !== undefined && object.subspaceId !== null) {
+      message.subspaceId = object.subspaceId
+    } else {
+      message.subspaceId = ''
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromPartial(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
     return message
   },
 }
@@ -1021,8 +713,11 @@ export const QueryRegisteredReactionsResponse = {
     message: QueryRegisteredReactionsResponse,
     writer: Writer = Writer.create()
   ): Writer {
-    for (const v of message.registeredReactions) {
+    for (const v of message.reactions) {
       RegisteredReaction.encode(v!, writer.uint32(10).fork()).ldelim()
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim()
     }
     return writer
   },
@@ -1036,14 +731,17 @@ export const QueryRegisteredReactionsResponse = {
     const message = {
       ...baseQueryRegisteredReactionsResponse,
     } as QueryRegisteredReactionsResponse
-    message.registeredReactions = []
+    message.reactions = []
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
         case 1:
-          message.registeredReactions.push(
+          message.reactions.push(
             RegisteredReaction.decode(reader, reader.uint32())
           )
+          break
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32())
           break
         default:
           reader.skipType(tag & 7)
@@ -1057,27 +755,33 @@ export const QueryRegisteredReactionsResponse = {
     const message = {
       ...baseQueryRegisteredReactionsResponse,
     } as QueryRegisteredReactionsResponse
-    message.registeredReactions = []
-    if (
-      object.registeredReactions !== undefined &&
-      object.registeredReactions !== null
-    ) {
-      for (const e of object.registeredReactions) {
-        message.registeredReactions.push(RegisteredReaction.fromJSON(e))
+    message.reactions = []
+    if (object.reactions !== undefined && object.reactions !== null) {
+      for (const e of object.reactions) {
+        message.reactions.push(RegisteredReaction.fromJSON(e))
       }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromJSON(object.pagination)
+    } else {
+      message.pagination = undefined
     }
     return message
   },
 
   toJSON(message: QueryRegisteredReactionsResponse): unknown {
     const obj: any = {}
-    if (message.registeredReactions) {
-      obj.registeredReactions = message.registeredReactions.map((e) =>
+    if (message.reactions) {
+      obj.reactions = message.reactions.map((e) =>
         e ? RegisteredReaction.toJSON(e) : undefined
       )
     } else {
-      obj.registeredReactions = []
+      obj.reactions = []
     }
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageResponse.toJSON(message.pagination)
+        : undefined)
     return obj
   },
 
@@ -1087,14 +791,16 @@ export const QueryRegisteredReactionsResponse = {
     const message = {
       ...baseQueryRegisteredReactionsResponse,
     } as QueryRegisteredReactionsResponse
-    message.registeredReactions = []
-    if (
-      object.registeredReactions !== undefined &&
-      object.registeredReactions !== null
-    ) {
-      for (const e of object.registeredReactions) {
-        message.registeredReactions.push(RegisteredReaction.fromPartial(e))
+    message.reactions = []
+    if (object.reactions !== undefined && object.reactions !== null) {
+      for (const e of object.reactions) {
+        message.reactions.push(RegisteredReaction.fromPartial(e))
       }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromPartial(object.pagination)
+    } else {
+      message.pagination = undefined
     }
     return message
   },
@@ -1322,6 +1028,380 @@ export const QueryReportsResponse = {
   },
 }
 
+const baseQueryPostReactionsRequest: object = { postId: '' }
+
+export const QueryPostReactionsRequest = {
+  encode(
+    message: QueryPostReactionsRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.postId !== '') {
+      writer.uint32(10).string(message.postId)
+    }
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim()
+    }
+    return writer
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryPostReactionsRequest {
+    const reader = input instanceof Reader ? input : new Reader(input)
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = {
+      ...baseQueryPostReactionsRequest,
+    } as QueryPostReactionsRequest
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        case 1:
+          message.postId = reader.string()
+          break
+        case 2:
+          message.pagination = PageRequest.decode(reader, reader.uint32())
+          break
+        default:
+          reader.skipType(tag & 7)
+          break
+      }
+    }
+    return message
+  },
+
+  fromJSON(object: any): QueryPostReactionsRequest {
+    const message = {
+      ...baseQueryPostReactionsRequest,
+    } as QueryPostReactionsRequest
+    if (object.postId !== undefined && object.postId !== null) {
+      message.postId = String(object.postId)
+    } else {
+      message.postId = ''
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromJSON(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+
+  toJSON(message: QueryPostReactionsRequest): unknown {
+    const obj: any = {}
+    message.postId !== undefined && (obj.postId = message.postId)
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageRequest.toJSON(message.pagination)
+        : undefined)
+    return obj
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryPostReactionsRequest>
+  ): QueryPostReactionsRequest {
+    const message = {
+      ...baseQueryPostReactionsRequest,
+    } as QueryPostReactionsRequest
+    if (object.postId !== undefined && object.postId !== null) {
+      message.postId = object.postId
+    } else {
+      message.postId = ''
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromPartial(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+}
+
+const baseQueryPostReactionsResponse: object = {}
+
+export const QueryPostReactionsResponse = {
+  encode(
+    message: QueryPostReactionsResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    for (const v of message.reactions) {
+      PostReaction.encode(v!, writer.uint32(10).fork()).ldelim()
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim()
+    }
+    return writer
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryPostReactionsResponse {
+    const reader = input instanceof Reader ? input : new Reader(input)
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = {
+      ...baseQueryPostReactionsResponse,
+    } as QueryPostReactionsResponse
+    message.reactions = []
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        case 1:
+          message.reactions.push(PostReaction.decode(reader, reader.uint32()))
+          break
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32())
+          break
+        default:
+          reader.skipType(tag & 7)
+          break
+      }
+    }
+    return message
+  },
+
+  fromJSON(object: any): QueryPostReactionsResponse {
+    const message = {
+      ...baseQueryPostReactionsResponse,
+    } as QueryPostReactionsResponse
+    message.reactions = []
+    if (object.reactions !== undefined && object.reactions !== null) {
+      for (const e of object.reactions) {
+        message.reactions.push(PostReaction.fromJSON(e))
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromJSON(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+
+  toJSON(message: QueryPostReactionsResponse): unknown {
+    const obj: any = {}
+    if (message.reactions) {
+      obj.reactions = message.reactions.map((e) =>
+        e ? PostReaction.toJSON(e) : undefined
+      )
+    } else {
+      obj.reactions = []
+    }
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageResponse.toJSON(message.pagination)
+        : undefined)
+    return obj
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryPostReactionsResponse>
+  ): QueryPostReactionsResponse {
+    const message = {
+      ...baseQueryPostReactionsResponse,
+    } as QueryPostReactionsResponse
+    message.reactions = []
+    if (object.reactions !== undefined && object.reactions !== null) {
+      for (const e of object.reactions) {
+        message.reactions.push(PostReaction.fromPartial(e))
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromPartial(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+}
+
+const baseQueryPostCommentsRequest: object = { postId: '' }
+
+export const QueryPostCommentsRequest = {
+  encode(
+    message: QueryPostCommentsRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.postId !== '') {
+      writer.uint32(10).string(message.postId)
+    }
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim()
+    }
+    return writer
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryPostCommentsRequest {
+    const reader = input instanceof Reader ? input : new Reader(input)
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = {
+      ...baseQueryPostCommentsRequest,
+    } as QueryPostCommentsRequest
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        case 1:
+          message.postId = reader.string()
+          break
+        case 2:
+          message.pagination = PageRequest.decode(reader, reader.uint32())
+          break
+        default:
+          reader.skipType(tag & 7)
+          break
+      }
+    }
+    return message
+  },
+
+  fromJSON(object: any): QueryPostCommentsRequest {
+    const message = {
+      ...baseQueryPostCommentsRequest,
+    } as QueryPostCommentsRequest
+    if (object.postId !== undefined && object.postId !== null) {
+      message.postId = String(object.postId)
+    } else {
+      message.postId = ''
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromJSON(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+
+  toJSON(message: QueryPostCommentsRequest): unknown {
+    const obj: any = {}
+    message.postId !== undefined && (obj.postId = message.postId)
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageRequest.toJSON(message.pagination)
+        : undefined)
+    return obj
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryPostCommentsRequest>
+  ): QueryPostCommentsRequest {
+    const message = {
+      ...baseQueryPostCommentsRequest,
+    } as QueryPostCommentsRequest
+    if (object.postId !== undefined && object.postId !== null) {
+      message.postId = object.postId
+    } else {
+      message.postId = ''
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromPartial(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+}
+
+const baseQueryPostCommentsResponse: object = {}
+
+export const QueryPostCommentsResponse = {
+  encode(
+    message: QueryPostCommentsResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    for (const v of message.comments) {
+      Post.encode(v!, writer.uint32(10).fork()).ldelim()
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim()
+    }
+    return writer
+  },
+
+  decode(
+    input: Reader | Uint8Array,
+    length?: number
+  ): QueryPostCommentsResponse {
+    const reader = input instanceof Reader ? input : new Reader(input)
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = {
+      ...baseQueryPostCommentsResponse,
+    } as QueryPostCommentsResponse
+    message.comments = []
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        case 1:
+          message.comments.push(Post.decode(reader, reader.uint32()))
+          break
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32())
+          break
+        default:
+          reader.skipType(tag & 7)
+          break
+      }
+    }
+    return message
+  },
+
+  fromJSON(object: any): QueryPostCommentsResponse {
+    const message = {
+      ...baseQueryPostCommentsResponse,
+    } as QueryPostCommentsResponse
+    message.comments = []
+    if (object.comments !== undefined && object.comments !== null) {
+      for (const e of object.comments) {
+        message.comments.push(Post.fromJSON(e))
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromJSON(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+
+  toJSON(message: QueryPostCommentsResponse): unknown {
+    const obj: any = {}
+    if (message.comments) {
+      obj.comments = message.comments.map((e) =>
+        e ? Post.toJSON(e) : undefined
+      )
+    } else {
+      obj.comments = []
+    }
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageResponse.toJSON(message.pagination)
+        : undefined)
+    return obj
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryPostCommentsResponse>
+  ): QueryPostCommentsResponse {
+    const message = {
+      ...baseQueryPostCommentsResponse,
+    } as QueryPostCommentsResponse
+    message.comments = []
+    if (object.comments !== undefined && object.comments !== null) {
+      for (const e of object.comments) {
+        message.comments.push(Post.fromPartial(e))
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromPartial(object.pagination)
+    } else {
+      message.pagination = undefined
+    }
+    return message
+  },
+}
+
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Posts queries all the stored posts */
@@ -1330,16 +1410,24 @@ export interface Query {
   Post(request: QueryPostRequest): Promise<QueryPostResponse>
   /** Reports queries the reports for the post having the given id */
   Reports(request: QueryReportsRequest): Promise<QueryReportsResponse>
-  /** PollAnswers queries the poll answers of the post having a specific id */
-  PollAnswers(
-    request: QueryPollAnswersRequest
-  ): Promise<QueryPollAnswersResponse>
+  /** UserAnswers queries the user answers of the post having a specific id */
+  UserAnswers(
+    request: QueryUserAnswersRequest
+  ): Promise<QueryUserAnswersResponse>
   /** RegisteredReactions queries all the registered reactions */
   RegisteredReactions(
     request: QueryRegisteredReactionsRequest
   ): Promise<QueryRegisteredReactionsResponse>
   /** Params queries the posts module params */
   Params(request: QueryParamsRequest): Promise<QueryParamsResponse>
+  /** PostComments queries the comments of the post having the given id */
+  PostComments(
+    request: QueryPostCommentsRequest
+  ): Promise<QueryPostCommentsResponse>
+  /** PostReactions queries all the reactions of the post having the given id */
+  PostReactions(
+    request: QueryPostReactionsRequest
+  ): Promise<QueryPostReactionsResponse>
 }
 
 export class QueryClientImpl implements Query {
@@ -1349,9 +1437,11 @@ export class QueryClientImpl implements Query {
     this.Posts = this.Posts.bind(this)
     this.Post = this.Post.bind(this)
     this.Reports = this.Reports.bind(this)
-    this.PollAnswers = this.PollAnswers.bind(this)
+    this.UserAnswers = this.UserAnswers.bind(this)
     this.RegisteredReactions = this.RegisteredReactions.bind(this)
     this.Params = this.Params.bind(this)
+    this.PostComments = this.PostComments.bind(this)
+    this.PostReactions = this.PostReactions.bind(this)
   }
   Posts(request: QueryPostsRequest): Promise<QueryPostsResponse> {
     const data = QueryPostsRequest.encode(request).finish()
@@ -1379,17 +1469,17 @@ export class QueryClientImpl implements Query {
     return promise.then((data) => QueryReportsResponse.decode(new Reader(data)))
   }
 
-  PollAnswers(
-    request: QueryPollAnswersRequest
-  ): Promise<QueryPollAnswersResponse> {
-    const data = QueryPollAnswersRequest.encode(request).finish()
+  UserAnswers(
+    request: QueryUserAnswersRequest
+  ): Promise<QueryUserAnswersResponse> {
+    const data = QueryUserAnswersRequest.encode(request).finish()
     const promise = this.rpc.request(
       'desmos.posts.v1beta1.Query',
-      'PollAnswers',
+      'UserAnswers',
       data
     )
     return promise.then((data) =>
-      QueryPollAnswersResponse.decode(new Reader(data))
+      QueryUserAnswersResponse.decode(new Reader(data))
     )
   }
 
@@ -1416,6 +1506,34 @@ export class QueryClientImpl implements Query {
     )
     return promise.then((data) => QueryParamsResponse.decode(new Reader(data)))
   }
+
+  PostComments(
+    request: QueryPostCommentsRequest
+  ): Promise<QueryPostCommentsResponse> {
+    const data = QueryPostCommentsRequest.encode(request).finish()
+    const promise = this.rpc.request(
+      'desmos.posts.v1beta1.Query',
+      'PostComments',
+      data
+    )
+    return promise.then((data) =>
+      QueryPostCommentsResponse.decode(new Reader(data))
+    )
+  }
+
+  PostReactions(
+    request: QueryPostReactionsRequest
+  ): Promise<QueryPostReactionsResponse> {
+    const data = QueryPostReactionsRequest.encode(request).finish()
+    const promise = this.rpc.request(
+      'desmos.posts.v1beta1.Query',
+      'PostReactions',
+      data
+    )
+    return promise.then((data) =>
+      QueryPostReactionsResponse.decode(new Reader(data))
+    )
+  }
 }
 
 interface Rpc {
@@ -1425,16 +1543,6 @@ interface Rpc {
     data: Uint8Array
   ): Promise<Uint8Array>
 }
-
-declare var self: any | undefined
-declare var window: any | undefined
-var globalThis: any = (() => {
-  if (typeof globalThis !== 'undefined') return globalThis
-  if (typeof self !== 'undefined') return self
-  if (typeof window !== 'undefined') return window
-  if (typeof global !== 'undefined') return global
-  throw 'Unable to locate global object'
-})()
 
 type Builtin =
   | Date
@@ -1453,35 +1561,6 @@ export type DeepPartial<T> = T extends Builtin
   : T extends {}
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>
-
-function toTimestamp(date: Date): Timestamp {
-  const seconds = date.getTime() / 1_000
-  const nanos = (date.getTime() % 1_000) * 1_000_000
-  return { seconds, nanos }
-}
-
-function fromTimestamp(t: Timestamp): Date {
-  let millis = t.seconds * 1_000
-  millis += t.nanos / 1_000_000
-  return new Date(millis)
-}
-
-function fromJsonTimestamp(o: any): Date {
-  if (o instanceof Date) {
-    return o
-  } else if (typeof o === 'string') {
-    return new Date(o)
-  } else {
-    return fromTimestamp(Timestamp.fromJSON(o))
-  }
-}
-
-function longToNumber(long: Long): number {
-  if (long.gt(Number.MAX_SAFE_INTEGER)) {
-    throw new globalThis.Error('Value is larger than Number.MAX_SAFE_INTEGER')
-  }
-  return long.toNumber()
-}
 
 // If you get a compile-error about 'Constructor<Long> and ... have no overlap',
 // add '--ts_proto_opt=esModuleInterop=true' as a flag when calling 'protoc'.

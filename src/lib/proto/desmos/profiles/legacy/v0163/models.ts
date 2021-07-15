@@ -1,10 +1,10 @@
 /* eslint-disable */
 import { util, configure, Writer, Reader } from 'protobufjs/minimal'
 import * as Long from 'long'
-import { Any } from '../../../google/protobuf/any'
-import { Timestamp } from '../../../google/protobuf/timestamp'
+import { Any } from '../../../../google/protobuf/any'
+import { Timestamp } from '../../../../google/protobuf/timestamp'
 
-export const protobufPackage = 'desmos.profiles.v1beta1'
+export const protobufPackage = 'desmos.profiles.legacy.v0163'
 
 /** Pictures contains the data of a user profile's related pictures */
 export interface Pictures {

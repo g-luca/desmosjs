@@ -1,12 +1,14 @@
 /* eslint-disable */
 import { util, configure, Writer, Reader } from 'protobufjs/minimal'
 import * as Long from 'long'
-import { Params } from '../../../desmos/profiles/v1beta1/params'
+import { Params } from '../../../desmos/profiles/v1beta1/models_params'
+import { DTagTransferRequest } from '../../../desmos/profiles/v1beta1/models_dtag_requests'
 import {
-  DTagTransferRequest,
   Relationship,
   UserBlock,
-} from '../../../desmos/profiles/v1beta1/models'
+} from '../../../desmos/profiles/v1beta1/models_relationships'
+import { ChainLink } from '../../../desmos/profiles/v1beta1/models_chain_links'
+import { ApplicationLink } from '../../../desmos/profiles/v1beta1/models_app_links'
 
 export const protobufPackage = 'desmos.profiles.v1beta1'
 
@@ -16,9 +18,12 @@ export interface GenesisState {
   relationships: Relationship[]
   blocks: UserBlock[]
   params?: Params
+  ibcPortId: string
+  chainLinks: ChainLink[]
+  applicationLinks: ApplicationLink[]
 }
 
-const baseGenesisState: object = {}
+const baseGenesisState: object = { ibcPortId: '' }
 
 export const GenesisState = {
   encode(message: GenesisState, writer: Writer = Writer.create()): Writer {
@@ -34,6 +39,15 @@ export const GenesisState = {
     if (message.params !== undefined) {
       Params.encode(message.params, writer.uint32(34).fork()).ldelim()
     }
+    if (message.ibcPortId !== '') {
+      writer.uint32(42).string(message.ibcPortId)
+    }
+    for (const v of message.chainLinks) {
+      ChainLink.encode(v!, writer.uint32(50).fork()).ldelim()
+    }
+    for (const v of message.applicationLinks) {
+      ApplicationLink.encode(v!, writer.uint32(58).fork()).ldelim()
+    }
     return writer
   },
 
@@ -44,6 +58,8 @@ export const GenesisState = {
     message.dtagTransferRequests = []
     message.relationships = []
     message.blocks = []
+    message.chainLinks = []
+    message.applicationLinks = []
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
@@ -63,6 +79,17 @@ export const GenesisState = {
         case 4:
           message.params = Params.decode(reader, reader.uint32())
           break
+        case 5:
+          message.ibcPortId = reader.string()
+          break
+        case 6:
+          message.chainLinks.push(ChainLink.decode(reader, reader.uint32()))
+          break
+        case 7:
+          message.applicationLinks.push(
+            ApplicationLink.decode(reader, reader.uint32())
+          )
+          break
         default:
           reader.skipType(tag & 7)
           break
@@ -76,6 +103,8 @@ export const GenesisState = {
     message.dtagTransferRequests = []
     message.relationships = []
     message.blocks = []
+    message.chainLinks = []
+    message.applicationLinks = []
     if (
       object.dtagTransferRequests !== undefined &&
       object.dtagTransferRequests !== null
@@ -98,6 +127,24 @@ export const GenesisState = {
       message.params = Params.fromJSON(object.params)
     } else {
       message.params = undefined
+    }
+    if (object.ibcPortId !== undefined && object.ibcPortId !== null) {
+      message.ibcPortId = String(object.ibcPortId)
+    } else {
+      message.ibcPortId = ''
+    }
+    if (object.chainLinks !== undefined && object.chainLinks !== null) {
+      for (const e of object.chainLinks) {
+        message.chainLinks.push(ChainLink.fromJSON(e))
+      }
+    }
+    if (
+      object.applicationLinks !== undefined &&
+      object.applicationLinks !== null
+    ) {
+      for (const e of object.applicationLinks) {
+        message.applicationLinks.push(ApplicationLink.fromJSON(e))
+      }
     }
     return message
   },
@@ -127,6 +174,21 @@ export const GenesisState = {
     }
     message.params !== undefined &&
       (obj.params = message.params ? Params.toJSON(message.params) : undefined)
+    message.ibcPortId !== undefined && (obj.ibcPortId = message.ibcPortId)
+    if (message.chainLinks) {
+      obj.chainLinks = message.chainLinks.map((e) =>
+        e ? ChainLink.toJSON(e) : undefined
+      )
+    } else {
+      obj.chainLinks = []
+    }
+    if (message.applicationLinks) {
+      obj.applicationLinks = message.applicationLinks.map((e) =>
+        e ? ApplicationLink.toJSON(e) : undefined
+      )
+    } else {
+      obj.applicationLinks = []
+    }
     return obj
   },
 
@@ -135,6 +197,8 @@ export const GenesisState = {
     message.dtagTransferRequests = []
     message.relationships = []
     message.blocks = []
+    message.chainLinks = []
+    message.applicationLinks = []
     if (
       object.dtagTransferRequests !== undefined &&
       object.dtagTransferRequests !== null
@@ -157,6 +221,24 @@ export const GenesisState = {
       message.params = Params.fromPartial(object.params)
     } else {
       message.params = undefined
+    }
+    if (object.ibcPortId !== undefined && object.ibcPortId !== null) {
+      message.ibcPortId = object.ibcPortId
+    } else {
+      message.ibcPortId = ''
+    }
+    if (object.chainLinks !== undefined && object.chainLinks !== null) {
+      for (const e of object.chainLinks) {
+        message.chainLinks.push(ChainLink.fromPartial(e))
+      }
+    }
+    if (
+      object.applicationLinks !== undefined &&
+      object.applicationLinks !== null
+    ) {
+      for (const e of object.applicationLinks) {
+        message.applicationLinks.push(ApplicationLink.fromPartial(e))
+      }
     }
     return message
   },

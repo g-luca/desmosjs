@@ -1,8 +1,14 @@
 /* eslint-disable */
 import { util, configure, Reader, Writer } from 'protobufjs/minimal'
 import * as Long from 'long'
+import {
+  CommentsState,
+  Attribute,
+  Attachment,
+  commentsStateFromJSON,
+  commentsStateToJSON,
+} from '../../../desmos/posts/v1beta1/posts'
 import { PollData } from '../../../desmos/posts/v1beta1/polls'
-import { Attribute, Attachment } from '../../../desmos/posts/v1beta1/posts'
 
 export const protobufPackage = 'desmos.posts.v1beta1'
 
@@ -10,7 +16,7 @@ export const protobufPackage = 'desmos.posts.v1beta1'
 export interface MsgCreatePost {
   parentId: string
   message: string
-  allowsComments: boolean
+  commentsState: CommentsState
   subspace: string
   additionalAttributes: Attribute[]
   creator: string
@@ -25,6 +31,7 @@ export interface MsgCreatePostResponse {}
 export interface MsgEditPost {
   postId: string
   message: string
+  commentsState: CommentsState
   attachments: Attachment[]
   pollData?: PollData
   editor: string
@@ -65,7 +72,7 @@ export interface MsgRemovePostReactionResponse {}
 /** MsgAnswerPoll represents the message to be used when wanting to answer a poll */
 export interface MsgAnswerPoll {
   postId: string
-  userAnswers: string[]
+  answers: string[]
   answerer: string
 }
 
@@ -100,7 +107,7 @@ export interface MsgReportPostResponse {}
 const baseMsgCreatePost: object = {
   parentId: '',
   message: '',
-  allowsComments: false,
+  commentsState: 0,
   subspace: '',
   creator: '',
 }
@@ -113,8 +120,8 @@ export const MsgCreatePost = {
     if (message.message !== '') {
       writer.uint32(18).string(message.message)
     }
-    if (message.allowsComments === true) {
-      writer.uint32(24).bool(message.allowsComments)
+    if (message.commentsState !== 0) {
+      writer.uint32(24).int32(message.commentsState)
     }
     if (message.subspace !== '') {
       writer.uint32(34).string(message.subspace)
@@ -150,7 +157,7 @@ export const MsgCreatePost = {
           message.message = reader.string()
           break
         case 3:
-          message.allowsComments = reader.bool()
+          message.commentsState = reader.int32() as any
           break
         case 4:
           message.subspace = reader.string()
@@ -191,10 +198,10 @@ export const MsgCreatePost = {
     } else {
       message.message = ''
     }
-    if (object.allowsComments !== undefined && object.allowsComments !== null) {
-      message.allowsComments = Boolean(object.allowsComments)
+    if (object.commentsState !== undefined && object.commentsState !== null) {
+      message.commentsState = commentsStateFromJSON(object.commentsState)
     } else {
-      message.allowsComments = false
+      message.commentsState = 0
     }
     if (object.subspace !== undefined && object.subspace !== null) {
       message.subspace = String(object.subspace)
@@ -231,8 +238,8 @@ export const MsgCreatePost = {
     const obj: any = {}
     message.parentId !== undefined && (obj.parentId = message.parentId)
     message.message !== undefined && (obj.message = message.message)
-    message.allowsComments !== undefined &&
-      (obj.allowsComments = message.allowsComments)
+    message.commentsState !== undefined &&
+      (obj.commentsState = commentsStateToJSON(message.commentsState))
     message.subspace !== undefined && (obj.subspace = message.subspace)
     if (message.additionalAttributes) {
       obj.additionalAttributes = message.additionalAttributes.map((e) =>
@@ -270,10 +277,10 @@ export const MsgCreatePost = {
     } else {
       message.message = ''
     }
-    if (object.allowsComments !== undefined && object.allowsComments !== null) {
-      message.allowsComments = object.allowsComments
+    if (object.commentsState !== undefined && object.commentsState !== null) {
+      message.commentsState = object.commentsState
     } else {
-      message.allowsComments = false
+      message.commentsState = 0
     }
     if (object.subspace !== undefined && object.subspace !== null) {
       message.subspace = object.subspace
@@ -345,7 +352,12 @@ export const MsgCreatePostResponse = {
   },
 }
 
-const baseMsgEditPost: object = { postId: '', message: '', editor: '' }
+const baseMsgEditPost: object = {
+  postId: '',
+  message: '',
+  commentsState: 0,
+  editor: '',
+}
 
 export const MsgEditPost = {
   encode(message: MsgEditPost, writer: Writer = Writer.create()): Writer {
@@ -355,14 +367,17 @@ export const MsgEditPost = {
     if (message.message !== '') {
       writer.uint32(18).string(message.message)
     }
+    if (message.commentsState !== 0) {
+      writer.uint32(24).int32(message.commentsState)
+    }
     for (const v of message.attachments) {
-      Attachment.encode(v!, writer.uint32(26).fork()).ldelim()
+      Attachment.encode(v!, writer.uint32(34).fork()).ldelim()
     }
     if (message.pollData !== undefined) {
-      PollData.encode(message.pollData, writer.uint32(34).fork()).ldelim()
+      PollData.encode(message.pollData, writer.uint32(42).fork()).ldelim()
     }
     if (message.editor !== '') {
-      writer.uint32(42).string(message.editor)
+      writer.uint32(50).string(message.editor)
     }
     return writer
   },
@@ -382,12 +397,15 @@ export const MsgEditPost = {
           message.message = reader.string()
           break
         case 3:
-          message.attachments.push(Attachment.decode(reader, reader.uint32()))
+          message.commentsState = reader.int32() as any
           break
         case 4:
-          message.pollData = PollData.decode(reader, reader.uint32())
+          message.attachments.push(Attachment.decode(reader, reader.uint32()))
           break
         case 5:
+          message.pollData = PollData.decode(reader, reader.uint32())
+          break
+        case 6:
           message.editor = reader.string()
           break
         default:
@@ -411,6 +429,11 @@ export const MsgEditPost = {
     } else {
       message.message = ''
     }
+    if (object.commentsState !== undefined && object.commentsState !== null) {
+      message.commentsState = commentsStateFromJSON(object.commentsState)
+    } else {
+      message.commentsState = 0
+    }
     if (object.attachments !== undefined && object.attachments !== null) {
       for (const e of object.attachments) {
         message.attachments.push(Attachment.fromJSON(e))
@@ -433,6 +456,8 @@ export const MsgEditPost = {
     const obj: any = {}
     message.postId !== undefined && (obj.postId = message.postId)
     message.message !== undefined && (obj.message = message.message)
+    message.commentsState !== undefined &&
+      (obj.commentsState = commentsStateToJSON(message.commentsState))
     if (message.attachments) {
       obj.attachments = message.attachments.map((e) =>
         e ? Attachment.toJSON(e) : undefined
@@ -460,6 +485,11 @@ export const MsgEditPost = {
       message.message = object.message
     } else {
       message.message = ''
+    }
+    if (object.commentsState !== undefined && object.commentsState !== null) {
+      message.commentsState = object.commentsState
+    } else {
+      message.commentsState = 0
     }
     if (object.attachments !== undefined && object.attachments !== null) {
       for (const e of object.attachments) {
@@ -808,14 +838,14 @@ export const MsgRemovePostReactionResponse = {
   },
 }
 
-const baseMsgAnswerPoll: object = { postId: '', userAnswers: '', answerer: '' }
+const baseMsgAnswerPoll: object = { postId: '', answers: '', answerer: '' }
 
 export const MsgAnswerPoll = {
   encode(message: MsgAnswerPoll, writer: Writer = Writer.create()): Writer {
     if (message.postId !== '') {
       writer.uint32(10).string(message.postId)
     }
-    for (const v of message.userAnswers) {
+    for (const v of message.answers) {
       writer.uint32(18).string(v!)
     }
     if (message.answerer !== '') {
@@ -828,7 +858,7 @@ export const MsgAnswerPoll = {
     const reader = input instanceof Reader ? input : new Reader(input)
     let end = length === undefined ? reader.len : reader.pos + length
     const message = { ...baseMsgAnswerPoll } as MsgAnswerPoll
-    message.userAnswers = []
+    message.answers = []
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
@@ -836,7 +866,7 @@ export const MsgAnswerPoll = {
           message.postId = reader.string()
           break
         case 2:
-          message.userAnswers.push(reader.string())
+          message.answers.push(reader.string())
           break
         case 3:
           message.answerer = reader.string()
@@ -851,15 +881,15 @@ export const MsgAnswerPoll = {
 
   fromJSON(object: any): MsgAnswerPoll {
     const message = { ...baseMsgAnswerPoll } as MsgAnswerPoll
-    message.userAnswers = []
+    message.answers = []
     if (object.postId !== undefined && object.postId !== null) {
       message.postId = String(object.postId)
     } else {
       message.postId = ''
     }
-    if (object.userAnswers !== undefined && object.userAnswers !== null) {
-      for (const e of object.userAnswers) {
-        message.userAnswers.push(String(e))
+    if (object.answers !== undefined && object.answers !== null) {
+      for (const e of object.answers) {
+        message.answers.push(String(e))
       }
     }
     if (object.answerer !== undefined && object.answerer !== null) {
@@ -873,10 +903,10 @@ export const MsgAnswerPoll = {
   toJSON(message: MsgAnswerPoll): unknown {
     const obj: any = {}
     message.postId !== undefined && (obj.postId = message.postId)
-    if (message.userAnswers) {
-      obj.userAnswers = message.userAnswers.map((e) => e)
+    if (message.answers) {
+      obj.answers = message.answers.map((e) => e)
     } else {
-      obj.userAnswers = []
+      obj.answers = []
     }
     message.answerer !== undefined && (obj.answerer = message.answerer)
     return obj
@@ -884,15 +914,15 @@ export const MsgAnswerPoll = {
 
   fromPartial(object: DeepPartial<MsgAnswerPoll>): MsgAnswerPoll {
     const message = { ...baseMsgAnswerPoll } as MsgAnswerPoll
-    message.userAnswers = []
+    message.answers = []
     if (object.postId !== undefined && object.postId !== null) {
       message.postId = object.postId
     } else {
       message.postId = ''
     }
-    if (object.userAnswers !== undefined && object.userAnswers !== null) {
-      for (const e of object.userAnswers) {
-        message.userAnswers.push(e)
+    if (object.answers !== undefined && object.answers !== null) {
+      for (const e of object.answers) {
+        message.answers.push(e)
       }
     }
     if (object.answerer !== undefined && object.answerer !== null) {

@@ -2,26 +2,51 @@
 
 import {
     MsgSaveProfile as _MsgSaveProfile,
-    MsgSaveProfileResponse as _MsgSaveProfileResponse,
     MsgDeleteProfile as _MsgDeleteProfile,
     MsgDeleteProfileResponse as _MsgDeleteProfileResponse,
+    MsgSaveProfileResponse as _MsgSaveProfileResponse
+} from '../lib/proto/desmos/profiles/v1beta1/msgs_profile';
+
+import {
+    MsgAcceptDTagTransferRequest as _MsgAcceptDTagTransferRequest,
+    MsgAcceptDTagTransferRequestResponse as _MsgAcceptDTagTransferRequestResponse,
+    MsgCancelDTagTransferRequest as _MsgCancelDTagTransferRequest,
+    MsgCancelDTagTransferRequestResponse as _MsgCancelDTagTransferRequestResponse,
+    MsgRefuseDTagTransferRequest as _MsgRefuseDTagTransferRequest,
+    MsgRefuseDTagTransferRequestResponse as _MsgRefuseDTagTransferRequestResponse,
     MsgRequestDTagTransfer as _MsgRequestDTagTransfer,
     MsgRequestDTagTransferResponse as _MsgRequestDTagTransferResponse,
-    MsgCancelDTagTransfer as _MsgCancelDTagTransfer,
-    MsgCancelDTagTransferResponse as _MsgCancelDTagTransferResponse,
-    MsgAcceptDTagTransfer as _MsgAcceptDTagTransfer,
-    MsgAcceptDTagTransferResponse as _MsgAcceptDTagTransferResponse,
-    MsgRefuseDTagTransfer as _MsgRefuseDTagTransfer,
-    MsgRefuseDTagTransferResponse as _MsgRefuseDTagTransferResponse,
+} from '../lib/proto/desmos/profiles/v1beta1/msgs_dtag_requests';
+
+import {
     MsgCreateRelationship as _MsgCreateRelationship,
-    CreateRelationshipResponse as _CreateRelationshipResponse,
+    MsgCreateRelationshipResponse as _CreateRelationshipResponse,
     MsgDeleteRelationship as _MsgDeleteRelationship,
-    DeleteRelationshipResponse as _DeleteRelationshipResponse,
+    MsgDeleteRelationshipResponse as _DeleteRelationshipResponse,
+} from '../lib/proto/desmos/profiles/v1beta1/msgs_relationships';
+
+import {
     MsgBlockUser as _MsgBlockUser,
-    BlockUserResponse as _BlockUserResponse,
+    MsgBlockUserResponse as _BlockUserResponse,
     MsgUnblockUser as _MsgUnblockUser,
-    UnblockUserResponse as _UnblockUserResponse,
-} from "../lib/proto/desmos/profiles/v1beta1/msgs";
+    MsgUnblockUserResponse as _UnblockUserResponse,
+} from '../lib/proto/desmos/profiles/v1beta1/msgs_relationships';
+
+
+import {
+    MsgLinkApplication as _MsgLinkApplication,
+    MsgLinkApplicationResponse as _MsgLinkApplicationResponse,
+    MsgUnlinkApplication as _MsgUnlinkApplication,
+    MsgUnlinkApplicationResponse as _MsgUnlinkApplicationResponse,
+} from "../lib/proto/desmos/profiles/v1beta1/msgs_app_links";
+
+import {
+    MsgLinkChainAccount as _MsgLinkChainAccount,
+    MsgLinkChainAccountResponse as _MsgLinkChainAccountResponse,
+    MsgUnlinkChainAccount as _MsgUnlinkChainAccount,
+    MsgUnlinkChainAccountResponse as _MsgUnlinkChainAccountResponse,
+} from "../lib/proto/desmos/profiles/v1beta1/msgs_chain_links";
+
 
 /**
  * Desmos Types generated from Desmos proto files.
@@ -46,23 +71,23 @@ namespace DesmosTypes {
     export const MsgRequestDTagTransferResponse = _MsgRequestDTagTransferResponse;
     export type MsgRequestDTagTransferResponse = _MsgRequestDTagTransferResponse;
 
-    export const MsgCancelDTagTransfer = _MsgCancelDTagTransfer;
-    export type MsgCancelDTagTransfer = _MsgCancelDTagTransfer;
+    export const MsgCancelDTagTransferRequest = _MsgCancelDTagTransferRequest;
+    export type MsgCancelDTagTransferRequest = _MsgCancelDTagTransferRequest;
 
-    export const MsgCancelDTagTransferResponse = _MsgCancelDTagTransferResponse;
-    export type MsgCancelDTagTransferResponse = _MsgCancelDTagTransferResponse;
+    export const MsgCancelDTagTransferRequestResponse = _MsgCancelDTagTransferRequestResponse;
+    export type MsgCancelDTagTransferRequestResponse = _MsgCancelDTagTransferRequestResponse;
 
-    export const MsgAcceptDTagTransfer = _MsgAcceptDTagTransfer;
-    export type MsgAcceptDTagTransfer = _MsgAcceptDTagTransfer;
+    export const MsgAcceptDTagTransferRequest = _MsgAcceptDTagTransferRequest;
+    export type MsgAcceptDTagTransferRequest = _MsgAcceptDTagTransferRequest;
 
-    export const MsgAcceptDTagTransferResponse = _MsgAcceptDTagTransferResponse;
-    export type MsgAcceptDTagTransferResponse = _MsgAcceptDTagTransferResponse;
+    export const MsgAcceptDTagTransferRequestResponse = _MsgAcceptDTagTransferRequestResponse;
+    export type MsgAcceptDTagTransferRequestResponse = _MsgAcceptDTagTransferRequestResponse;
 
-    export const MsgRefuseDTagTransfer = _MsgRefuseDTagTransfer;
-    export type MsgRefuseDTagTransfer = _MsgRefuseDTagTransfer;
+    export const MsgRefuseDTagTransferRequest = _MsgRefuseDTagTransferRequest;
+    export type MsgRefuseDTagTransferRequest = _MsgRefuseDTagTransferRequest;
 
-    export const MsgRefuseDTagTransferResponse = _MsgRefuseDTagTransferResponse;
-    export type MsgRefuseDTagTransferResponse = _MsgRefuseDTagTransferResponse;
+    export const MsgRefuseDTagTransferRequestResponse = _MsgRefuseDTagTransferRequestResponse;
+    export type MsgRefuseDTagTransferRequestResponse = _MsgRefuseDTagTransferRequestResponse;
 
     export const MsgCreateRelationship = _MsgCreateRelationship;
     export type MsgCreateRelationship = _MsgCreateRelationship;
@@ -87,6 +112,30 @@ namespace DesmosTypes {
 
     export const UnblockUserResponse = _UnblockUserResponse;
     export type UnblockUserResponse = _UnblockUserResponse;
+
+    export const MsgLinkApplication = _MsgLinkApplication;
+    export type MsgLinkApplication = _MsgLinkApplication;
+
+    export const MsgLinkApplicationResponse = _MsgLinkApplicationResponse;
+    export type MsgLinkApplicationResponse = _MsgLinkApplicationResponse;
+
+    export const MsgUnlinkApplication = _MsgUnlinkApplication;
+    export type MsgUnlinkApplication = _MsgUnlinkApplication;
+
+    export const MsgUnlinkApplicationResponse = _MsgUnlinkApplicationResponse;
+    export type MsgUnlinkApplicationResponse = _MsgUnlinkApplicationResponse;
+
+    export const MsgLinkChainAccount = _MsgLinkChainAccount;
+    export type MsgLinkChainAccount = _MsgLinkChainAccount;
+
+    export const MsgLinkChainAccountResponse = _MsgLinkChainAccountResponse;
+    export type MsgLinkChainAccountResponse = _MsgLinkChainAccountResponse;
+
+    export const MsgUnlinkChainAccount = _MsgUnlinkChainAccount;
+    export type MsgUnlinkChainAccount = _MsgUnlinkChainAccount;
+
+    export const MsgUnlinkChainAccountResponse = _MsgUnlinkChainAccountResponse;
+    export type MsgUnlinkChainAccountResponse = _MsgUnlinkChainAccountResponse;
 }
 
 export default DesmosTypes;

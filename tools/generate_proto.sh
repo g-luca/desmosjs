@@ -34,7 +34,7 @@ function generate_proto(){
 }
 
 ## Download the Protobuf files of Desmos
-DESMOS_VERSION=0.16.3
+DESMOS_VERSION=0.17.2
 PKG_VERSION=$DESMOS_VERSION
 PKG_NAME=desmos
 PKG_NAME_SDK=desmos
@@ -49,7 +49,7 @@ rm -rf third_party/proto/cosmos/
 
 
 ## Download the Protobuf files of Cosmos
-COSMOS_VERSION=0.42.5
+COSMOS_VERSION=0.42.7
 PKG_VERSION=$COSMOS_VERSION
 PKG_NAME=cosmos
 PKG_NAME_SDK=cosmos-sdk

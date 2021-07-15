@@ -6,9 +6,46 @@ import { Timestamp } from '../../../google/protobuf/timestamp'
 
 export const protobufPackage = 'desmos.posts.v1beta1'
 
-/** PostIndex represents a post index */
-export interface PostIndex {
-  value: number
+/** CommentsState contains all the possible comments states */
+export enum CommentsState {
+  /** COMMENTS_STATE_UNSPECIFIED - COMMENTS_STATE_UNSPECIFIED */
+  COMMENTS_STATE_UNSPECIFIED = 0,
+  /** COMMENTS_STATE_ALLOWED - COMMENT_STATE_ALLOWED tells that's possible to comment a post */
+  COMMENTS_STATE_ALLOWED = 1,
+  /** COMMENTS_STATE_BLOCKED - COMMENT_STATE_BLOCKED tells that's not possible to comment a post */
+  COMMENTS_STATE_BLOCKED = 2,
+  UNRECOGNIZED = -1,
+}
+
+export function commentsStateFromJSON(object: any): CommentsState {
+  switch (object) {
+    case 0:
+    case 'COMMENTS_STATE_UNSPECIFIED':
+      return CommentsState.COMMENTS_STATE_UNSPECIFIED
+    case 1:
+    case 'COMMENTS_STATE_ALLOWED':
+      return CommentsState.COMMENTS_STATE_ALLOWED
+    case 2:
+    case 'COMMENTS_STATE_BLOCKED':
+      return CommentsState.COMMENTS_STATE_BLOCKED
+    case -1:
+    case 'UNRECOGNIZED':
+    default:
+      return CommentsState.UNRECOGNIZED
+  }
+}
+
+export function commentsStateToJSON(object: CommentsState): string {
+  switch (object) {
+    case CommentsState.COMMENTS_STATE_UNSPECIFIED:
+      return 'COMMENTS_STATE_UNSPECIFIED'
+    case CommentsState.COMMENTS_STATE_ALLOWED:
+      return 'COMMENTS_STATE_ALLOWED'
+    case CommentsState.COMMENTS_STATE_BLOCKED:
+      return 'COMMENTS_STATE_BLOCKED'
+    default:
+      return 'UNKNOWN'
+  }
 }
 
 /** Post contains all the data of a Desmos post */
@@ -18,17 +55,12 @@ export interface Post {
   message: string
   created?: Date
   lastEdited?: Date
-  disableComments: boolean
+  commentsState: CommentsState
   subspace: string
   additionalAttributes: Attribute[]
   creator: string
   attachments: Attachment[]
   pollData?: PollData
-}
-
-/** CommentIDs wraps the list of comments of a post */
-export interface CommentIDs {
-  ids: string[]
 }
 
 /**
@@ -51,66 +83,11 @@ export interface Attribute {
   value: string
 }
 
-const basePostIndex: object = { value: 0 }
-
-export const PostIndex = {
-  encode(message: PostIndex, writer: Writer = Writer.create()): Writer {
-    if (message.value !== 0) {
-      writer.uint32(8).uint64(message.value)
-    }
-    return writer
-  },
-
-  decode(input: Reader | Uint8Array, length?: number): PostIndex {
-    const reader = input instanceof Reader ? input : new Reader(input)
-    let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...basePostIndex } as PostIndex
-    while (reader.pos < end) {
-      const tag = reader.uint32()
-      switch (tag >>> 3) {
-        case 1:
-          message.value = longToNumber(reader.uint64() as Long)
-          break
-        default:
-          reader.skipType(tag & 7)
-          break
-      }
-    }
-    return message
-  },
-
-  fromJSON(object: any): PostIndex {
-    const message = { ...basePostIndex } as PostIndex
-    if (object.value !== undefined && object.value !== null) {
-      message.value = Number(object.value)
-    } else {
-      message.value = 0
-    }
-    return message
-  },
-
-  toJSON(message: PostIndex): unknown {
-    const obj: any = {}
-    message.value !== undefined && (obj.value = message.value)
-    return obj
-  },
-
-  fromPartial(object: DeepPartial<PostIndex>): PostIndex {
-    const message = { ...basePostIndex } as PostIndex
-    if (object.value !== undefined && object.value !== null) {
-      message.value = object.value
-    } else {
-      message.value = 0
-    }
-    return message
-  },
-}
-
 const basePost: object = {
   postId: '',
   parentId: '',
   message: '',
-  disableComments: false,
+  commentsState: 0,
   subspace: '',
   creator: '',
 }
@@ -138,8 +115,8 @@ export const Post = {
         writer.uint32(42).fork()
       ).ldelim()
     }
-    if (message.disableComments === true) {
-      writer.uint32(48).bool(message.disableComments)
+    if (message.commentsState !== 0) {
+      writer.uint32(48).int32(message.commentsState)
     }
     if (message.subspace !== '') {
       writer.uint32(58).string(message.subspace)
@@ -188,7 +165,7 @@ export const Post = {
           )
           break
         case 6:
-          message.disableComments = reader.bool()
+          message.commentsState = reader.int32() as any
           break
         case 7:
           message.subspace = reader.string()
@@ -244,13 +221,10 @@ export const Post = {
     } else {
       message.lastEdited = undefined
     }
-    if (
-      object.disableComments !== undefined &&
-      object.disableComments !== null
-    ) {
-      message.disableComments = Boolean(object.disableComments)
+    if (object.commentsState !== undefined && object.commentsState !== null) {
+      message.commentsState = commentsStateFromJSON(object.commentsState)
     } else {
-      message.disableComments = false
+      message.commentsState = 0
     }
     if (object.subspace !== undefined && object.subspace !== null) {
       message.subspace = String(object.subspace)
@@ -292,8 +266,8 @@ export const Post = {
       (obj.created = message.created.toISOString())
     message.lastEdited !== undefined &&
       (obj.lastEdited = message.lastEdited.toISOString())
-    message.disableComments !== undefined &&
-      (obj.disableComments = message.disableComments)
+    message.commentsState !== undefined &&
+      (obj.commentsState = commentsStateToJSON(message.commentsState))
     message.subspace !== undefined && (obj.subspace = message.subspace)
     if (message.additionalAttributes) {
       obj.additionalAttributes = message.additionalAttributes.map((e) =>
@@ -346,13 +320,10 @@ export const Post = {
     } else {
       message.lastEdited = undefined
     }
-    if (
-      object.disableComments !== undefined &&
-      object.disableComments !== null
-    ) {
-      message.disableComments = object.disableComments
+    if (object.commentsState !== undefined && object.commentsState !== null) {
+      message.commentsState = object.commentsState
     } else {
-      message.disableComments = false
+      message.commentsState = 0
     }
     if (object.subspace !== undefined && object.subspace !== null) {
       message.subspace = object.subspace
@@ -381,68 +352,6 @@ export const Post = {
       message.pollData = PollData.fromPartial(object.pollData)
     } else {
       message.pollData = undefined
-    }
-    return message
-  },
-}
-
-const baseCommentIDs: object = { ids: '' }
-
-export const CommentIDs = {
-  encode(message: CommentIDs, writer: Writer = Writer.create()): Writer {
-    for (const v of message.ids) {
-      writer.uint32(10).string(v!)
-    }
-    return writer
-  },
-
-  decode(input: Reader | Uint8Array, length?: number): CommentIDs {
-    const reader = input instanceof Reader ? input : new Reader(input)
-    let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseCommentIDs } as CommentIDs
-    message.ids = []
-    while (reader.pos < end) {
-      const tag = reader.uint32()
-      switch (tag >>> 3) {
-        case 1:
-          message.ids.push(reader.string())
-          break
-        default:
-          reader.skipType(tag & 7)
-          break
-      }
-    }
-    return message
-  },
-
-  fromJSON(object: any): CommentIDs {
-    const message = { ...baseCommentIDs } as CommentIDs
-    message.ids = []
-    if (object.ids !== undefined && object.ids !== null) {
-      for (const e of object.ids) {
-        message.ids.push(String(e))
-      }
-    }
-    return message
-  },
-
-  toJSON(message: CommentIDs): unknown {
-    const obj: any = {}
-    if (message.ids) {
-      obj.ids = message.ids.map((e) => e)
-    } else {
-      obj.ids = []
-    }
-    return obj
-  },
-
-  fromPartial(object: DeepPartial<CommentIDs>): CommentIDs {
-    const message = { ...baseCommentIDs } as CommentIDs
-    message.ids = []
-    if (object.ids !== undefined && object.ids !== null) {
-      for (const e of object.ids) {
-        message.ids.push(e)
-      }
     }
     return message
   },
@@ -616,16 +525,6 @@ export const Attribute = {
   },
 }
 
-declare var self: any | undefined
-declare var window: any | undefined
-var globalThis: any = (() => {
-  if (typeof globalThis !== 'undefined') return globalThis
-  if (typeof self !== 'undefined') return self
-  if (typeof window !== 'undefined') return window
-  if (typeof global !== 'undefined') return global
-  throw 'Unable to locate global object'
-})()
-
 type Builtin =
   | Date
   | Function
@@ -664,13 +563,6 @@ function fromJsonTimestamp(o: any): Date {
   } else {
     return fromTimestamp(Timestamp.fromJSON(o))
   }
-}
-
-function longToNumber(long: Long): number {
-  if (long.gt(Number.MAX_SAFE_INTEGER)) {
-    throw new globalThis.Error('Value is larger than Number.MAX_SAFE_INTEGER')
-  }
-  return long.toNumber()
 }
 
 // If you get a compile-error about 'Constructor<Long> and ... have no overlap',

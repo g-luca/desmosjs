@@ -25,13 +25,9 @@ export interface PollData {
 
 /** UserAnswer contains the data of a user's answer to a poll */
 export interface UserAnswer {
+  postId: string
   user: string
   answers: string[]
-}
-
-/** UserAnswers wraps a list of UserAnswer */
-export interface UserAnswers {
-  answers: UserAnswer[]
 }
 
 const basePollAnswer: object = { answerId: '', text: '' }
@@ -270,15 +266,18 @@ export const PollData = {
   },
 }
 
-const baseUserAnswer: object = { user: '', answers: '' }
+const baseUserAnswer: object = { postId: '', user: '', answers: '' }
 
 export const UserAnswer = {
   encode(message: UserAnswer, writer: Writer = Writer.create()): Writer {
+    if (message.postId !== '') {
+      writer.uint32(10).string(message.postId)
+    }
     if (message.user !== '') {
-      writer.uint32(10).string(message.user)
+      writer.uint32(18).string(message.user)
     }
     for (const v of message.answers) {
-      writer.uint32(18).string(v!)
+      writer.uint32(26).string(v!)
     }
     return writer
   },
@@ -292,9 +291,12 @@ export const UserAnswer = {
       const tag = reader.uint32()
       switch (tag >>> 3) {
         case 1:
-          message.user = reader.string()
+          message.postId = reader.string()
           break
         case 2:
+          message.user = reader.string()
+          break
+        case 3:
           message.answers.push(reader.string())
           break
         default:
@@ -308,6 +310,11 @@ export const UserAnswer = {
   fromJSON(object: any): UserAnswer {
     const message = { ...baseUserAnswer } as UserAnswer
     message.answers = []
+    if (object.postId !== undefined && object.postId !== null) {
+      message.postId = String(object.postId)
+    } else {
+      message.postId = ''
+    }
     if (object.user !== undefined && object.user !== null) {
       message.user = String(object.user)
     } else {
@@ -323,6 +330,7 @@ export const UserAnswer = {
 
   toJSON(message: UserAnswer): unknown {
     const obj: any = {}
+    message.postId !== undefined && (obj.postId = message.postId)
     message.user !== undefined && (obj.user = message.user)
     if (message.answers) {
       obj.answers = message.answers.map((e) => e)
@@ -335,6 +343,11 @@ export const UserAnswer = {
   fromPartial(object: DeepPartial<UserAnswer>): UserAnswer {
     const message = { ...baseUserAnswer } as UserAnswer
     message.answers = []
+    if (object.postId !== undefined && object.postId !== null) {
+      message.postId = object.postId
+    } else {
+      message.postId = ''
+    }
     if (object.user !== undefined && object.user !== null) {
       message.user = object.user
     } else {
@@ -343,70 +356,6 @@ export const UserAnswer = {
     if (object.answers !== undefined && object.answers !== null) {
       for (const e of object.answers) {
         message.answers.push(e)
-      }
-    }
-    return message
-  },
-}
-
-const baseUserAnswers: object = {}
-
-export const UserAnswers = {
-  encode(message: UserAnswers, writer: Writer = Writer.create()): Writer {
-    for (const v of message.answers) {
-      UserAnswer.encode(v!, writer.uint32(10).fork()).ldelim()
-    }
-    return writer
-  },
-
-  decode(input: Reader | Uint8Array, length?: number): UserAnswers {
-    const reader = input instanceof Reader ? input : new Reader(input)
-    let end = length === undefined ? reader.len : reader.pos + length
-    const message = { ...baseUserAnswers } as UserAnswers
-    message.answers = []
-    while (reader.pos < end) {
-      const tag = reader.uint32()
-      switch (tag >>> 3) {
-        case 1:
-          message.answers.push(UserAnswer.decode(reader, reader.uint32()))
-          break
-        default:
-          reader.skipType(tag & 7)
-          break
-      }
-    }
-    return message
-  },
-
-  fromJSON(object: any): UserAnswers {
-    const message = { ...baseUserAnswers } as UserAnswers
-    message.answers = []
-    if (object.answers !== undefined && object.answers !== null) {
-      for (const e of object.answers) {
-        message.answers.push(UserAnswer.fromJSON(e))
-      }
-    }
-    return message
-  },
-
-  toJSON(message: UserAnswers): unknown {
-    const obj: any = {}
-    if (message.answers) {
-      obj.answers = message.answers.map((e) =>
-        e ? UserAnswer.toJSON(e) : undefined
-      )
-    } else {
-      obj.answers = []
-    }
-    return obj
-  },
-
-  fromPartial(object: DeepPartial<UserAnswers>): UserAnswers {
-    const message = { ...baseUserAnswers } as UserAnswers
-    message.answers = []
-    if (object.answers !== undefined && object.answers !== null) {
-      for (const e of object.answers) {
-        message.answers.push(UserAnswer.fromPartial(e))
       }
     }
     return message

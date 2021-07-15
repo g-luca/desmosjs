@@ -1,4 +1,4 @@
-import { DesmosJS, Transaction, Wallet, DesmosTypes, CosmosTypes } from "../src/DesmosJS";
+import { DesmosJS, Transaction, Wallet, CosmosTypes } from "../src/DesmosJS";
 import { Any } from "../src/lib/proto/google/protobuf/any";
 /**
  * Wallet tests

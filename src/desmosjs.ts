@@ -15,7 +15,7 @@ export {
 export class DesmosJS {
     public static addressPath: string = `m/44'/852'/0'/0/0`;
     public static addressPrefix: string = 'desmos';
-    public static chainId: string = 'morpheus-apollo-1';
+    public static chainId: string = 'morpheus-apollo-2';
 
 
     public static usernameRegex: RegExp = /[A-Za-z0-9_]{3,30}$/;
@@ -26,9 +26,9 @@ export class DesmosJS {
      * Ovverride the default Desmos chain configurations with custom ones.
      * @param addressPath path of the Desmos chain. Default: `m/44'/852'/0'/0/0`.
      * @param addressPrefix prefix of the Desmos chain. Default: `desmos`.
-     * @param chainId id of the Desmoschain. Default: `morpheus-apollo-1`.
+     * @param chainId id of the Desmoschain. Default: `morpheus-apollo-2.
      */
-    setDesmosChainConfiguration(addressPath: string = `m/44'/852'/0'/0/0`, addressPrefix: string = 'desmos', chainId: string = 'morpheus-apollo-1') {
+    setDesmosChainConfiguration(addressPath: string = DesmosJS.addressPath, addressPrefix: string = DesmosJS.addressPrefix, chainId: string = DesmosJS.chainId) {
         DesmosJS.addressPath = addressPath;
         DesmosJS.addressPrefix = addressPrefix;
         DesmosJS.chainId = chainId;
