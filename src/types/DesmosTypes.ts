@@ -23,15 +23,11 @@ import {
     MsgCreateRelationshipResponse as _CreateRelationshipResponse,
     MsgDeleteRelationship as _MsgDeleteRelationship,
     MsgDeleteRelationshipResponse as _DeleteRelationshipResponse,
-} from '../lib/proto/desmos/profiles/v1beta1/msgs_relationships';
-
-import {
     MsgBlockUser as _MsgBlockUser,
     MsgBlockUserResponse as _BlockUserResponse,
     MsgUnblockUser as _MsgUnblockUser,
     MsgUnblockUserResponse as _UnblockUserResponse,
 } from '../lib/proto/desmos/profiles/v1beta1/msgs_relationships';
-
 
 import {
     MsgLinkApplication as _MsgLinkApplication,
