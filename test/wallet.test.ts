@@ -5,7 +5,8 @@ import { Any } from "../src/lib/proto/google/protobuf/any";
  */
 describe("Wallet test", () => {
     // test mnemonic
-    const mnemonic = 'state name bag two engage tell hamster brand idea casual master shop spoon patient seed napkin height violin buzz exhibit address favorite tomato convince';
+    const mnemonicDesmos = 'state name bag two engage tell hamster brand idea casual master shop spoon patient seed napkin height violin buzz exhibit address favorite tomato convince';
+    const mnemonicBitcoin = 'stuff forum host since dog pumpkin taxi finger april approve choice swim'
 
     it("Empty or wrong mnemonic exception", () => {
         expect(() => { new Wallet(''); }).toThrowError();
@@ -19,19 +20,24 @@ describe("Wallet test", () => {
         expect(DesmosJS.addressRegex.test("desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeTruthy();
     });
 
-    it("Correct wallet generation", () => {
-        const wallet: Wallet = new Wallet(mnemonic);
+    it("Correct Desmos wallet generation", () => {
+        const wallet: Wallet = new Wallet(mnemonicDesmos);
         expect(wallet.address).toBe('desmos1t0fpnzl8swhr8c4mqw330y49k6had8an90l9m3'); // check address
         expect(wallet.publicKeyB64).toBe('A+ISBdMtDMfX5wowibrgaM+Z72vmubmMEc2Nx+nnBuc8'); // check public key
         expect(wallet.privateKey.toString('hex')).toBe('0b83fe470c7f6e58d56b22c8dddb8328c98bbc11af7dccd7dc7273a2049c5597'); // check private key
     });
 
 
+    it("Correct Bitcoin wallet generation", () => {
+        const wallet: Wallet = new Wallet(mnemonicBitcoin, "m/44'/0'/0'/0/0/0", "bc1");
+        expect(wallet.address).toBe('bc11aeklrsshra5r3tca06llqa49n9z657ht2gtkv2'); // check address
+    });
+
     /**
     * Test the correct transaction signature generation from a wallet
     */
     it("Correct transaction sign MsgSend", async () => {
-        const wallet: Wallet = new Wallet(mnemonic);
+        const wallet: Wallet = new Wallet(mnemonicDesmos);
         const amount: CosmosTypes.Coin[] = [{ denom: "daric", amount: "1" }];
         const msgSend: CosmosTypes.MsgSend = {
             fromAddress: wallet.address,

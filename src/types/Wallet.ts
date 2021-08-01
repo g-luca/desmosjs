@@ -23,9 +23,9 @@ export class Wallet {
      * @param mnemonic mnemonic phrase
      * @param path wallet string path, default is desmos: "m/44'/852'/0'/0/0"
      * @param bech32Prefix bech string prefix, default is "desmos"
-     * @param chainId blockchain id, default is "morpheus-apollo-1"
+     * @param chainId blockchain id, default is "morpheus-apollo-2"
      */
-    constructor(mnemonic: string, path: string = "m/44'/852'/0'/0/0", bech32Prefix: string = "desmos", chainId: string = "morpheus-apollo-1") {
+    constructor(mnemonic: string, path: string = "m/44'/852'/0'/0/0", bech32Prefix: string = "desmos", chainId: string = "morpheus-apollo-2") {
         this._mnemonic = mnemonic;
         this._path = path;
         this._bech32Prefix = bech32Prefix;
@@ -42,7 +42,7 @@ export class Wallet {
      * @returns true if generated correctly keys and address
      */
     private walletFromMnemonic(mnemonic: string): boolean {
-        if (!validateMnemonic(mnemonic)) {
+        if (mnemonic.split(mnemonic).length < 12) {
             return false;
         }
         try {
