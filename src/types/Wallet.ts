@@ -42,7 +42,7 @@ export class Wallet {
      * @returns true if generated correctly keys and address
      */
     private walletFromMnemonic(mnemonic: string): boolean {
-        if (mnemonic.split(mnemonic).length < 12) {
+        if (mnemonic.split(' ').length < 12) {
             return false;
         }
         try {
