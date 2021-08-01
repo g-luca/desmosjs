@@ -7,7 +7,7 @@ import { Coin as _Coin } from "../lib/proto/cosmos/base/v1beta1/coin";
 import { PrivKey as _PrivKey, PubKey as _PubKey } from "../lib/proto/cosmos/crypto/ed25519/keys";
 import { SignMode as _SignMode } from "../lib/proto/cosmos/tx/signing/v1beta1/signing";
 import { AuthInfo as _AuthInfo, Fee as _Fee, SignerInfo as _SignerInfo, TxBody as _TxBody } from "../lib/proto/cosmos/tx/v1beta1/tx";
-
+import { BroadcastMode as _BroadcastMode } from "../lib/proto/cosmos/tx/v1beta1/service";
 
 /**
  * Cosmos Types generated from Cosmos-SDK proto files.
@@ -15,6 +15,9 @@ import { AuthInfo as _AuthInfo, Fee as _Fee, SignerInfo as _SignerInfo, TxBody a
  */
 
 namespace CosmosTypes {
+    export const BroadcastMode = _BroadcastMode;
+    export type BroadcastMode = _BroadcastMode;
+
     export const MsgSend = _MsgSend;
     export type MsgSend = _MsgSend;
 
