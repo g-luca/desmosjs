@@ -1,4 +1,4 @@
-import { DesmosJS, Transaction, Wallet, CosmosTypes } from "../src/DesmosJS";
+import { DesmosJS, Transaction, Wallet, CosmosTxBody, CosmosAuthInfo, CosmosCoin, CosmosFee, CosmosMsgSend, CosmosSignerInfo, CosmosSignMode } from "../src/DesmosJS";
 import { Any } from "../src/lib/proto/google/protobuf/any";
 /**
  * Wallet tests
@@ -14,7 +14,6 @@ describe("Wallet test", () => {
 
 
     it("Address regex", () => {
-        CosmosTypes.SignerInfo
         expect(DesmosJS.addressRegex.test("")).toBeFalsy();
         expect(DesmosJS.addressRegex.test("1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeFalsy();
         expect(DesmosJS.addressRegex.test("desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08")).toBeTruthy();
@@ -27,6 +26,10 @@ describe("Wallet test", () => {
         expect(wallet.privateKey.toString('hex')).toBe('0b83fe470c7f6e58d56b22c8dddb8328c98bbc11af7dccd7dc7273a2049c5597'); // check private key
     });
 
+    it("Correct pubKey from privKey generation", () => {
+        const wallet: Wallet = new Wallet(mnemonicDesmos);
+        expect(Wallet.calculatePubKey(wallet.privateKey)).toStrictEqual(wallet.publicKey.value)
+    });
 
     it("Correct Bitcoin wallet generation", () => {
         const wallet: Wallet = new Wallet(mnemonicBitcoin, "m/44'/0'/0'/0/0/0", "bc1");
@@ -38,61 +41,39 @@ describe("Wallet test", () => {
     */
     it("Correct transaction sign MsgSend", async () => {
         const wallet: Wallet = new Wallet(mnemonicDesmos);
-        const amount: CosmosTypes.Coin[] = [{ denom: "daric", amount: "1" }];
-        const msgSend: CosmosTypes.MsgSend = {
+        const amount: CosmosCoin[] = [{ denom: "daric", amount: "1" }];
+        const msgSend: CosmosMsgSend = {
             fromAddress: wallet.address,
             toAddress: "desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08",
             amount: amount,
         };
         const msgSendAny: Any = {
             typeUrl: "/cosmos.bank.v1beta1.MsgSend",
-            value: CosmosTypes.MsgSend.encode(msgSend).finish()
+            value: CosmosMsgSend.encode(msgSend).finish()
         };
 
-        const txBody: CosmosTypes.TxBody = { messages: [msgSendAny], memo: "", extensionOptions: [], nonCriticalExtensionOptions: [], timeoutHeight: 0 };
+        const txBody: CosmosTxBody = { messages: [msgSendAny], memo: "", extensionOptions: [], nonCriticalExtensionOptions: [], timeoutHeight: 0 };
 
-        const signerInfo: CosmosTypes.SignerInfo = {
+        const signerInfo: CosmosSignerInfo = {
             publicKey: wallet.publicKey,
-            modeInfo: { single: { mode: CosmosTypes.SignMode.SIGN_MODE_DIRECT } },
+            modeInfo: { single: { mode: CosmosSignMode.SIGN_MODE_DIRECT } },
             sequence: 100
         };
 
-        const feeValue: CosmosTypes.Fee = {
+        const feeValue: CosmosFee = {
             amount: [{ denom: "udaric", amount: "200" }],
             gasLimit: 200000,
             payer: "",
             granter: ""
         };
 
-        const authInfo: CosmosTypes.AuthInfo = { signerInfos: [signerInfo], fee: feeValue };
+        const authInfo: CosmosAuthInfo = { signerInfos: [signerInfo], fee: feeValue };
 
         // -------------------------------- sign --------------------------------
-        const signedTxBytes = Transaction.sign(txBody, authInfo, 0, wallet.privateKey);
+        const signedTxBytes = Transaction.signTxBody(txBody, authInfo, 0, wallet.privateKey);
         const txBytesBase64 = Buffer.from(signedTxBytes as any, 'binary').toString('base64');
 
         expect(txBytesBase64).toBe(`Co0BCooBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmoKLWRlc21vczF0MGZwbnpsOHN3aHI4YzRtcXczMzB5NDlrNmhhZDhhbjkwbDltMxItZGVzbW9zMWNscWo1ZmQ2ejY5Z3pzODRyZ2tjaGs2eThrc2FoY2ZjMDgyazA4GgoKBWRhcmljEgExEmUKTgpECh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiED4hIF0y0Mx9fnCjCJuuBoz5nva+a5uYwRzY3H6ecG5zwSBAoCCAEYZBITCg0KBnVkYXJpYxIDMjAwEMCaDBpADDjFTmY2+/sGgkSfd2vmY3/YtP0uBcQLmcpvZfQ71uFuRefftDTRY/NWDrboPvnCPDiiR65mIYc9SAz8aXFcwQ==`);
     });
-
-
-    /**
-     * Test the correct transaction signature generation from a Private Key
-     */
-    /* it("Correct transaction sign MsgSend", async () => {
-        const wallet: Wallet = new Wallet(mnemonic); // only used to generate the privKey
-        const privKey = wallet.privateKey;
-
-        const memo = "test msgSend";
-        const amount = new Coin("1000000", DesmosCoins.udaric);
-        const msgSend = new MsgSend(wallet.address, "desmos1clqj5fd6z69gzs84rgkchk6y8ksahcfc082k08", [amount]);
-        const transaction: Transaction = new Transaction(new StdMsg(MsgSend.type, msgSend), memo, DesmosJS.defaultFee);
-
-
-        const signedTx = await transaction.signWithPrivKey(privKey, new CosmosBaseAccount(0, wallet.address, 100, 0), 'morpheus-apollo-1');
-        const hashedSignature = signedTx.$tx.$signatures?.[0].$signature;
-        expect(signedTx.$tx.$memo).toBe(memo);
-        expect(hashedSignature).toBe("WT14Gt9gAO2AyBcl2ggbqnkTqTB090vg7Zl7OU4F/FgJcAVW8gVTEcKE0AXOU5NXwYV7urHlPabcHjVp7s+U5A==");
-
-    }); */
-
 
 });

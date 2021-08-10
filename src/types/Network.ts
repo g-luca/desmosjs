@@ -1,7 +1,6 @@
 import { BroadcastMode } from "../lib/proto/cosmos/tx/v1beta1/service";
-import { LcdEndpoints } from "./LcdEndpoints";
 import { Transaction } from "./Transaction";
-import { CosmosBaseAccount } from "./CosmosBaseAccount";
+import { CosmosBaseAccount } from "../DesmosJS";
 
 export class Network {
     private _lcdClientEndpoint: string;
@@ -15,38 +14,57 @@ export class Network {
     /**
      * Get basic account info from a given address
      * @param address a valid address
-     * @returns CosmosBaseAccount info object
+     * @returns CosmosBaseAccount object or false if fails
      */
     public async getAccount(address: string): Promise<CosmosBaseAccount | false> {
-        return CosmosBaseAccount.deserialize(await this.getLcd(`${LcdEndpoints.auth}${address}`));
+        const endpoint = `cosmos/auth/v1beta1/accounts/${address}`;
+        const response = await this.getLcd(endpoint);
+        if (response && response['account']) {
+            // need to handle vesting accounts
+            const accountWrapperRaw = response['account']['account'];
+            let accountRaw = accountWrapperRaw;
+            if (accountWrapperRaw['@type'] !== '/cosmos.auth.v1beta1.BaseAccount') {
+                accountRaw = accountWrapperRaw['base_vesting_account']['base_account'];
+            }
+
+            return {
+                address: accountRaw['address'],
+                accountNumber: accountRaw['account_number'] | 0,
+                sequence: accountRaw['sequence'] | 0,
+                pubKey: {
+                    typeUrl: accountRaw['pub_key']['@type'],
+                    value: accountRaw['pub_key']['key'],
+                }
+            } as CosmosBaseAccount;
+        }
+        return false;
     }
 
     /**
      * Broadcast a valid signed Transaction to the blockchain through the LCD endpoint
      * @param signedTxBytes Signed Transaction bytes
      * @param broadCastMode BroadcastMode, default BROADCAST_MODE_SYNC
-     * @returns call reponse
+     * @returns call response, or false if it fails
      */
-    public async broadcast(signedTxBytes: any, broadCastMode: BroadcastMode = BroadcastMode.BROADCAST_MODE_SYNC) {
+    public async broadcast(signedTxBytes: any, broadCastMode: BroadcastMode = BroadcastMode.BROADCAST_MODE_SYNC): Promise<any | false> {
         const txBytesBase64 = Buffer.from(signedTxBytes, 'binary').toString('base64');
 
-        const url = this.lcdClientEndpoint + '/cosmos/tx/v1beta1/txs';
-        try {
-            return await (await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ tx_bytes: txBytesBase64, mode: broadCastMode }),
-            })).json();
-        } catch (e) {
-            console.error("Network error");
-            return false;
-        }
+        const endpoint = '/cosmos/tx/v1beta1/txs';
+        const response = await this.postLcd(endpoint, { tx_bytes: txBytesBase64, mode: broadCastMode });
+        return (response) ? response : false;
     }
 
 
-    private async postLcd(endpoint: LcdEndpoints, body: Transaction, headers: any = {
+    /**
+     * HTTP POST request to a LCD endpoint
+     * @param endpoint  lcd endpoint path (ex: /txs)
+     * @param body body request object
+     * @param headers optional http headers
+     * @returns call response, or false if it fails
+     */
+    private async postLcd(endpoint: string, body: Transaction, headers: any = {
         'Content-Type': 'application/json'
-    }): Promise<any> {
+    }): Promise<any | false> {
         const url = this.lcdClientEndpoint + endpoint;
         try {
             return await (await fetch(url, {
@@ -55,17 +73,22 @@ export class Network {
                 body: JSON.stringify(body, null, 0),
             })).json();
         } catch (e) {
-            console.error("Network error");
+            console.warn("Network error");
             return false;
         }
     }
 
-    private async getLcd(endpoint: LcdEndpoints): Promise<string | false> {
+    /**
+     * HTTP GET request to a LCD endpoint
+     * @param endpoint lcd endpoint path (ex: cosmos/auth/v1beta1/accounts)
+     * @returns call response, or false if it fails
+     */
+    private async getLcd(endpoint: string): Promise<any | false> {
         const url = this.lcdClientEndpoint + endpoint;
         try {
             return await (await fetch(url)).json();
         } catch (e) {
-            console.error("Network error");
+            console.warn("Network error");
             return false;
         }
     }

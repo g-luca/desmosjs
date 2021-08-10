@@ -1,8 +1,9 @@
 import { validateMnemonic, mnemonicToSeedSync } from "bip39";
 import { ECPair, bip32 } from 'bitcoinjs-lib';
 import { toWords, encode } from 'bech32';
-import { pointFromScalar } from 'tiny-secp256k1';
+import { pointFromScalar, } from 'tiny-secp256k1';
 import { Any } from "../lib/proto/google/protobuf/any";
+import { DesmosJS } from "../DesmosJS";
 
 export class Wallet {
     private _path: string;
@@ -25,7 +26,7 @@ export class Wallet {
      * @param bech32Prefix bech string prefix, default is "desmos"
      * @param chainId blockchain id, default is "morpheus-apollo-2"
      */
-    constructor(mnemonic: string, path: string = "m/44'/852'/0'/0/0", bech32Prefix: string = "desmos", chainId: string = "morpheus-apollo-2") {
+    constructor(mnemonic: string, path: string = DesmosJS.addressPath, bech32Prefix: string = DesmosJS.addressPrefix, chainId: string = DesmosJS.chainId) {
         this._mnemonic = mnemonic;
         this._path = path;
         this._bech32Prefix = bech32Prefix;
@@ -42,6 +43,7 @@ export class Wallet {
      * @returns true if generated correctly keys and address
      */
     private walletFromMnemonic(mnemonic: string): boolean {
+        // minimum mnemonic requirements
         if (mnemonic.split(' ').length < 12) {
             return false;
         }
@@ -62,6 +64,15 @@ export class Wallet {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Calculate a public Key from a private key
+     * @param privateKey private key Buffer
+     * @returns returns the public key Buffer
+     */
+    public static calculatePubKey(privateKey: Buffer): Buffer | null {
+        return pointFromScalar(privateKey);
     }
 
 
