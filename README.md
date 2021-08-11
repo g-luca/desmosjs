@@ -1,5 +1,7 @@
 # DesmosJS
 
+# 👷 Work in progress
+
 ### A JavaScript / Typescript client for Desmos blockchain.
 
 The library aims to provide a full light client for Demsmos applications with the lowest requirements possible.
@@ -37,6 +39,7 @@ npm install --save desmosjs@x.y.z
 
 # 📚 Examples
 <br>
+
 #### Wallet & address generation
 
 ``` typescript
