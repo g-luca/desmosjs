@@ -16,13 +16,15 @@ Is made to work for both Browser and Node.JS/V8 environments.
 Since the Desmos Blockchain is continuously evolving with mainnet and testnets, choose the right DesmosJS version!
 
 <br>
+
 | Network           | Desmos  | DesmosJS |
 | ----------------- | ------- | -------- |
 | mainnet-1         | v1.0.0  | v0.x.0   |
-| morpheus-apollo-2 | v0.17.6 | v0.0.14  |
+| morpheus-apollo-2 | v0.17.6 | v0.0.x   |
 
 # 🛬 Install
 <br>
+
 ```
 npm install --save desmosjs
 ```
@@ -44,6 +46,7 @@ const wallet: Wallet = new Wallet("state name bag two engage ...");
 // wallet.address: desmos1t0fpnzl8swhr8c4mqw330y49k6had8an90l9m3
 ```
 <br>
+
 #### Send a MsgSaveProfile
 
 The example is valid for any kind of Msg\*
