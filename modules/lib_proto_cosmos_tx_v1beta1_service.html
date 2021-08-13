@@ -1,0 +1,1557 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>lib/proto/cosmos/tx/v1beta1/service | DesmosJS</title>
+	<meta name="description" content="Documentation for DesmosJS">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">DesmosJS</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">DesmosJS</a>
+				</li>
+				<li>
+					<a href="lib_proto_cosmos_tx_v1beta1_service.html">lib/proto/cosmos/tx/v1beta1/service</a>
+				</li>
+			</ul>
+			<h1>Module lib/proto/cosmos/tx/v1beta1/service</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Enumerations</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum tsd-parent-kind-module"><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.broadcastmode.html" class="tsd-kind-icon">Broadcast<wbr>Mode</a></li>
+								<li class="tsd-kind-enum tsd-parent-kind-module"><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.orderby.html" class="tsd-kind-icon">Order<wbr>By</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/lib_proto_cosmos_tx_v1beta1_service.serviceclientimpl.html" class="tsd-kind-icon">Service<wbr>Client<wbr>Impl</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.broadcasttxrequest.html" class="tsd-kind-icon">Broadcast<wbr>TxRequest</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.broadcasttxresponse.html" class="tsd-kind-icon">Broadcast<wbr>TxResponse</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.gettxrequest.html" class="tsd-kind-icon">Get<wbr>TxRequest</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.gettxresponse.html" class="tsd-kind-icon">Get<wbr>TxResponse</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.gettxseventrequest.html" class="tsd-kind-icon">Get<wbr>Txs<wbr>Event<wbr>Request</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.gettxseventresponse.html" class="tsd-kind-icon">Get<wbr>Txs<wbr>Event<wbr>Response</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.service.html" class="tsd-kind-icon">Service</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.simulaterequest.html" class="tsd-kind-icon">Simulate<wbr>Request</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.simulateresponse.html" class="tsd-kind-icon">Simulate<wbr>Response</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="lib_proto_cosmos_tx_v1beta1_service.html#deeppartial" class="tsd-kind-icon">Deep<wbr>Partial</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-kind-icon">Broadcast<wbr>TxRequest</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-kind-icon">Broadcast<wbr>TxResponse</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-kind-icon">Get<wbr>TxRequest</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-kind-icon">Get<wbr>TxResponse</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-kind-icon">Get<wbr>Txs<wbr>Event<wbr>Request</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-kind-icon">Get<wbr>Txs<wbr>Event<wbr>Response</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-kind-icon">Simulate<wbr>Request</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-kind-icon">Simulate<wbr>Response</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#protobufpackage" class="tsd-kind-icon">protobuf<wbr>Package</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcastmodefromjson" class="tsd-kind-icon">broadcast<wbr>Mode<wbr>FromJSON</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcastmodetojson" class="tsd-kind-icon">broadcast<wbr>Mode<wbr>ToJSON</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#orderbyfromjson" class="tsd-kind-icon">order<wbr>ByFromJSON</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="lib_proto_cosmos_tx_v1beta1_service.html#orderbytojson" class="tsd-kind-icon">order<wbr>ByToJSON</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="deeppartial" class="tsd-anchor"></a>
+					<h3>Deep<wbr>Partial</h3>
+					<div class="tsd-signature tsd-kind-icon">Deep<wbr>Partial&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-type">Builtin</span><span class="tsd-signature-symbol"> ? </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> : </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-symbol">infer </span> U<span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> ? </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#deeppartial" class="tsd-signature-type" data-tsd-kind="Type alias">DeepPartial</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> : </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-type">ReadonlyArray</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">infer </span> U<span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> ? </span><span class="tsd-signature-type">ReadonlyArray</span><span class="tsd-signature-symbol">&lt;</span><a href="lib_proto_cosmos_tx_v1beta1_service.html#deeppartial" class="tsd-signature-type" data-tsd-kind="Type alias">DeepPartial</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> : </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> extends </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> ? </span><span class="tsd-signature-symbol">{</span><span class="tsd-signature-symbol">[ </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol"> in </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#deeppartial" class="tsd-signature-type" data-tsd-kind="Type alias">DeepPartial</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> : </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L921">lib/proto/cosmos/tx/v1beta1/service.ts:921</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>T</h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="broadcasttxrequest-1" class="tsd-anchor"></a>
+					<h3>Broadcast<wbr>TxRequest</h3>
+					<div class="tsd-signature tsd-kind-icon">Broadcast<wbr>TxRequest<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>decode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>encode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromPartial<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>toJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L414">lib/proto/cosmos/tx/v1beta1/service.ts:414</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>decode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">decode<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span>, length<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L428">lib/proto/cosmos/tx/v1beta1/service.ts:428</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>input: <span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> length: <span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>encode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">encode<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxRequest</a>, writer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writer</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L415">lib/proto/cosmos/tx/v1beta1/service.ts:415</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxRequest</a></h5>
+											</li>
+											<li>
+												<h5>writer: <span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol"> = ...</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Writer</span></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>fromJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">fromJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L450">lib/proto/cosmos/tx/v1beta1/service.ts:450</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>from<wbr>Partial<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">from<wbr>Partial<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>mode<span class="tsd-signature-symbol">?: </span><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.broadcastmode.html" class="tsd-signature-type" data-tsd-kind="Enumeration">BroadcastMode</a><span class="tsd-signature-symbol">; </span>txBytes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L474">lib/proto/cosmos/tx/v1beta1/service.ts:474</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-symbol">{ </span>mode<span class="tsd-signature-symbol">?: </span><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.broadcastmode.html" class="tsd-signature-type" data-tsd-kind="Enumeration">BroadcastMode</a><span class="tsd-signature-symbol">; </span>txBytes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> }</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> mode<span class="tsd-signature-symbol">?: </span><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.broadcastmode.html" class="tsd-signature-type" data-tsd-kind="Enumeration">BroadcastMode</a></h5>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> tx<wbr>Bytes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Uint8Array</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>tx_bytes is the raw transaction.</p>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>toJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">toJSON<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxRequest</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L464">lib/proto/cosmos/tx/v1beta1/service.ts:464</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxRequest</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">unknown</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="broadcasttxresponse-1" class="tsd-anchor"></a>
+					<h3>Broadcast<wbr>TxResponse</h3>
+					<div class="tsd-signature tsd-kind-icon">Broadcast<wbr>TxResponse<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>decode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>encode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromPartial<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>toJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L492">lib/proto/cosmos/tx/v1beta1/service.ts:492</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>decode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">decode<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span>, length<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L503">lib/proto/cosmos/tx/v1beta1/service.ts:503</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>input: <span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> length: <span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>encode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">encode<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxResponse</a>, writer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writer</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L493">lib/proto/cosmos/tx/v1beta1/service.ts:493</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxResponse</a></h5>
+											</li>
+											<li>
+												<h5>writer: <span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol"> = ...</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Writer</span></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>fromJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">fromJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L521">lib/proto/cosmos/tx/v1beta1/service.ts:521</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>from<wbr>Partial<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">from<wbr>Partial<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>txResponse<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ height?: number | undefined; txhash?: string | undefined; codespace?: string | undefined; code?: number | undefined; data?: string | undefined; rawLog?: string | undefined; logs?: { ...; }[] | undefined; ... 4 more ...; timestamp?: string | undefined; }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L540">lib/proto/cosmos/tx/v1beta1/service.ts:540</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-symbol">{ </span>txResponse<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ height?: number | undefined; txhash?: string | undefined; codespace?: string | undefined; code?: number | undefined; data?: string | undefined; rawLog?: string | undefined; logs?: { ...; }[] | undefined; ... 4 more ...; timestamp?: string | undefined; }</span><span class="tsd-signature-symbol"> }</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> tx<wbr>Response<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ height?: number | undefined; txhash?: string | undefined; codespace?: string | undefined; code?: number | undefined; data?: string | undefined; rawLog?: string | undefined; logs?: { ...; }[] | undefined; ... 4 more ...; timestamp?: string | undefined; }</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>tx_response is the queried TxResponses.</p>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>toJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">toJSON<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L531">lib/proto/cosmos/tx/v1beta1/service.ts:531</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">BroadcastTxResponse</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">unknown</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="gettxrequest-1" class="tsd-anchor"></a>
+					<h3>Get<wbr>TxRequest</h3>
+					<div class="tsd-signature tsd-kind-icon">Get<wbr>TxRequest<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>decode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>encode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromPartial<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>toJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L685">lib/proto/cosmos/tx/v1beta1/service.ts:685</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>decode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">decode<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span>, length<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L693">lib/proto/cosmos/tx/v1beta1/service.ts:693</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>input: <span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> length: <span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>encode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">encode<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxRequest</a>, writer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writer</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L686">lib/proto/cosmos/tx/v1beta1/service.ts:686</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxRequest</a></h5>
+											</li>
+											<li>
+												<h5>writer: <span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol"> = ...</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Writer</span></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>fromJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">fromJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L711">lib/proto/cosmos/tx/v1beta1/service.ts:711</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>from<wbr>Partial<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">from<wbr>Partial<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>hash<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L727">lib/proto/cosmos/tx/v1beta1/service.ts:727</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-symbol">{ </span>hash<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> hash<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>hash is the tx hash to query, encoded as a hex string.</p>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>toJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">toJSON<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxRequest</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L721">lib/proto/cosmos/tx/v1beta1/service.ts:721</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxRequest</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">unknown</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="gettxresponse-1" class="tsd-anchor"></a>
+					<h3>Get<wbr>TxResponse</h3>
+					<div class="tsd-signature tsd-kind-icon">Get<wbr>TxResponse<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>decode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>encode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromPartial<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>toJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L740">lib/proto/cosmos/tx/v1beta1/service.ts:740</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>decode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">decode<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span>, length<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L751">lib/proto/cosmos/tx/v1beta1/service.ts:751</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>input: <span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> length: <span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>encode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">encode<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxResponse</a>, writer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writer</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L741">lib/proto/cosmos/tx/v1beta1/service.ts:741</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxResponse</a></h5>
+											</li>
+											<li>
+												<h5>writer: <span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol"> = ...</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Writer</span></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>fromJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">fromJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L772">lib/proto/cosmos/tx/v1beta1/service.ts:772</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>from<wbr>Partial<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">from<wbr>Partial<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>tx<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ body?: { messages?: { typeUrl?: string | undefined; value?: Uint8Array | undefined; }[] | undefined; memo?: string | undefined; timeoutHeight?: number | undefined; extensionOptions?: { ...; }[] | undefined; nonCriticalExtensionOptions?: { ...; }[] | undefined; } | undefined; authInfo?: { ...; } | undefined; signat...</span><span class="tsd-signature-symbol">; </span>txResponse<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ height?: number | undefined; txhash?: string | undefined; codespace?: string | undefined; code?: number | undefined; data?: string | undefined; rawLog?: string | undefined; logs?: { ...; }[] | undefined; ... 4 more ...; timestamp?: string | undefined; }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L798">lib/proto/cosmos/tx/v1beta1/service.ts:798</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-symbol">{ </span>tx<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ body?: { messages?: { typeUrl?: string | undefined; value?: Uint8Array | undefined; }[] | undefined; memo?: string | undefined; timeoutHeight?: number | undefined; extensionOptions?: { ...; }[] | undefined; nonCriticalExtensionOptions?: { ...; }[] | undefined; } | undefined; authInfo?: { ...; } | undefined; signat...</span><span class="tsd-signature-symbol">; </span>txResponse<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ height?: number | undefined; txhash?: string | undefined; codespace?: string | undefined; code?: number | undefined; data?: string | undefined; rawLog?: string | undefined; logs?: { ...; }[] | undefined; ... 4 more ...; timestamp?: string | undefined; }</span><span class="tsd-signature-symbol"> }</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> tx<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ body?: { messages?: { typeUrl?: string | undefined; value?: Uint8Array | undefined; }[] | undefined; memo?: string | undefined; timeoutHeight?: number | undefined; extensionOptions?: { ...; }[] | undefined; nonCriticalExtensionOptions?: { ...; }[] | undefined; } | undefined; authInfo?: { ...; } | undefined; signat...</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>tx is the queried transaction.</p>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> tx<wbr>Response<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ height?: number | undefined; txhash?: string | undefined; codespace?: string | undefined; code?: number | undefined; data?: string | undefined; rawLog?: string | undefined; logs?: { ...; }[] | undefined; ... 4 more ...; timestamp?: string | undefined; }</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>tx_response is the queried TxResponses.</p>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>toJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">toJSON<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L787">lib/proto/cosmos/tx/v1beta1/service.ts:787</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxResponse</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">unknown</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="gettxseventrequest-1" class="tsd-anchor"></a>
+					<h3>Get<wbr>Txs<wbr>Event<wbr>Request</h3>
+					<div class="tsd-signature tsd-kind-icon">Get<wbr>Txs<wbr>Event<wbr>Request<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>decode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>encode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromPartial<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>toJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L200">lib/proto/cosmos/tx/v1beta1/service.ts:200</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>decode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">decode<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span>, length<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L217">lib/proto/cosmos/tx/v1beta1/service.ts:217</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>input: <span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> length: <span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>encode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">encode<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventRequest</a>, writer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writer</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L201">lib/proto/cosmos/tx/v1beta1/service.ts:201</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventRequest</a></h5>
+											</li>
+											<li>
+												<h5>writer: <span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol"> = ...</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Writer</span></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>fromJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">fromJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L242">lib/proto/cosmos/tx/v1beta1/service.ts:242</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>from<wbr>Partial<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">from<wbr>Partial<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>events<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>orderBy<span class="tsd-signature-symbol">?: </span><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.orderby.html" class="tsd-signature-type" data-tsd-kind="Enumeration">OrderBy</a><span class="tsd-signature-symbol">; </span>pagination<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ key?: Uint8Array | undefined; offset?: number | undefined; limit?: number | undefined; countTotal?: boolean | undefined; }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L279">lib/proto/cosmos/tx/v1beta1/service.ts:279</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-symbol">{ </span>events<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>orderBy<span class="tsd-signature-symbol">?: </span><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.orderby.html" class="tsd-signature-type" data-tsd-kind="Enumeration">OrderBy</a><span class="tsd-signature-symbol">; </span>pagination<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ key?: Uint8Array | undefined; offset?: number | undefined; limit?: number | undefined; countTotal?: boolean | undefined; }</span><span class="tsd-signature-symbol"> }</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> events<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>events is the list of transaction event type.</p>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> order<wbr>By<span class="tsd-signature-symbol">?: </span><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.orderby.html" class="tsd-signature-type" data-tsd-kind="Enumeration">OrderBy</a></h5>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> pagination<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ key?: Uint8Array | undefined; offset?: number | undefined; limit?: number | undefined; countTotal?: boolean | undefined; }</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>pagination defines an pagination for the request.</p>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>toJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">toJSON<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventRequest</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L263">lib/proto/cosmos/tx/v1beta1/service.ts:263</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventRequest</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">unknown</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="gettxseventresponse-1" class="tsd-anchor"></a>
+					<h3>Get<wbr>Txs<wbr>Event<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">Get<wbr>Txs<wbr>Event<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>decode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>encode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromPartial<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>toJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L303">lib/proto/cosmos/tx/v1beta1/service.ts:303</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>decode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">decode<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span>, length<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L320">lib/proto/cosmos/tx/v1beta1/service.ts:320</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>input: <span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> length: <span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>encode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">encode<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventResponse</a>, writer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writer</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L304">lib/proto/cosmos/tx/v1beta1/service.ts:304</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventResponse</a></h5>
+											</li>
+											<li>
+												<h5>writer: <span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol"> = ...</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Writer</span></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>fromJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">fromJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L346">lib/proto/cosmos/tx/v1beta1/service.ts:346</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>from<wbr>Partial<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">from<wbr>Partial<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>pagination<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ nextKey?: Uint8Array | undefined; total?: number | undefined; }</span><span class="tsd-signature-symbol">; </span>txResponses<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ height?: number | undefined; txhash?: string | undefined; codespace?: string | undefined; code?: number | undefined; data?: string | undefined; rawLog?: string | undefined; logs?: { ...; }[] | undefined; ... 4 more ...; timestamp?: string | undefined; }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>txs<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ body?: { messages?: { typeUrl?: string | undefined; value?: Uint8Array | undefined; }[] | undefined; memo?: string | undefined; timeoutHeight?: number | undefined; extensionOptions?: { ...; }[] | undefined; nonCriticalExtensionOptions?: { ...; }[] | undefined; } | undefined; authInfo?: { ...; } | undefined; signat...</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L389">lib/proto/cosmos/tx/v1beta1/service.ts:389</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-symbol">{ </span>pagination<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ nextKey?: Uint8Array | undefined; total?: number | undefined; }</span><span class="tsd-signature-symbol">; </span>txResponses<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ height?: number | undefined; txhash?: string | undefined; codespace?: string | undefined; code?: number | undefined; data?: string | undefined; rawLog?: string | undefined; logs?: { ...; }[] | undefined; ... 4 more ...; timestamp?: string | undefined; }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>txs<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ body?: { messages?: { typeUrl?: string | undefined; value?: Uint8Array | undefined; }[] | undefined; memo?: string | undefined; timeoutHeight?: number | undefined; extensionOptions?: { ...; }[] | undefined; nonCriticalExtensionOptions?: { ...; }[] | undefined; } | undefined; authInfo?: { ...; } | undefined; signat...</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> pagination<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ nextKey?: Uint8Array | undefined; total?: number | undefined; }</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>pagination defines an pagination for the response.</p>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> tx<wbr>Responses<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ height?: number | undefined; txhash?: string | undefined; codespace?: string | undefined; code?: number | undefined; data?: string | undefined; rawLog?: string | undefined; logs?: { ...; }[] | undefined; ... 4 more ...; timestamp?: string | undefined; }</span><span class="tsd-signature-symbol">[]</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>tx_responses is the list of queried TxResponses.</p>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> txs<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ body?: { messages?: { typeUrl?: string | undefined; value?: Uint8Array | undefined; }[] | undefined; memo?: string | undefined; timeoutHeight?: number | undefined; extensionOptions?: { ...; }[] | undefined; nonCriticalExtensionOptions?: { ...; }[] | undefined; } | undefined; authInfo?: { ...; } | undefined; signat...</span><span class="tsd-signature-symbol">[]</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>txs is the list of queried transactions.</p>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>toJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">toJSON<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L368">lib/proto/cosmos/tx/v1beta1/service.ts:368</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">GetTxsEventResponse</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">unknown</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="simulaterequest-1" class="tsd-anchor"></a>
+					<h3>Simulate<wbr>Request</h3>
+					<div class="tsd-signature tsd-kind-icon">Simulate<wbr>Request<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>decode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>encode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromPartial<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>toJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L553">lib/proto/cosmos/tx/v1beta1/service.ts:553</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>decode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">decode<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span>, length<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L561">lib/proto/cosmos/tx/v1beta1/service.ts:561</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>input: <span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> length: <span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>encode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">encode<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateRequest</a>, writer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writer</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L554">lib/proto/cosmos/tx/v1beta1/service.ts:554</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateRequest</a></h5>
+											</li>
+											<li>
+												<h5>writer: <span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol"> = ...</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Writer</span></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>fromJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">fromJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L579">lib/proto/cosmos/tx/v1beta1/service.ts:579</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>from<wbr>Partial<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">from<wbr>Partial<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>tx<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ body?: { messages?: { typeUrl?: string | undefined; value?: Uint8Array | undefined; }[] | undefined; memo?: string | undefined; timeoutHeight?: number | undefined; extensionOptions?: { ...; }[] | undefined; nonCriticalExtensionOptions?: { ...; }[] | undefined; } | undefined; authInfo?: { ...; } | undefined; signat...</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateRequest</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L596">lib/proto/cosmos/tx/v1beta1/service.ts:596</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-symbol">{ </span>tx<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ body?: { messages?: { typeUrl?: string | undefined; value?: Uint8Array | undefined; }[] | undefined; memo?: string | undefined; timeoutHeight?: number | undefined; extensionOptions?: { ...; }[] | undefined; nonCriticalExtensionOptions?: { ...; }[] | undefined; } | undefined; authInfo?: { ...; } | undefined; signat...</span><span class="tsd-signature-symbol"> }</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> tx<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ body?: { messages?: { typeUrl?: string | undefined; value?: Uint8Array | undefined; }[] | undefined; memo?: string | undefined; timeoutHeight?: number | undefined; extensionOptions?: { ...; }[] | undefined; nonCriticalExtensionOptions?: { ...; }[] | undefined; } | undefined; authInfo?: { ...; } | undefined; signat...</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>tx is the transaction to simulate.</p>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateRequest</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>toJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">toJSON<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateRequest</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L589">lib/proto/cosmos/tx/v1beta1/service.ts:589</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateRequest</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">unknown</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="simulateresponse-1" class="tsd-anchor"></a>
+					<h3>Simulate<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">Simulate<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>decode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>encode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromPartial<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>toJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L609">lib/proto/cosmos/tx/v1beta1/service.ts:609</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>decode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">decode<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span>, length<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L620">lib/proto/cosmos/tx/v1beta1/service.ts:620</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>input: <span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Reader</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> length: <span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>encode<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">encode<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateResponse</a>, writer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writer</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L610">lib/proto/cosmos/tx/v1beta1/service.ts:610</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateResponse</a></h5>
+											</li>
+											<li>
+												<h5>writer: <span class="tsd-signature-type">Writer</span><span class="tsd-signature-symbol"> = ...</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Writer</span></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>fromJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">fromJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L641">lib/proto/cosmos/tx/v1beta1/service.ts:641</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>from<wbr>Partial<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">from<wbr>Partial<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>gasInfo<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ gasWanted?: number | undefined; gasUsed?: number | undefined; }</span><span class="tsd-signature-symbol">; </span>result<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ data?: Uint8Array | undefined; log?: string | undefined; events?: { type?: string | undefined; attributes?: { key?: Uint8Array | undefined; value?: Uint8Array | undefined; index?: boolean | undefined; }[] | undefined; }[] | undefined; }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateResponse</a></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L667">lib/proto/cosmos/tx/v1beta1/service.ts:667</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>object: <span class="tsd-signature-symbol">{ </span>gasInfo<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ gasWanted?: number | undefined; gasUsed?: number | undefined; }</span><span class="tsd-signature-symbol">; </span>result<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ data?: Uint8Array | undefined; log?: string | undefined; events?: { type?: string | undefined; attributes?: { key?: Uint8Array | undefined; value?: Uint8Array | undefined; index?: boolean | undefined; }[] | undefined; }[] | undefined; }</span><span class="tsd-signature-symbol"> }</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> gas<wbr>Info<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ gasWanted?: number | undefined; gasUsed?: number | undefined; }</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>gas_info is the information about gas used in the simulation.</p>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> result<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">{ data?: Uint8Array | undefined; log?: string | undefined; events?: { type?: string | undefined; attributes?: { key?: Uint8Array | undefined; value?: Uint8Array | undefined; index?: boolean | undefined; }[] | undefined; }[] | undefined; }</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>result is the result of the simulation.</p>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateResponse</a></h4>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>toJSON<span class="tsd-signature-symbol">: </span>function</h5>
+								<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-type-literal">
+									<li class="tsd-signature tsd-kind-icon">toJSON<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L656">lib/proto/cosmos/tx/v1beta1/service.ts:656</a></li>
+											</ul>
+										</aside>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-signature-type" data-tsd-kind="Variable">SimulateResponse</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">unknown</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="protobufpackage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> protobuf<wbr>Package</h3>
+					<div class="tsd-signature tsd-kind-icon">protobuf<wbr>Package<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;cosmos.tx.v1beta1&quot;</span><span class="tsd-signature-symbol"> = &#x27;cosmos.tx.v1beta1&#x27;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L15">lib/proto/cosmos/tx/v1beta1/service.ts:15</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="broadcastmodefromjson" class="tsd-anchor"></a>
+					<h3>broadcast<wbr>Mode<wbr>FromJSON</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">broadcast<wbr>Mode<wbr>FromJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.broadcastmode.html" class="tsd-signature-type" data-tsd-kind="Enumeration">BroadcastMode</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L81">lib/proto/cosmos/tx/v1beta1/service.ts:81</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>object: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../enums/lib_proto_cosmos_tx_v1beta1_service.broadcastmode.html" class="tsd-signature-type" data-tsd-kind="Enumeration">BroadcastMode</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="broadcastmodetojson" class="tsd-anchor"></a>
+					<h3>broadcast<wbr>Mode<wbr>ToJSON</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">broadcast<wbr>Mode<wbr>ToJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.broadcastmode.html" class="tsd-signature-type" data-tsd-kind="Enumeration">BroadcastMode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L102">lib/proto/cosmos/tx/v1beta1/service.ts:102</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>object: <a href="../enums/lib_proto_cosmos_tx_v1beta1_service.broadcastmode.html" class="tsd-signature-type" data-tsd-kind="Enumeration">BroadcastMode</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="orderbyfromjson" class="tsd-anchor"></a>
+					<h3>order<wbr>ByFromJSON</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">order<wbr>ByFromJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.orderby.html" class="tsd-signature-type" data-tsd-kind="Enumeration">OrderBy</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L28">lib/proto/cosmos/tx/v1beta1/service.ts:28</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>object: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../enums/lib_proto_cosmos_tx_v1beta1_service.orderby.html" class="tsd-signature-type" data-tsd-kind="Enumeration">OrderBy</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="orderbytojson" class="tsd-anchor"></a>
+					<h3>order<wbr>ByToJSON</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">order<wbr>ByToJSON<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><a href="../enums/lib_proto_cosmos_tx_v1beta1_service.orderby.html" class="tsd-signature-type" data-tsd-kind="Enumeration">OrderBy</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/g-luca/desmosjs/blob/0464623/src/lib/proto/cosmos/tx/v1beta1/service.ts#L46">lib/proto/cosmos/tx/v1beta1/service.ts:46</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>object: <a href="../enums/lib_proto_cosmos_tx_v1beta1_service.orderby.html" class="tsd-signature-type" data-tsd-kind="Enumeration">OrderBy</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html">lib/proto/cosmos/tx/v1beta1/service</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/lib_proto_cosmos_tx_v1beta1_service.broadcastmode.html" class="tsd-kind-icon">Broadcast<wbr>Mode</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
+						<a href="../enums/lib_proto_cosmos_tx_v1beta1_service.orderby.html" class="tsd-kind-icon">Order<wbr>By</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/lib_proto_cosmos_tx_v1beta1_service.serviceclientimpl.html" class="tsd-kind-icon">Service<wbr>Client<wbr>Impl</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.broadcasttxrequest.html" class="tsd-kind-icon">Broadcast<wbr>TxRequest</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.broadcasttxresponse.html" class="tsd-kind-icon">Broadcast<wbr>TxResponse</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.gettxrequest.html" class="tsd-kind-icon">Get<wbr>TxRequest</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.gettxresponse.html" class="tsd-kind-icon">Get<wbr>TxResponse</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.gettxseventrequest.html" class="tsd-kind-icon">Get<wbr>Txs<wbr>Event<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.gettxseventresponse.html" class="tsd-kind-icon">Get<wbr>Txs<wbr>Event<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.service.html" class="tsd-kind-icon">Service</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.simulaterequest.html" class="tsd-kind-icon">Simulate<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/lib_proto_cosmos_tx_v1beta1_service.simulateresponse.html" class="tsd-kind-icon">Simulate<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#deeppartial" class="tsd-kind-icon">Deep<wbr>Partial</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxrequest-1" class="tsd-kind-icon">Broadcast<wbr>TxRequest</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcasttxresponse-1" class="tsd-kind-icon">Broadcast<wbr>TxResponse</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxrequest-1" class="tsd-kind-icon">Get<wbr>TxRequest</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxresponse-1" class="tsd-kind-icon">Get<wbr>TxResponse</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventrequest-1" class="tsd-kind-icon">Get<wbr>Txs<wbr>Event<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#gettxseventresponse-1" class="tsd-kind-icon">Get<wbr>Txs<wbr>Event<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#simulaterequest-1" class="tsd-kind-icon">Simulate<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#simulateresponse-1" class="tsd-kind-icon">Simulate<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#protobufpackage" class="tsd-kind-icon">protobuf<wbr>Package</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcastmodefromjson" class="tsd-kind-icon">broadcast<wbr>Mode<wbr>FromJSON</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#broadcastmodetojson" class="tsd-kind-icon">broadcast<wbr>Mode<wbr>ToJSON</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#orderbyfromjson" class="tsd-kind-icon">order<wbr>ByFromJSON</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="lib_proto_cosmos_tx_v1beta1_service.html#orderbytojson" class="tsd-kind-icon">order<wbr>ByToJSON</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

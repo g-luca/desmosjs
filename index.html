@@ -1,0 +1,568 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>DesmosJS</title>
+	<meta name="description" content="Documentation for DesmosJS">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">DesmosJS</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>DesmosJS</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#desmosjs" id="desmosjs" style="color: inherit; text-decoration: none;">
+					<h1>DesmosJS</h1>
+				</a>
+				<a href="#👷-work-in-progress" id="👷-work-in-progress" style="color: inherit; text-decoration: none;">
+					<h1>👷 Work in progress</h1>
+				</a>
+				<a href="#a-javascript--typescript-client-for-desmos-blockchain" id="a-javascript--typescript-client-for-desmos-blockchain" style="color: inherit; text-decoration: none;">
+					<h3>A JavaScript / Typescript client for Desmos blockchain.</h3>
+				</a>
+				<p>The library aims to provide a full light client for Demsmos applications with the lowest requirements possible.
+				Is made to work for both Browser and Node.JS/V8 environments.</p>
+				<p><strong>Features</strong></p>
+				<ul>
+					<li>Wallet and address generation</li>
+					<li>Transaction signature and broadcast</li>
+					<li>Desmos/Cosmos Protobuf types definition</li>
+					<li>Tree shaking
+						<a href="#✅-version-compatibility" id="✅-version-compatibility" style="color: inherit; text-decoration: none;">
+							<h1>✅ Version compatibility</h1>
+						</a>
+					</li>
+				</ul>
+				<p>Since the Desmos Blockchain is continuously evolving with mainnet and testnets, choose the right DesmosJS version!</p>
+				<br>
+				<table>
+					<thead>
+						<tr>
+							<th>Network</th>
+							<th>Desmos</th>
+							<th>DesmosJS</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>mainnet-1</td>
+							<td>v1.0.0</td>
+							<td>v0.x.0</td>
+						</tr>
+						<tr>
+							<td>morpheus-apollo-2</td>
+							<td>v0.17.6</td>
+							<td>v0.0.x</td>
+						</tr>
+				</tbody></table>
+				<a href="#🛬-install" id="🛬-install" style="color: inherit; text-decoration: none;">
+					<h1>🛬 Install</h1>
+				</a>
+				<br>
+				<pre><code><span style="color: #9CDCFE">npm</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">install</span><span style="color: #D4D4D4"> --</span><span style="color: #9CDCFE">save</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">desmosjs</span>
+</code></pre>
+				<p>or for a specific version</p>
+				<pre><code><span style="color: #9CDCFE">npm</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">install</span><span style="color: #D4D4D4"> --</span><span style="color: #9CDCFE">save</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">desmosjs</span><span style="color: #D4D4D4">@</span><span style="color: #9CDCFE">x</span><span style="color: #D4D4D4">.</span><span style="color: #9CDCFE">y</span><span style="color: #D4D4D4">.</span><span style="color: #9CDCFE">z</span>
+</code></pre>
+				<a href="#📚-examples" id="📚-examples" style="color: inherit; text-decoration: none;">
+					<h1>📚 Examples</h1>
+				</a>
+				<br>
+				<a href="#wallet-amp-address-generation" id="wallet-amp-address-generation" style="color: inherit; text-decoration: none;">
+					<h4>Wallet &amp; address generation</h4>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #C586C0">import</span><span style="color: #D4D4D4"> { </span><span style="color: #9CDCFE">Wallet</span><span style="color: #D4D4D4"> } </span><span style="color: #C586C0">from</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;desmosjs&quot;</span><span style="color: #D4D4D4">;</span>
+
+<span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF">wallet</span><span style="color: #D4D4D4">: </span><span style="color: #4EC9B0">Wallet</span><span style="color: #D4D4D4"> = </span><span style="color: #569CD6">new</span><span style="color: #D4D4D4"> </span><span style="color: #DCDCAA">Wallet</span><span style="color: #D4D4D4">(</span><span style="color: #CE9178">&quot;state name bag two engage ...&quot;</span><span style="color: #D4D4D4">);</span>
+<span style="color: #6A9955">// wallet.address: desmos1t0fpnzl8swhr8c4mqw330y49k6had8an90l9m3</span>
+</code></pre>
+				<br>
+				<a href="#send-a-msgsaveprofile" id="send-a-msgsaveprofile" style="color: inherit; text-decoration: none;">
+					<h4>Send a MsgSaveProfile</h4>
+				</a>
+				<p>The example is valid for any kind of Msg*</p>
+				<pre><code class="language-typescript"><span style="color: #C586C0">import</span><span style="color: #D4D4D4"> {</span><span style="color: #9CDCFE">DesmosMsgSaveProfile</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">CosmosTxBody</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">CosmosAuthInfo</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">CosmosSignerInfo</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">CosmosSignMode</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">CosmosFee</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">CosmosBroadcastMode</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">Network</span><span style="color: #D4D4D4">} </span><span style="color: #C586C0">from</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;desmosjs&quot;</span><span style="color: #D4D4D4">;</span>
+
+<span style="color: #6A9955">// create your msg to send</span>
+<span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF">msgSaveProfile</span><span style="color: #D4D4D4">: </span><span style="color: #4EC9B0">DesmosMsgSaveProfile</span><span style="color: #D4D4D4"> = {</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">dtag:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;yourDtag&quot;</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">nickname:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;yourNickname&quot;</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">bio:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;your incredible bio&quot;</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">profilePicture:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;https://image.com/profile.png&quot;</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">coverPicture:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;https://image.com/cover.png&quot;</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">creator:</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">wallet</span><span style="color: #D4D4D4">.</span><span style="color: #9CDCFE">address</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">};</span>
+
+<span style="color: #6A9955">// wrap the message inside the TxBody</span>
+<span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF">txBody</span><span style="color: #D4D4D4">: </span><span style="color: #4EC9B0">CosmosTxBody</span><span style="color: #D4D4D4"> = {</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">memo:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;Profile update&quot;</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">messages:</span><span style="color: #D4D4D4"> [</span>
+<span style="color: #D4D4D4">        {</span>
+<span style="color: #D4D4D4">            </span><span style="color: #9CDCFE">typeUrl:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;/desmos.profiles.v1beta1.MsgSaveProfile&quot;</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">            </span><span style="color: #9CDCFE">value:</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">DesmosMsgSaveProfile</span><span style="color: #D4D4D4">.</span><span style="color: #DCDCAA">encode</span><span style="color: #D4D4D4">(</span><span style="color: #9CDCFE">msgSaveProfile</span><span style="color: #D4D4D4">).</span><span style="color: #DCDCAA">finish</span><span style="color: #D4D4D4">(),</span>
+<span style="color: #D4D4D4">        }</span>
+<span style="color: #D4D4D4">    ],</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">extensionOptions:</span><span style="color: #D4D4D4"> [],</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">nonCriticalExtensionOptions:</span><span style="color: #D4D4D4"> [],</span>
+<span style="color: #D4D4D4">    </span><span style="color: #9CDCFE">timeoutHeight:</span><span style="color: #D4D4D4"> </span><span style="color: #B5CEA8">0</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">};</span>
+
+<span style="color: #6A9955">// setup the lcd server</span>
+<span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF">desmosNet</span><span style="color: #D4D4D4"> = </span><span style="color: #569CD6">new</span><span style="color: #D4D4D4"> </span><span style="color: #DCDCAA">Network</span><span style="color: #D4D4D4">(</span><span style="color: #CE9178">&quot;https://lcd.server/&quot;</span><span style="color: #D4D4D4">);</span>
+
+<span style="color: #6A9955">// get the account info </span>
+<span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF">account</span><span style="color: #D4D4D4"> = </span><span style="color: #C586C0">await</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">desmosNet</span><span style="color: #D4D4D4">.</span><span style="color: #DCDCAA">getAccount</span><span style="color: #D4D4D4">(</span><span style="color: #9CDCFE">address</span><span style="color: #D4D4D4">);</span>
+
+<span style="color: #C586C0">if</span><span style="color: #D4D4D4"> (</span><span style="color: #9CDCFE">account</span><span style="color: #D4D4D4">) {</span>
+
+<span style="color: #D4D4D4">    </span><span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF">signerInfo</span><span style="color: #D4D4D4">: </span><span style="color: #4EC9B0">CosmosSignerInfo</span><span style="color: #D4D4D4"> = {</span>
+<span style="color: #D4D4D4">        </span><span style="color: #9CDCFE">modeInfo:</span><span style="color: #D4D4D4"> { </span><span style="color: #9CDCFE">single:</span><span style="color: #D4D4D4"> { </span><span style="color: #9CDCFE">mode:</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">CosmosSignMode</span><span style="color: #D4D4D4">.</span><span style="color: #4FC1FF">SIGN_MODE_DIRECT</span><span style="color: #D4D4D4"> } },</span>
+<span style="color: #D4D4D4">        </span><span style="color: #9CDCFE">sequence:</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">account</span><span style="color: #D4D4D4">.</span><span style="color: #9CDCFE">sequence</span>
+<span style="color: #D4D4D4">    };</span>
+
+<span style="color: #D4D4D4">    </span><span style="color: #6A9955">// set the fees</span>
+<span style="color: #D4D4D4">    </span><span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF">feeValue</span><span style="color: #D4D4D4">: </span><span style="color: #4EC9B0">CosmosFee</span><span style="color: #D4D4D4"> = {</span>
+<span style="color: #D4D4D4">        </span><span style="color: #9CDCFE">amount:</span><span style="color: #D4D4D4"> [{ </span><span style="color: #9CDCFE">denom:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;udaric&quot;</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">amount:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;5000&quot;</span><span style="color: #D4D4D4"> }],</span>
+<span style="color: #D4D4D4">        </span><span style="color: #9CDCFE">gasLimit:</span><span style="color: #D4D4D4"> </span><span style="color: #B5CEA8">200000</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">        </span><span style="color: #9CDCFE">payer:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;&quot;</span><span style="color: #D4D4D4">,</span>
+<span style="color: #D4D4D4">        </span><span style="color: #9CDCFE">granter:</span><span style="color: #D4D4D4"> </span><span style="color: #CE9178">&quot;&quot;</span>
+<span style="color: #D4D4D4">    };</span>
+
+<span style="color: #D4D4D4">    </span><span style="color: #6A9955">// wrap togheter</span>
+<span style="color: #D4D4D4">    </span><span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF">authInfo</span><span style="color: #D4D4D4">: </span><span style="color: #4EC9B0">CosmosAuthInfo</span><span style="color: #D4D4D4"> = { </span><span style="color: #9CDCFE">signerInfos:</span><span style="color: #D4D4D4"> [</span><span style="color: #9CDCFE">signerInfo</span><span style="color: #D4D4D4">], </span><span style="color: #9CDCFE">fee:</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">feeValue</span><span style="color: #D4D4D4"> };</span>
+
+<span style="color: #D4D4D4">    </span><span style="color: #6A9955">// sign the transaction</span>
+<span style="color: #D4D4D4">    </span><span style="color: #569CD6">const</span><span style="color: #D4D4D4"> </span><span style="color: #4FC1FF">signedTx</span><span style="color: #D4D4D4"> = </span><span style="color: #9CDCFE">Transaction</span><span style="color: #D4D4D4">.</span><span style="color: #DCDCAA">signTxBody</span><span style="color: #D4D4D4">(</span><span style="color: #9CDCFE">tx</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">authInfo</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">account</span><span style="color: #D4D4D4">.</span><span style="color: #9CDCFE">accountNumber</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">Buffer</span><span style="color: #D4D4D4">.</span><span style="color: #DCDCAA">from</span><span style="color: #D4D4D4">(</span><span style="color: #9CDCFE">privKey</span><span style="color: #D4D4D4">, </span><span style="color: #CE9178">&#039;hex&#039;</span><span style="color: #D4D4D4">));</span>
+
+<span style="color: #D4D4D4">    </span><span style="color: #6A9955">// broadcast!</span>
+<span style="color: #D4D4D4">    </span><span style="color: #C586C0">await</span><span style="color: #D4D4D4"> </span><span style="color: #9CDCFE">desmosNet</span><span style="color: #D4D4D4">.</span><span style="color: #DCDCAA">broadcast</span><span style="color: #D4D4D4">(</span><span style="color: #9CDCFE">signedTx</span><span style="color: #D4D4D4">, </span><span style="color: #9CDCFE">CosmosBroadcastMode</span><span style="color: #D4D4D4">.</span><span style="color: #4FC1FF">BROADCAST_MODE_SYNC</span><span style="color: #D4D4D4">);</span>
+<span style="color: #D4D4D4">}</span>
+
+
+</code></pre>
+				<br>
+				<br>
+				<br>
+				<br>
+				More practical examples can be found here:
+				<ul>
+					<li><a href="https://github.com/g-luca/go-find">Go-find.me Client</a></li>
+					<li><a href="https://github.com/g-luca/api-go-find">Go-find.me Backend</a></li>
+				</ul>
+				<a href="#🧑💻-development" id="🧑💻-development" style="color: inherit; text-decoration: none;">
+					<h1>🧑‍💻 Development</h1>
+				</a>
+				<p>👷 Work in progress</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/desmosjs.html">DesmosJS</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_confio_proofs.html">lib/proto/confio/proofs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_auth_v1beta1_auth.html">lib/proto/cosmos/auth/v1beta1/auth</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_auth_v1beta1_query.html">lib/proto/cosmos/auth/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_bank_v1beta1_bank.html">lib/proto/cosmos/bank/v1beta1/bank</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_bank_v1beta1_query.html">lib/proto/cosmos/bank/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_bank_v1beta1_tx.html">lib/proto/cosmos/bank/v1beta1/tx</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_base_abci_v1beta1_abci.html">lib/proto/cosmos/base/abci/v1beta1/abci</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_base_kv_v1beta1_kv.html">lib/proto/cosmos/base/kv/v1beta1/kv</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_base_query_v1beta1_pagination.html">lib/proto/cosmos/base/query/v1beta1/pagination</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_base_reflection_v1beta1_reflection.html">lib/proto/cosmos/base/reflection/v1beta1/reflection</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_base_snapshots_v1beta1_snapshot.html">lib/proto/cosmos/base/snapshots/v1beta1/snapshot</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_base_store_v1beta1_commit_info.html">lib/proto/cosmos/base/store/v1beta1/commit_<wbr>info</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_base_store_v1beta1_snapshot.html">lib/proto/cosmos/base/store/v1beta1/snapshot</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_base_tendermint_v1beta1_query.html">lib/proto/cosmos/base/tendermint/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_base_v1beta1_coin.html">lib/proto/cosmos/base/v1beta1/coin</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_capability_v1beta1_capability.html">lib/proto/cosmos/capability/v1beta1/capability</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_crisis_v1beta1_tx.html">lib/proto/cosmos/crisis/v1beta1/tx</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_crypto_multisig_keys.html">lib/proto/cosmos/crypto/multisig/keys</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_crypto_multisig_v1beta1_multisig.html">lib/proto/cosmos/crypto/multisig/v1beta1/multisig</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_crypto_secp256k1_keys.html">lib/proto/cosmos/crypto/secp256k1/keys</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_distribution_v1beta1_distribution.html">lib/proto/cosmos/distribution/v1beta1/distribution</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_distribution_v1beta1_query.html">lib/proto/cosmos/distribution/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_distribution_v1beta1_tx.html">lib/proto/cosmos/distribution/v1beta1/tx</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_evidence_v1beta1_evidence.html">lib/proto/cosmos/evidence/v1beta1/evidence</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_evidence_v1beta1_query.html">lib/proto/cosmos/evidence/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_evidence_v1beta1_tx.html">lib/proto/cosmos/evidence/v1beta1/tx</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_gov_v1beta1_gov.html">lib/proto/cosmos/gov/v1beta1/gov</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_gov_v1beta1_query.html">lib/proto/cosmos/gov/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_gov_v1beta1_tx.html">lib/proto/cosmos/gov/v1beta1/tx</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_mint_v1beta1_mint.html">lib/proto/cosmos/mint/v1beta1/mint</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_mint_v1beta1_query.html">lib/proto/cosmos/mint/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_slashing_v1beta1_query.html">lib/proto/cosmos/slashing/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_slashing_v1beta1_slashing.html">lib/proto/cosmos/slashing/v1beta1/slashing</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_slashing_v1beta1_tx.html">lib/proto/cosmos/slashing/v1beta1/tx</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_staking_v1beta1_query.html">lib/proto/cosmos/staking/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_staking_v1beta1_staking.html">lib/proto/cosmos/staking/v1beta1/staking</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_staking_v1beta1_tx.html">lib/proto/cosmos/staking/v1beta1/tx</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_tx_signing_v1beta1_signing.html">lib/proto/cosmos/tx/signing/v1beta1/signing</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_tx_v1beta1_service.html">lib/proto/cosmos/tx/v1beta1/service</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_tx_v1beta1_tx.html">lib/proto/cosmos/tx/v1beta1/tx</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_upgrade_v1beta1_query.html">lib/proto/cosmos/upgrade/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_upgrade_v1beta1_upgrade.html">lib/proto/cosmos/upgrade/v1beta1/upgrade</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_vesting_v1beta1_tx.html">lib/proto/cosmos/vesting/v1beta1/tx</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_vesting_v1beta1_vesting.html">lib/proto/cosmos/vesting/v1beta1/vesting</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_cosmos_proto_cosmos.html">lib/proto/cosmos_<wbr>proto/cosmos</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_fees_v1beta1_genesis.html">lib/proto/desmos/fees/v1beta1/genesis</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_fees_v1beta1_min_fee.html">lib/proto/desmos/fees/v1beta1/min_<wbr>fee</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_fees_v1beta1_params.html">lib/proto/desmos/fees/v1beta1/params</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_fees_v1beta1_query.html">lib/proto/desmos/fees/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_posts_v1beta1_genesis.html">lib/proto/desmos/posts/v1beta1/genesis</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_posts_v1beta1_msgs.html">lib/proto/desmos/posts/v1beta1/msgs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_posts_v1beta1_params.html">lib/proto/desmos/posts/v1beta1/params</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_posts_v1beta1_polls.html">lib/proto/desmos/posts/v1beta1/polls</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_posts_v1beta1_posts.html">lib/proto/desmos/posts/v1beta1/posts</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_posts_v1beta1_query.html">lib/proto/desmos/posts/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_posts_v1beta1_reactions.html">lib/proto/desmos/posts/v1beta1/reactions</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_posts_v1beta1_report.html">lib/proto/desmos/posts/v1beta1/report</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_legacy_v0163_models.html">lib/proto/desmos/profiles/legacy/v0163/models</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_client_cli.html">lib/proto/desmos/profiles/v1beta1/client/cli</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_genesis.html">lib/proto/desmos/profiles/v1beta1/genesis</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_models_app_links.html">lib/proto/desmos/profiles/v1beta1/models_<wbr>app_<wbr>links</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_models_chain_links.html">lib/proto/desmos/profiles/v1beta1/models_<wbr>chain_<wbr>links</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_models_dtag_requests.html">lib/proto/desmos/profiles/v1beta1/models_<wbr>dtag_<wbr>requests</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_models_packets.html">lib/proto/desmos/profiles/v1beta1/models_<wbr>packets</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_models_params.html">lib/proto/desmos/profiles/v1beta1/models_<wbr>params</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_models_profile.html">lib/proto/desmos/profiles/v1beta1/models_<wbr>profile</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_models_relationships.html">lib/proto/desmos/profiles/v1beta1/models_<wbr>relationships</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_msg_server.html">lib/proto/desmos/profiles/v1beta1/msg_<wbr>server</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_msgs_app_links.html">lib/proto/desmos/profiles/v1beta1/msgs_<wbr>app_<wbr>links</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_msgs_chain_links.html">lib/proto/desmos/profiles/v1beta1/msgs_<wbr>chain_<wbr>links</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_msgs_dtag_requests.html">lib/proto/desmos/profiles/v1beta1/msgs_<wbr>dtag_<wbr>requests</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_msgs_profile.html">lib/proto/desmos/profiles/v1beta1/msgs_<wbr>profile</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_msgs_relationships.html">lib/proto/desmos/profiles/v1beta1/msgs_<wbr>relationships</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_query.html">lib/proto/desmos/profiles/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_query_app_links.html">lib/proto/desmos/profiles/v1beta1/query_<wbr>app_<wbr>links</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_query_chain_links.html">lib/proto/desmos/profiles/v1beta1/query_<wbr>chain_<wbr>links</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_query_dtag_requests.html">lib/proto/desmos/profiles/v1beta1/query_<wbr>dtag_<wbr>requests</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_query_params.html">lib/proto/desmos/profiles/v1beta1/query_<wbr>params</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_query_profile.html">lib/proto/desmos/profiles/v1beta1/query_<wbr>profile</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_profiles_v1beta1_query_relationships.html">lib/proto/desmos/profiles/v1beta1/query_<wbr>relationships</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_subspaces_v1beta1_genesis.html">lib/proto/desmos/subspaces/v1beta1/genesis</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_subspaces_v1beta1_msgs.html">lib/proto/desmos/subspaces/v1beta1/msgs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_subspaces_v1beta1_query.html">lib/proto/desmos/subspaces/v1beta1/query</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_desmos_subspaces_v1beta1_subspace.html">lib/proto/desmos/subspaces/v1beta1/subspace</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_gogoproto_gogo.html">lib/proto/gogoproto/gogo</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_google_api_annotations.html">lib/proto/google/api/annotations</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_google_api_http.html">lib/proto/google/api/http</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_google_api_httpbody.html">lib/proto/google/api/httpbody</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_google_protobuf_any.html">lib/proto/google/protobuf/any</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_google_protobuf_descriptor.html">lib/proto/google/protobuf/descriptor</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_google_protobuf_duration.html">lib/proto/google/protobuf/duration</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_google_protobuf_timestamp.html">lib/proto/google/protobuf/timestamp</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_ibc_core_client_v1_client.html">lib/proto/ibc/core/client/v1/client</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_tendermint_abci_types.html">lib/proto/tendermint/abci/types</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_tendermint_crypto_keys.html">lib/proto/tendermint/crypto/keys</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_tendermint_crypto_proof.html">lib/proto/tendermint/crypto/proof</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_tendermint_p2p_types.html">lib/proto/tendermint/p2p/types</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_tendermint_types_block.html">lib/proto/tendermint/types/block</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_tendermint_types_evidence.html">lib/proto/tendermint/types/evidence</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_tendermint_types_params.html">lib/proto/tendermint/types/params</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_tendermint_types_types.html">lib/proto/tendermint/types/types</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_tendermint_types_validator.html">lib/proto/tendermint/types/validator</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lib_proto_tendermint_version_types.html">lib/proto/tendermint/version/types</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/types_network.html">types/<wbr>Network</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/types_transaction.html">types/<wbr>Transaction</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/types_wallet.html">types/<wbr>Wallet</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
