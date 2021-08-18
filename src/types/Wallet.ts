@@ -1,7 +1,7 @@
 import { validateMnemonic, mnemonicToSeedSync } from "bip39";
 import { ECPair, bip32 } from 'bitcoinjs-lib';
 import { toWords, encode } from 'bech32';
-import { pointFromScalar, } from 'tiny-secp256k1';
+import { pointFromScalar, verify, } from 'tiny-secp256k1';
 import { Any } from "../lib/proto/google/protobuf/any";
 import { DesmosJS } from "../DesmosJS";
 
@@ -73,6 +73,17 @@ export class Wallet {
      */
     public static calculatePubKey(privateKey: Buffer): Buffer | null {
         return pointFromScalar(privateKey);
+    }
+
+    /**
+     * Verify a signature
+     * @param hash buffer of the hashed message to verify
+     * @param pubKey buffer of the public key
+     * @param signature buffer signature to verify
+     * @returns the verification result
+     */
+    public static verifySignature(hash: Buffer, pubKey: Buffer, signature: Buffer): boolean {
+        return verify(hash, pubKey, signature);
     }
 
 
