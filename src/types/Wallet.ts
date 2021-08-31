@@ -24,7 +24,7 @@ export class Wallet {
      * @param mnemonic mnemonic phrase
      * @param path wallet string path, default is desmos: "m/44'/852'/0'/0/0"
      * @param bech32Prefix bech string prefix, default is "desmos"
-     * @param chainId blockchain id, default is "morpheus-apollo-2"
+     * @param chainId blockchain id, default otherwise
      */
     constructor(mnemonic: string, path: string = DesmosJS.addressPath, bech32Prefix: string = DesmosJS.addressPrefix, chainId: string = DesmosJS.chainId) {
         this._mnemonic = mnemonic;

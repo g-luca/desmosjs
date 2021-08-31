@@ -34,7 +34,7 @@ function generate_proto(){
 }
 
 ## Download the Protobuf files of Desmos
-DESMOS_VERSION=0.17.6
+DESMOS_VERSION=1.0.1
 PKG_VERSION=$DESMOS_VERSION
 PKG_NAME=desmos
 PKG_NAME_SDK=desmos

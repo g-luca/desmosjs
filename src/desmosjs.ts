@@ -9,7 +9,7 @@ export {
 export class DesmosJS {
 	public static addressPath: string = `m/44'/852'/0'/0/0`;
 	public static addressPrefix: string = 'desmos';
-	public static chainId: string = 'morpheus-apollo-2';
+	public static chainId: string = 'mainnet-1';
 
 
 	public static usernameRegex: RegExp = /[A-Za-z0-9_]{3,30}$/;
@@ -20,7 +20,7 @@ export class DesmosJS {
 	 * Ovverride the default Desmos chain configurations with custom ones.
 	 * @param addressPath path of the Desmos chain. Default: `m/44'/852'/0'/0/0`.
 	 * @param addressPrefix prefix of the Desmos chain. Default: `desmos`.
-	 * @param chainId id of the Desmoschain. Default: `morpheus-apollo-2.
+	 * @param chainId id of the Desmoschain.
 	 */
 	setDesmosChainConfiguration(addressPath: string = DesmosJS.addressPath, addressPrefix: string = DesmosJS.addressPrefix, chainId: string = DesmosJS.chainId) {
 		DesmosJS.addressPath = addressPath;
@@ -38,389 +38,389 @@ export class DesmosJS {
 /* tslint:disable:variable-name */
 import {
 	LegacyAminoPubKey as _LegacyAminoPubKey,
-} from './lib/proto/cosmos/crypto/multisig/keys';
+ } from './lib/proto/cosmos/crypto/multisig/keys';
 
 import {
 	MultiSignature as _MultiSignature,
-	CompactBitArray as _CompactBitArray,
-} from './lib/proto/cosmos/crypto/multisig/v1beta1/multisig';
+ 	CompactBitArray as _CompactBitArray,
+ } from './lib/proto/cosmos/crypto/multisig/v1beta1/multisig';
 
 import {
 	PubKey as _PubKey,
-	PrivKey as _PrivKey,
-} from './lib/proto/cosmos/crypto/secp256k1/keys';
+ 	PrivKey as _PrivKey,
+ } from './lib/proto/cosmos/crypto/secp256k1/keys';
 
 import {
 	Plan as _Plan,
-	SoftwareUpgradeProposal as _SoftwareUpgradeProposal,
-	CancelSoftwareUpgradeProposal as _CancelSoftwareUpgradeProposal,
-} from './lib/proto/cosmos/upgrade/v1beta1/upgrade';
+ 	SoftwareUpgradeProposal as _SoftwareUpgradeProposal,
+ 	CancelSoftwareUpgradeProposal as _CancelSoftwareUpgradeProposal,
+ } from './lib/proto/cosmos/upgrade/v1beta1/upgrade';
 
 import {
 	QueryCurrentPlanRequest as _QueryCurrentPlanRequest,
-	QueryCurrentPlanResponse as _QueryCurrentPlanResponse,
-	QueryAppliedPlanRequest as _QueryAppliedPlanRequest,
-	QueryAppliedPlanResponse as _QueryAppliedPlanResponse,
-	QueryUpgradedConsensusStateRequest as _QueryUpgradedConsensusStateRequest,
-	QueryUpgradedConsensusStateResponse as _QueryUpgradedConsensusStateResponse,
-} from './lib/proto/cosmos/upgrade/v1beta1/query';
+ 	QueryCurrentPlanResponse as _QueryCurrentPlanResponse,
+ 	QueryAppliedPlanRequest as _QueryAppliedPlanRequest,
+ 	QueryAppliedPlanResponse as _QueryAppliedPlanResponse,
+ 	QueryUpgradedConsensusStateRequest as _QueryUpgradedConsensusStateRequest,
+ 	QueryUpgradedConsensusStateResponse as _QueryUpgradedConsensusStateResponse,
+ } from './lib/proto/cosmos/upgrade/v1beta1/query';
 
 import {
 	Minter as _Minter,
-} from './lib/proto/cosmos/mint/v1beta1/mint';
+ } from './lib/proto/cosmos/mint/v1beta1/mint';
 
 import {
 	QueryInflationRequest as _QueryInflationRequest,
-	QueryInflationResponse as _QueryInflationResponse,
-	QueryAnnualProvisionsRequest as _QueryAnnualProvisionsRequest,
-	QueryAnnualProvisionsResponse as _QueryAnnualProvisionsResponse,
-} from './lib/proto/cosmos/mint/v1beta1/query';
+ 	QueryInflationResponse as _QueryInflationResponse,
+ 	QueryAnnualProvisionsRequest as _QueryAnnualProvisionsRequest,
+ 	QueryAnnualProvisionsResponse as _QueryAnnualProvisionsResponse,
+ } from './lib/proto/cosmos/mint/v1beta1/query';
 
 import {
 	Equivocation as _Equivocation,
-} from './lib/proto/cosmos/evidence/v1beta1/evidence';
+ } from './lib/proto/cosmos/evidence/v1beta1/evidence';
 
 import {
 	MsgSubmitEvidence as _MsgSubmitEvidence,
-	MsgSubmitEvidenceResponse as _MsgSubmitEvidenceResponse,
-} from './lib/proto/cosmos/evidence/v1beta1/tx';
+ 	MsgSubmitEvidenceResponse as _MsgSubmitEvidenceResponse,
+ } from './lib/proto/cosmos/evidence/v1beta1/tx';
 
 import {
 	QueryEvidenceRequest as _QueryEvidenceRequest,
-	QueryEvidenceResponse as _QueryEvidenceResponse,
-	QueryAllEvidenceRequest as _QueryAllEvidenceRequest,
-	QueryAllEvidenceResponse as _QueryAllEvidenceResponse,
-} from './lib/proto/cosmos/evidence/v1beta1/query';
+ 	QueryEvidenceResponse as _QueryEvidenceResponse,
+ 	QueryAllEvidenceRequest as _QueryAllEvidenceRequest,
+ 	QueryAllEvidenceResponse as _QueryAllEvidenceResponse,
+ } from './lib/proto/cosmos/evidence/v1beta1/query';
 
 import {
 	QueryAccountRequest as _QueryAccountRequest,
-	QueryAccountResponse as _QueryAccountResponse,
-} from './lib/proto/cosmos/auth/v1beta1/query';
+ 	QueryAccountResponse as _QueryAccountResponse,
+ } from './lib/proto/cosmos/auth/v1beta1/query';
 
 import {
 	BaseAccount as _BaseAccount,
-	ModuleAccount as _ModuleAccount,
-} from './lib/proto/cosmos/auth/v1beta1/auth';
+ 	ModuleAccount as _ModuleAccount,
+ } from './lib/proto/cosmos/auth/v1beta1/auth';
 
 import {
 	MsgSend as _MsgSend,
-	MsgSendResponse as _MsgSendResponse,
-	MsgMultiSend as _MsgMultiSend,
-	MsgMultiSendResponse as _MsgMultiSendResponse,
-} from './lib/proto/cosmos/bank/v1beta1/tx';
+ 	MsgSendResponse as _MsgSendResponse,
+ 	MsgMultiSend as _MsgMultiSend,
+ 	MsgMultiSendResponse as _MsgMultiSendResponse,
+ } from './lib/proto/cosmos/bank/v1beta1/tx';
 
 import {
 	SendEnabled as _SendEnabled,
-	Input as _Input,
-	Output as _Output,
-	Supply as _Supply,
-	DenomUnit as _DenomUnit,
-	Metadata as _Metadata,
-} from './lib/proto/cosmos/bank/v1beta1/bank';
+ 	Input as _Input,
+ 	Output as _Output,
+ 	Supply as _Supply,
+ 	DenomUnit as _DenomUnit,
+ 	Metadata as _Metadata,
+ } from './lib/proto/cosmos/bank/v1beta1/bank';
 
 import {
 	QueryBalanceRequest as _QueryBalanceRequest,
-	QueryBalanceResponse as _QueryBalanceResponse,
-	QueryAllBalancesRequest as _QueryAllBalancesRequest,
-	QueryAllBalancesResponse as _QueryAllBalancesResponse,
-	QueryTotalSupplyRequest as _QueryTotalSupplyRequest,
-	QueryTotalSupplyResponse as _QueryTotalSupplyResponse,
-	QuerySupplyOfRequest as _QuerySupplyOfRequest,
-	QuerySupplyOfResponse as _QuerySupplyOfResponse,
-	QueryDenomsMetadataRequest as _QueryDenomsMetadataRequest,
-	QueryDenomsMetadataResponse as _QueryDenomsMetadataResponse,
-	QueryDenomMetadataRequest as _QueryDenomMetadataRequest,
-	QueryDenomMetadataResponse as _QueryDenomMetadataResponse,
-} from './lib/proto/cosmos/bank/v1beta1/query';
+ 	QueryBalanceResponse as _QueryBalanceResponse,
+ 	QueryAllBalancesRequest as _QueryAllBalancesRequest,
+ 	QueryAllBalancesResponse as _QueryAllBalancesResponse,
+ 	QueryTotalSupplyRequest as _QueryTotalSupplyRequest,
+ 	QueryTotalSupplyResponse as _QueryTotalSupplyResponse,
+ 	QuerySupplyOfRequest as _QuerySupplyOfRequest,
+ 	QuerySupplyOfResponse as _QuerySupplyOfResponse,
+ 	QueryDenomsMetadataRequest as _QueryDenomsMetadataRequest,
+ 	QueryDenomsMetadataResponse as _QueryDenomsMetadataResponse,
+ 	QueryDenomMetadataRequest as _QueryDenomMetadataRequest,
+ 	QueryDenomMetadataResponse as _QueryDenomMetadataResponse,
+ } from './lib/proto/cosmos/bank/v1beta1/query';
 
 import {
 	Capability as _Capability,
-	Owner as _Owner,
-	CapabilityOwners as _CapabilityOwners,
-} from './lib/proto/cosmos/capability/v1beta1/capability';
+ 	Owner as _Owner,
+ 	CapabilityOwners as _CapabilityOwners,
+ } from './lib/proto/cosmos/capability/v1beta1/capability';
 
 import {
 	MsgSetWithdrawAddress as _MsgSetWithdrawAddress,
-	MsgSetWithdrawAddressResponse as _MsgSetWithdrawAddressResponse,
-	MsgWithdrawDelegatorReward as _MsgWithdrawDelegatorReward,
-	MsgWithdrawDelegatorRewardResponse as _MsgWithdrawDelegatorRewardResponse,
-	MsgWithdrawValidatorCommission as _MsgWithdrawValidatorCommission,
-	MsgWithdrawValidatorCommissionResponse as _MsgWithdrawValidatorCommissionResponse,
-	MsgFundCommunityPool as _MsgFundCommunityPool,
-	MsgFundCommunityPoolResponse as _MsgFundCommunityPoolResponse,
-} from './lib/proto/cosmos/distribution/v1beta1/tx';
+ 	MsgSetWithdrawAddressResponse as _MsgSetWithdrawAddressResponse,
+ 	MsgWithdrawDelegatorReward as _MsgWithdrawDelegatorReward,
+ 	MsgWithdrawDelegatorRewardResponse as _MsgWithdrawDelegatorRewardResponse,
+ 	MsgWithdrawValidatorCommission as _MsgWithdrawValidatorCommission,
+ 	MsgWithdrawValidatorCommissionResponse as _MsgWithdrawValidatorCommissionResponse,
+ 	MsgFundCommunityPool as _MsgFundCommunityPool,
+ 	MsgFundCommunityPoolResponse as _MsgFundCommunityPoolResponse,
+ } from './lib/proto/cosmos/distribution/v1beta1/tx';
 
 import {
 	ValidatorHistoricalRewards as _ValidatorHistoricalRewards,
-	ValidatorCurrentRewards as _ValidatorCurrentRewards,
-	ValidatorAccumulatedCommission as _ValidatorAccumulatedCommission,
-	ValidatorOutstandingRewards as _ValidatorOutstandingRewards,
-	ValidatorSlashEvent as _ValidatorSlashEvent,
-	ValidatorSlashEvents as _ValidatorSlashEvents,
-	FeePool as _FeePool,
-	CommunityPoolSpendProposal as _CommunityPoolSpendProposal,
-	DelegatorStartingInfo as _DelegatorStartingInfo,
-	DelegationDelegatorReward as _DelegationDelegatorReward,
-	CommunityPoolSpendProposalWithDeposit as _CommunityPoolSpendProposalWithDeposit,
-} from './lib/proto/cosmos/distribution/v1beta1/distribution';
+ 	ValidatorCurrentRewards as _ValidatorCurrentRewards,
+ 	ValidatorAccumulatedCommission as _ValidatorAccumulatedCommission,
+ 	ValidatorOutstandingRewards as _ValidatorOutstandingRewards,
+ 	ValidatorSlashEvent as _ValidatorSlashEvent,
+ 	ValidatorSlashEvents as _ValidatorSlashEvents,
+ 	FeePool as _FeePool,
+ 	CommunityPoolSpendProposal as _CommunityPoolSpendProposal,
+ 	DelegatorStartingInfo as _DelegatorStartingInfo,
+ 	DelegationDelegatorReward as _DelegationDelegatorReward,
+ 	CommunityPoolSpendProposalWithDeposit as _CommunityPoolSpendProposalWithDeposit,
+ } from './lib/proto/cosmos/distribution/v1beta1/distribution';
 
 import {
 	QueryValidatorOutstandingRewardsRequest as _QueryValidatorOutstandingRewardsRequest,
-	QueryValidatorOutstandingRewardsResponse as _QueryValidatorOutstandingRewardsResponse,
-	QueryValidatorCommissionRequest as _QueryValidatorCommissionRequest,
-	QueryValidatorCommissionResponse as _QueryValidatorCommissionResponse,
-	QueryValidatorSlashesRequest as _QueryValidatorSlashesRequest,
-	QueryValidatorSlashesResponse as _QueryValidatorSlashesResponse,
-	QueryDelegationRewardsRequest as _QueryDelegationRewardsRequest,
-	QueryDelegationRewardsResponse as _QueryDelegationRewardsResponse,
-	QueryDelegationTotalRewardsRequest as _QueryDelegationTotalRewardsRequest,
-	QueryDelegationTotalRewardsResponse as _QueryDelegationTotalRewardsResponse,
-	QueryDelegatorValidatorsRequest as _QueryDelegatorValidatorsRequest,
-	QueryDelegatorValidatorsResponse as _QueryDelegatorValidatorsResponse,
-	QueryDelegatorWithdrawAddressRequest as _QueryDelegatorWithdrawAddressRequest,
-	QueryDelegatorWithdrawAddressResponse as _QueryDelegatorWithdrawAddressResponse,
-	QueryCommunityPoolRequest as _QueryCommunityPoolRequest,
-	QueryCommunityPoolResponse as _QueryCommunityPoolResponse,
-} from './lib/proto/cosmos/distribution/v1beta1/query';
+ 	QueryValidatorOutstandingRewardsResponse as _QueryValidatorOutstandingRewardsResponse,
+ 	QueryValidatorCommissionRequest as _QueryValidatorCommissionRequest,
+ 	QueryValidatorCommissionResponse as _QueryValidatorCommissionResponse,
+ 	QueryValidatorSlashesRequest as _QueryValidatorSlashesRequest,
+ 	QueryValidatorSlashesResponse as _QueryValidatorSlashesResponse,
+ 	QueryDelegationRewardsRequest as _QueryDelegationRewardsRequest,
+ 	QueryDelegationRewardsResponse as _QueryDelegationRewardsResponse,
+ 	QueryDelegationTotalRewardsRequest as _QueryDelegationTotalRewardsRequest,
+ 	QueryDelegationTotalRewardsResponse as _QueryDelegationTotalRewardsResponse,
+ 	QueryDelegatorValidatorsRequest as _QueryDelegatorValidatorsRequest,
+ 	QueryDelegatorValidatorsResponse as _QueryDelegatorValidatorsResponse,
+ 	QueryDelegatorWithdrawAddressRequest as _QueryDelegatorWithdrawAddressRequest,
+ 	QueryDelegatorWithdrawAddressResponse as _QueryDelegatorWithdrawAddressResponse,
+ 	QueryCommunityPoolRequest as _QueryCommunityPoolRequest,
+ 	QueryCommunityPoolResponse as _QueryCommunityPoolResponse,
+ } from './lib/proto/cosmos/distribution/v1beta1/query';
 
 import {
 	MsgVerifyInvariant as _MsgVerifyInvariant,
-	MsgVerifyInvariantResponse as _MsgVerifyInvariantResponse,
-} from './lib/proto/cosmos/crisis/v1beta1/tx';
+ 	MsgVerifyInvariantResponse as _MsgVerifyInvariantResponse,
+ } from './lib/proto/cosmos/crisis/v1beta1/tx';
 
 import {
 	SignatureDescriptors as _SignatureDescriptors,
-	SignatureDescriptor as _SignatureDescriptor,
-	SignatureDescriptor_Data as _SignatureDescriptor_Data,
-	SignatureDescriptor_Data_Single as _SignatureDescriptor_Data_Single,
-	SignatureDescriptor_Data_Multi as _SignatureDescriptor_Data_Multi,
-	SignMode as _SignMode,
-} from './lib/proto/cosmos/tx/signing/v1beta1/signing';
+ 	SignatureDescriptor as _SignatureDescriptor,
+ 	SignatureDescriptor_Data as _SignatureDescriptor_Data,
+ 	SignatureDescriptor_Data_Single as _SignatureDescriptor_Data_Single,
+ 	SignatureDescriptor_Data_Multi as _SignatureDescriptor_Data_Multi,
+ 	SignMode as _SignMode,
+ } from './lib/proto/cosmos/tx/signing/v1beta1/signing';
 
 import {
 	Tx as _Tx,
-	TxRaw as _TxRaw,
-	SignDoc as _SignDoc,
-	TxBody as _TxBody,
-	AuthInfo as _AuthInfo,
-	SignerInfo as _SignerInfo,
-	ModeInfo as _ModeInfo,
-	ModeInfo_Single as _ModeInfo_Single,
-	ModeInfo_Multi as _ModeInfo_Multi,
-	Fee as _Fee,
-} from './lib/proto/cosmos/tx/v1beta1/tx';
+ 	TxRaw as _TxRaw,
+ 	SignDoc as _SignDoc,
+ 	TxBody as _TxBody,
+ 	AuthInfo as _AuthInfo,
+ 	SignerInfo as _SignerInfo,
+ 	ModeInfo as _ModeInfo,
+ 	ModeInfo_Single as _ModeInfo_Single,
+ 	ModeInfo_Multi as _ModeInfo_Multi,
+ 	Fee as _Fee,
+ } from './lib/proto/cosmos/tx/v1beta1/tx';
 
 import {
 	GetTxsEventRequest as _GetTxsEventRequest,
-	GetTxsEventResponse as _GetTxsEventResponse,
-	BroadcastTxRequest as _BroadcastTxRequest,
-	BroadcastTxResponse as _BroadcastTxResponse,
-	SimulateRequest as _SimulateRequest,
-	SimulateResponse as _SimulateResponse,
-	GetTxRequest as _GetTxRequest,
-	GetTxResponse as _GetTxResponse,
-	OrderBy as _OrderBy,
-	BroadcastMode as _BroadcastMode,
-} from './lib/proto/cosmos/tx/v1beta1/service';
+ 	GetTxsEventResponse as _GetTxsEventResponse,
+ 	BroadcastTxRequest as _BroadcastTxRequest,
+ 	BroadcastTxResponse as _BroadcastTxResponse,
+ 	SimulateRequest as _SimulateRequest,
+ 	SimulateResponse as _SimulateResponse,
+ 	GetTxRequest as _GetTxRequest,
+ 	GetTxResponse as _GetTxResponse,
+ 	OrderBy as _OrderBy,
+ 	BroadcastMode as _BroadcastMode,
+ } from './lib/proto/cosmos/tx/v1beta1/service';
 
 import {
 	MsgCreateVestingAccount as _MsgCreateVestingAccount,
-	MsgCreateVestingAccountResponse as _MsgCreateVestingAccountResponse,
-} from './lib/proto/cosmos/vesting/v1beta1/tx';
+ 	MsgCreateVestingAccountResponse as _MsgCreateVestingAccountResponse,
+ } from './lib/proto/cosmos/vesting/v1beta1/tx';
 
 import {
 	BaseVestingAccount as _BaseVestingAccount,
-	ContinuousVestingAccount as _ContinuousVestingAccount,
-	DelayedVestingAccount as _DelayedVestingAccount,
-	Period as _Period,
-	PeriodicVestingAccount as _PeriodicVestingAccount,
-} from './lib/proto/cosmos/vesting/v1beta1/vesting';
+ 	ContinuousVestingAccount as _ContinuousVestingAccount,
+ 	DelayedVestingAccount as _DelayedVestingAccount,
+ 	Period as _Period,
+ 	PeriodicVestingAccount as _PeriodicVestingAccount,
+ } from './lib/proto/cosmos/vesting/v1beta1/vesting';
 
 import {
 	MsgCreateValidator as _MsgCreateValidator,
-	MsgCreateValidatorResponse as _MsgCreateValidatorResponse,
-	MsgEditValidator as _MsgEditValidator,
-	MsgEditValidatorResponse as _MsgEditValidatorResponse,
-	MsgDelegate as _MsgDelegate,
-	MsgDelegateResponse as _MsgDelegateResponse,
-	MsgBeginRedelegate as _MsgBeginRedelegate,
-	MsgBeginRedelegateResponse as _MsgBeginRedelegateResponse,
-	MsgUndelegate as _MsgUndelegate,
-	MsgUndelegateResponse as _MsgUndelegateResponse,
-} from './lib/proto/cosmos/staking/v1beta1/tx';
+ 	MsgCreateValidatorResponse as _MsgCreateValidatorResponse,
+ 	MsgEditValidator as _MsgEditValidator,
+ 	MsgEditValidatorResponse as _MsgEditValidatorResponse,
+ 	MsgDelegate as _MsgDelegate,
+ 	MsgDelegateResponse as _MsgDelegateResponse,
+ 	MsgBeginRedelegate as _MsgBeginRedelegate,
+ 	MsgBeginRedelegateResponse as _MsgBeginRedelegateResponse,
+ 	MsgUndelegate as _MsgUndelegate,
+ 	MsgUndelegateResponse as _MsgUndelegateResponse,
+ } from './lib/proto/cosmos/staking/v1beta1/tx';
 
 import {
 	QueryValidatorsRequest as _QueryValidatorsRequest,
-	QueryValidatorsResponse as _QueryValidatorsResponse,
-	QueryValidatorRequest as _QueryValidatorRequest,
-	QueryValidatorResponse as _QueryValidatorResponse,
-	QueryValidatorDelegationsRequest as _QueryValidatorDelegationsRequest,
-	QueryValidatorDelegationsResponse as _QueryValidatorDelegationsResponse,
-	QueryValidatorUnbondingDelegationsRequest as _QueryValidatorUnbondingDelegationsRequest,
-	QueryValidatorUnbondingDelegationsResponse as _QueryValidatorUnbondingDelegationsResponse,
-	QueryDelegationRequest as _QueryDelegationRequest,
-	QueryDelegationResponse as _QueryDelegationResponse,
-	QueryUnbondingDelegationRequest as _QueryUnbondingDelegationRequest,
-	QueryUnbondingDelegationResponse as _QueryUnbondingDelegationResponse,
-	QueryDelegatorDelegationsRequest as _QueryDelegatorDelegationsRequest,
-	QueryDelegatorDelegationsResponse as _QueryDelegatorDelegationsResponse,
-	QueryDelegatorUnbondingDelegationsRequest as _QueryDelegatorUnbondingDelegationsRequest,
-	QueryDelegatorUnbondingDelegationsResponse as _QueryDelegatorUnbondingDelegationsResponse,
-	QueryRedelegationsRequest as _QueryRedelegationsRequest,
-	QueryRedelegationsResponse as _QueryRedelegationsResponse,
-	QueryDelegatorValidatorRequest as _QueryDelegatorValidatorRequest,
-	QueryDelegatorValidatorResponse as _QueryDelegatorValidatorResponse,
-	QueryHistoricalInfoRequest as _QueryHistoricalInfoRequest,
-	QueryHistoricalInfoResponse as _QueryHistoricalInfoResponse,
-	QueryPoolRequest as _QueryPoolRequest,
-	QueryPoolResponse as _QueryPoolResponse,
-} from './lib/proto/cosmos/staking/v1beta1/query';
+ 	QueryValidatorsResponse as _QueryValidatorsResponse,
+ 	QueryValidatorRequest as _QueryValidatorRequest,
+ 	QueryValidatorResponse as _QueryValidatorResponse,
+ 	QueryValidatorDelegationsRequest as _QueryValidatorDelegationsRequest,
+ 	QueryValidatorDelegationsResponse as _QueryValidatorDelegationsResponse,
+ 	QueryValidatorUnbondingDelegationsRequest as _QueryValidatorUnbondingDelegationsRequest,
+ 	QueryValidatorUnbondingDelegationsResponse as _QueryValidatorUnbondingDelegationsResponse,
+ 	QueryDelegationRequest as _QueryDelegationRequest,
+ 	QueryDelegationResponse as _QueryDelegationResponse,
+ 	QueryUnbondingDelegationRequest as _QueryUnbondingDelegationRequest,
+ 	QueryUnbondingDelegationResponse as _QueryUnbondingDelegationResponse,
+ 	QueryDelegatorDelegationsRequest as _QueryDelegatorDelegationsRequest,
+ 	QueryDelegatorDelegationsResponse as _QueryDelegatorDelegationsResponse,
+ 	QueryDelegatorUnbondingDelegationsRequest as _QueryDelegatorUnbondingDelegationsRequest,
+ 	QueryDelegatorUnbondingDelegationsResponse as _QueryDelegatorUnbondingDelegationsResponse,
+ 	QueryRedelegationsRequest as _QueryRedelegationsRequest,
+ 	QueryRedelegationsResponse as _QueryRedelegationsResponse,
+ 	QueryDelegatorValidatorRequest as _QueryDelegatorValidatorRequest,
+ 	QueryDelegatorValidatorResponse as _QueryDelegatorValidatorResponse,
+ 	QueryHistoricalInfoRequest as _QueryHistoricalInfoRequest,
+ 	QueryHistoricalInfoResponse as _QueryHistoricalInfoResponse,
+ 	QueryPoolRequest as _QueryPoolRequest,
+ 	QueryPoolResponse as _QueryPoolResponse,
+ } from './lib/proto/cosmos/staking/v1beta1/query';
 
 import {
 	HistoricalInfo as _HistoricalInfo,
-	CommissionRates as _CommissionRates,
-	Commission as _Commission,
-	Description as _Description,
-	Validator as _Validator,
-	ValAddresses as _ValAddresses,
-	DVPair as _DVPair,
-	DVPairs as _DVPairs,
-	DVVTriplet as _DVVTriplet,
-	DVVTriplets as _DVVTriplets,
-	Delegation as _Delegation,
-	UnbondingDelegation as _UnbondingDelegation,
-	UnbondingDelegationEntry as _UnbondingDelegationEntry,
-	RedelegationEntry as _RedelegationEntry,
-	Redelegation as _Redelegation,
-	DelegationResponse as _DelegationResponse,
-	RedelegationEntryResponse as _RedelegationEntryResponse,
-	RedelegationResponse as _RedelegationResponse,
-	Pool as _Pool,
-	BondStatus as _BondStatus,
-} from './lib/proto/cosmos/staking/v1beta1/staking';
+ 	CommissionRates as _CommissionRates,
+ 	Commission as _Commission,
+ 	Description as _Description,
+ 	Validator as _Validator,
+ 	ValAddresses as _ValAddresses,
+ 	DVPair as _DVPair,
+ 	DVPairs as _DVPairs,
+ 	DVVTriplet as _DVVTriplet,
+ 	DVVTriplets as _DVVTriplets,
+ 	Delegation as _Delegation,
+ 	UnbondingDelegation as _UnbondingDelegation,
+ 	UnbondingDelegationEntry as _UnbondingDelegationEntry,
+ 	RedelegationEntry as _RedelegationEntry,
+ 	Redelegation as _Redelegation,
+ 	DelegationResponse as _DelegationResponse,
+ 	RedelegationEntryResponse as _RedelegationEntryResponse,
+ 	RedelegationResponse as _RedelegationResponse,
+ 	Pool as _Pool,
+ 	BondStatus as _BondStatus,
+ } from './lib/proto/cosmos/staking/v1beta1/staking';
 
 import {
 	MsgUnjail as _MsgUnjail,
-	MsgUnjailResponse as _MsgUnjailResponse,
-} from './lib/proto/cosmos/slashing/v1beta1/tx';
+ 	MsgUnjailResponse as _MsgUnjailResponse,
+ } from './lib/proto/cosmos/slashing/v1beta1/tx';
 
 import {
 	ValidatorSigningInfo as _ValidatorSigningInfo,
-} from './lib/proto/cosmos/slashing/v1beta1/slashing';
+ } from './lib/proto/cosmos/slashing/v1beta1/slashing';
 
 import {
 	QuerySigningInfoRequest as _QuerySigningInfoRequest,
-	QuerySigningInfoResponse as _QuerySigningInfoResponse,
-	QuerySigningInfosRequest as _QuerySigningInfosRequest,
-	QuerySigningInfosResponse as _QuerySigningInfosResponse,
-} from './lib/proto/cosmos/slashing/v1beta1/query';
+ 	QuerySigningInfoResponse as _QuerySigningInfoResponse,
+ 	QuerySigningInfosRequest as _QuerySigningInfosRequest,
+ 	QuerySigningInfosResponse as _QuerySigningInfosResponse,
+ } from './lib/proto/cosmos/slashing/v1beta1/query';
 
 import {
 	TxResponse as _TxResponse,
-	ABCIMessageLog as _ABCIMessageLog,
-	StringEvent as _StringEvent,
-	GasInfo as _GasInfo,
-	SimulationResponse as _SimulationResponse,
-	MsgData as _MsgData,
-	TxMsgData as _TxMsgData,
-	SearchTxsResult as _SearchTxsResult,
-} from './lib/proto/cosmos/base/abci/v1beta1/abci';
+ 	ABCIMessageLog as _ABCIMessageLog,
+ 	StringEvent as _StringEvent,
+ 	GasInfo as _GasInfo,
+ 	SimulationResponse as _SimulationResponse,
+ 	MsgData as _MsgData,
+ 	TxMsgData as _TxMsgData,
+ 	SearchTxsResult as _SearchTxsResult,
+ } from './lib/proto/cosmos/base/abci/v1beta1/abci';
 
 import {
 	Pairs as _Pairs,
-	Pair as _Pair,
-} from './lib/proto/cosmos/base/kv/v1beta1/kv';
+ 	Pair as _Pair,
+ } from './lib/proto/cosmos/base/kv/v1beta1/kv';
 
 import {
 	Snapshot as _Snapshot,
-} from './lib/proto/cosmos/base/snapshots/v1beta1/snapshot';
+ } from './lib/proto/cosmos/base/snapshots/v1beta1/snapshot';
 
 import {
 	Coin as _Coin,
-	DecCoin as _DecCoin,
-	IntProto as _IntProto,
-	DecProto as _DecProto,
-} from './lib/proto/cosmos/base/v1beta1/coin';
+ 	DecCoin as _DecCoin,
+ 	IntProto as _IntProto,
+ 	DecProto as _DecProto,
+ } from './lib/proto/cosmos/base/v1beta1/coin';
 
 import {
 	GetValidatorSetByHeightRequest as _GetValidatorSetByHeightRequest,
-	GetValidatorSetByHeightResponse as _GetValidatorSetByHeightResponse,
-	GetLatestValidatorSetRequest as _GetLatestValidatorSetRequest,
-	GetLatestValidatorSetResponse as _GetLatestValidatorSetResponse,
-	GetBlockByHeightRequest as _GetBlockByHeightRequest,
-	GetBlockByHeightResponse as _GetBlockByHeightResponse,
-	GetLatestBlockRequest as _GetLatestBlockRequest,
-	GetLatestBlockResponse as _GetLatestBlockResponse,
-	GetSyncingRequest as _GetSyncingRequest,
-	GetSyncingResponse as _GetSyncingResponse,
-	GetNodeInfoRequest as _GetNodeInfoRequest,
-	GetNodeInfoResponse as _GetNodeInfoResponse,
-	VersionInfo as _VersionInfo,
-	Module as _Module,
-} from './lib/proto/cosmos/base/tendermint/v1beta1/query';
+ 	GetValidatorSetByHeightResponse as _GetValidatorSetByHeightResponse,
+ 	GetLatestValidatorSetRequest as _GetLatestValidatorSetRequest,
+ 	GetLatestValidatorSetResponse as _GetLatestValidatorSetResponse,
+ 	GetBlockByHeightRequest as _GetBlockByHeightRequest,
+ 	GetBlockByHeightResponse as _GetBlockByHeightResponse,
+ 	GetLatestBlockRequest as _GetLatestBlockRequest,
+ 	GetLatestBlockResponse as _GetLatestBlockResponse,
+ 	GetSyncingRequest as _GetSyncingRequest,
+ 	GetSyncingResponse as _GetSyncingResponse,
+ 	GetNodeInfoRequest as _GetNodeInfoRequest,
+ 	GetNodeInfoResponse as _GetNodeInfoResponse,
+ 	VersionInfo as _VersionInfo,
+ 	Module as _Module,
+ } from './lib/proto/cosmos/base/tendermint/v1beta1/query';
 
 import {
 	PageRequest as _PageRequest,
-	PageResponse as _PageResponse,
-} from './lib/proto/cosmos/base/query/v1beta1/pagination';
+ 	PageResponse as _PageResponse,
+ } from './lib/proto/cosmos/base/query/v1beta1/pagination';
 
 import {
 	SnapshotItem as _SnapshotItem,
-	SnapshotStoreItem as _SnapshotStoreItem,
-	SnapshotIAVLItem as _SnapshotIAVLItem,
-} from './lib/proto/cosmos/base/store/v1beta1/snapshot';
+ 	SnapshotStoreItem as _SnapshotStoreItem,
+ 	SnapshotIAVLItem as _SnapshotIAVLItem,
+ } from './lib/proto/cosmos/base/store/v1beta1/snapshot';
 
 import {
 	CommitInfo as _CommitInfo,
-	StoreInfo as _StoreInfo,
-	CommitID as _CommitID,
-} from './lib/proto/cosmos/base/store/v1beta1/commit_info';
+ 	StoreInfo as _StoreInfo,
+ 	CommitID as _CommitID,
+ } from './lib/proto/cosmos/base/store/v1beta1/commit_info';
 
 import {
 	ListAllInterfacesRequest as _ListAllInterfacesRequest,
-	ListAllInterfacesResponse as _ListAllInterfacesResponse,
-	ListImplementationsRequest as _ListImplementationsRequest,
-	ListImplementationsResponse as _ListImplementationsResponse,
-} from './lib/proto/cosmos/base/reflection/v1beta1/reflection';
+ 	ListAllInterfacesResponse as _ListAllInterfacesResponse,
+ 	ListImplementationsRequest as _ListImplementationsRequest,
+ 	ListImplementationsResponse as _ListImplementationsResponse,
+ } from './lib/proto/cosmos/base/reflection/v1beta1/reflection';
 
 import {
 	TextProposal as _TextProposal,
-	Deposit as _Deposit,
-	Proposal as _Proposal,
-	TallyResult as _TallyResult,
-	Vote as _Vote,
-	DepositParams as _DepositParams,
-	VotingParams as _VotingParams,
-	TallyParams as _TallyParams,
-	VoteOption as _VoteOption,
-	ProposalStatus as _ProposalStatus,
-} from './lib/proto/cosmos/gov/v1beta1/gov';
+ 	Deposit as _Deposit,
+ 	Proposal as _Proposal,
+ 	TallyResult as _TallyResult,
+ 	Vote as _Vote,
+ 	DepositParams as _DepositParams,
+ 	VotingParams as _VotingParams,
+ 	TallyParams as _TallyParams,
+ 	VoteOption as _VoteOption,
+ 	ProposalStatus as _ProposalStatus,
+ } from './lib/proto/cosmos/gov/v1beta1/gov';
 
 import {
 	MsgSubmitProposal as _MsgSubmitProposal,
-	MsgSubmitProposalResponse as _MsgSubmitProposalResponse,
-	MsgVote as _MsgVote,
-	MsgVoteResponse as _MsgVoteResponse,
-	MsgDeposit as _MsgDeposit,
-	MsgDepositResponse as _MsgDepositResponse,
-} from './lib/proto/cosmos/gov/v1beta1/tx';
+ 	MsgSubmitProposalResponse as _MsgSubmitProposalResponse,
+ 	MsgVote as _MsgVote,
+ 	MsgVoteResponse as _MsgVoteResponse,
+ 	MsgDeposit as _MsgDeposit,
+ 	MsgDepositResponse as _MsgDepositResponse,
+ } from './lib/proto/cosmos/gov/v1beta1/tx';
 
 import {
 	QueryProposalRequest as _QueryProposalRequest,
-	QueryProposalResponse as _QueryProposalResponse,
-	QueryProposalsRequest as _QueryProposalsRequest,
-	QueryProposalsResponse as _QueryProposalsResponse,
-	QueryVoteRequest as _QueryVoteRequest,
-	QueryVoteResponse as _QueryVoteResponse,
-	QueryVotesRequest as _QueryVotesRequest,
-	QueryVotesResponse as _QueryVotesResponse,
-	QueryDepositRequest as _QueryDepositRequest,
-	QueryDepositResponse as _QueryDepositResponse,
-	QueryDepositsRequest as _QueryDepositsRequest,
-	QueryDepositsResponse as _QueryDepositsResponse,
-	QueryTallyResultRequest as _QueryTallyResultRequest,
-	QueryTallyResultResponse as _QueryTallyResultResponse,
-} from './lib/proto/cosmos/gov/v1beta1/query';
+ 	QueryProposalResponse as _QueryProposalResponse,
+ 	QueryProposalsRequest as _QueryProposalsRequest,
+ 	QueryProposalsResponse as _QueryProposalsResponse,
+ 	QueryVoteRequest as _QueryVoteRequest,
+ 	QueryVoteResponse as _QueryVoteResponse,
+ 	QueryVotesRequest as _QueryVotesRequest,
+ 	QueryVotesResponse as _QueryVotesResponse,
+ 	QueryDepositRequest as _QueryDepositRequest,
+ 	QueryDepositResponse as _QueryDepositResponse,
+ 	QueryDepositsRequest as _QueryDepositsRequest,
+ 	QueryDepositsResponse as _QueryDepositsResponse,
+ 	QueryTallyResultRequest as _QueryTallyResultRequest,
+ 	QueryTallyResultResponse as _QueryTallyResultResponse,
+ } from './lib/proto/cosmos/gov/v1beta1/query';
 export const CosmosLegacyAminoPubKey = _LegacyAminoPubKey;
 export type CosmosLegacyAminoPubKey = _LegacyAminoPubKey;
 
@@ -1195,229 +1195,229 @@ export type CosmosQueryTallyResultResponse = _QueryTallyResultResponse;
 /* tslint:disable:variable-name */
 import {
 	Report as _Report,
-	Reports as _Reports,
-} from './lib/proto/desmos/posts/v1beta1/report';
+ 	Reports as _Reports,
+ } from './lib/proto/desmos/posts/v1beta1/report';
 
 import {
 	PollAnswer as _PollAnswer,
-	PollData as _PollData,
-	UserAnswer as _UserAnswer,
-} from './lib/proto/desmos/posts/v1beta1/polls';
+ 	PollData as _PollData,
+ 	UserAnswer as _UserAnswer,
+ } from './lib/proto/desmos/posts/v1beta1/polls';
 
 import {
 	MsgCreatePost as _MsgCreatePost,
-	MsgCreatePostResponse as _MsgCreatePostResponse,
-	MsgEditPost as _MsgEditPost,
-	MsgEditPostResponse as _MsgEditPostResponse,
-	MsgAddPostReaction as _MsgAddPostReaction,
-	MsgAddPostReactionResponse as _MsgAddPostReactionResponse,
-	MsgRemovePostReaction as _MsgRemovePostReaction,
-	MsgRemovePostReactionResponse as _MsgRemovePostReactionResponse,
-	MsgAnswerPoll as _MsgAnswerPoll,
-	MsgAnswerPollResponse as _MsgAnswerPollResponse,
-	MsgRegisterReaction as _MsgRegisterReaction,
-	MsgRegisterReactionResponse as _MsgRegisterReactionResponse,
-	MsgReportPost as _MsgReportPost,
-	MsgReportPostResponse as _MsgReportPostResponse,
-} from './lib/proto/desmos/posts/v1beta1/msgs';
+ 	MsgCreatePostResponse as _MsgCreatePostResponse,
+ 	MsgEditPost as _MsgEditPost,
+ 	MsgEditPostResponse as _MsgEditPostResponse,
+ 	MsgAddPostReaction as _MsgAddPostReaction,
+ 	MsgAddPostReactionResponse as _MsgAddPostReactionResponse,
+ 	MsgRemovePostReaction as _MsgRemovePostReaction,
+ 	MsgRemovePostReactionResponse as _MsgRemovePostReactionResponse,
+ 	MsgAnswerPoll as _MsgAnswerPoll,
+ 	MsgAnswerPollResponse as _MsgAnswerPollResponse,
+ 	MsgRegisterReaction as _MsgRegisterReaction,
+ 	MsgRegisterReactionResponse as _MsgRegisterReactionResponse,
+ 	MsgReportPost as _MsgReportPost,
+ 	MsgReportPostResponse as _MsgReportPostResponse,
+ } from './lib/proto/desmos/posts/v1beta1/msgs';
 
 import {
 	Post as _Post,
-	Attachment as _Attachment,
-	Attribute as _Attribute,
-	CommentsState as _CommentsState,
-} from './lib/proto/desmos/posts/v1beta1/posts';
+ 	Attachment as _Attachment,
+ 	Attribute as _Attribute,
+ 	CommentsState as _CommentsState,
+ } from './lib/proto/desmos/posts/v1beta1/posts';
 
 import {
 	RegisteredReaction as _RegisteredReaction,
-	PostReaction as _PostReaction,
-} from './lib/proto/desmos/posts/v1beta1/reactions';
+ 	PostReaction as _PostReaction,
+ } from './lib/proto/desmos/posts/v1beta1/reactions';
 
 import {
 	QueryPostsRequest as _QueryPostsRequest,
-	QueryPostsResponse as _QueryPostsResponse,
-	QueryPostRequest as _QueryPostRequest,
-	QueryPostResponse as _QueryPostResponse,
-	QueryUserAnswersRequest as _QueryUserAnswersRequest,
-	QueryUserAnswersResponse as _QueryUserAnswersResponse,
-	QueryRegisteredReactionsRequest as _QueryRegisteredReactionsRequest,
-	QueryRegisteredReactionsResponse as _QueryRegisteredReactionsResponse,
-	QueryParamsRequest as _QueryParamsRequest,
-	QueryParamsResponse as _QueryParamsResponse,
-	QueryReportsRequest as _QueryReportsRequest,
-	QueryReportsResponse as _QueryReportsResponse,
-	QueryPostReactionsRequest as _QueryPostReactionsRequest,
-	QueryPostReactionsResponse as _QueryPostReactionsResponse,
-	QueryPostCommentsRequest as _QueryPostCommentsRequest,
-	QueryPostCommentsResponse as _QueryPostCommentsResponse,
-} from './lib/proto/desmos/posts/v1beta1/query';
+ 	QueryPostsResponse as _QueryPostsResponse,
+ 	QueryPostRequest as _QueryPostRequest,
+ 	QueryPostResponse as _QueryPostResponse,
+ 	QueryUserAnswersRequest as _QueryUserAnswersRequest,
+ 	QueryUserAnswersResponse as _QueryUserAnswersResponse,
+ 	QueryRegisteredReactionsRequest as _QueryRegisteredReactionsRequest,
+ 	QueryRegisteredReactionsResponse as _QueryRegisteredReactionsResponse,
+ 	QueryParamsRequest as _QueryParamsRequest,
+ 	QueryParamsResponse as _QueryParamsResponse,
+ 	QueryReportsRequest as _QueryReportsRequest,
+ 	QueryReportsResponse as _QueryReportsResponse,
+ 	QueryPostReactionsRequest as _QueryPostReactionsRequest,
+ 	QueryPostReactionsResponse as _QueryPostReactionsResponse,
+ 	QueryPostCommentsRequest as _QueryPostCommentsRequest,
+ 	QueryPostCommentsResponse as _QueryPostCommentsResponse,
+ } from './lib/proto/desmos/posts/v1beta1/query';
 
 import {
 	MsgCreateSubspace as _MsgCreateSubspace,
-	MsgCreateSubspaceResponse as _MsgCreateSubspaceResponse,
-	MsgEditSubspace as _MsgEditSubspace,
-	MsgEditSubspaceResponse as _MsgEditSubspaceResponse,
-	MsgAddAdmin as _MsgAddAdmin,
-	MsgAddAdminResponse as _MsgAddAdminResponse,
-	MsgRemoveAdmin as _MsgRemoveAdmin,
-	MsgRemoveAdminResponse as _MsgRemoveAdminResponse,
-	MsgRegisterUser as _MsgRegisterUser,
-	MsgRegisterUserResponse as _MsgRegisterUserResponse,
-	MsgUnregisterUser as _MsgUnregisterUser,
-	MsgUnregisterUserResponse as _MsgUnregisterUserResponse,
-	MsgBanUser as _MsgBanUser,
-	MsgBanUserResponse as _MsgBanUserResponse,
-	MsgUnbanUser as _MsgUnbanUser,
-	MsgUnbanUserResponse as _MsgUnbanUserResponse,
-} from './lib/proto/desmos/subspaces/v1beta1/msgs';
+ 	MsgCreateSubspaceResponse as _MsgCreateSubspaceResponse,
+ 	MsgEditSubspace as _MsgEditSubspace,
+ 	MsgEditSubspaceResponse as _MsgEditSubspaceResponse,
+ 	MsgAddAdmin as _MsgAddAdmin,
+ 	MsgAddAdminResponse as _MsgAddAdminResponse,
+ 	MsgRemoveAdmin as _MsgRemoveAdmin,
+ 	MsgRemoveAdminResponse as _MsgRemoveAdminResponse,
+ 	MsgRegisterUser as _MsgRegisterUser,
+ 	MsgRegisterUserResponse as _MsgRegisterUserResponse,
+ 	MsgUnregisterUser as _MsgUnregisterUser,
+ 	MsgUnregisterUserResponse as _MsgUnregisterUserResponse,
+ 	MsgBanUser as _MsgBanUser,
+ 	MsgBanUserResponse as _MsgBanUserResponse,
+ 	MsgUnbanUser as _MsgUnbanUser,
+ 	MsgUnbanUserResponse as _MsgUnbanUserResponse,
+ } from './lib/proto/desmos/subspaces/v1beta1/msgs';
 
 import {
 	Subspace as _Subspace,
-	SubspaceType as _SubspaceType,
-} from './lib/proto/desmos/subspaces/v1beta1/subspace';
+ 	SubspaceType as _SubspaceType,
+ } from './lib/proto/desmos/subspaces/v1beta1/subspace';
 
 import {
 	QuerySubspaceRequest as _QuerySubspaceRequest,
-	QuerySubspaceResponse as _QuerySubspaceResponse,
-	QuerySubspacesRequest as _QuerySubspacesRequest,
-	QuerySubspacesResponse as _QuerySubspacesResponse,
-	QueryAdminsRequest as _QueryAdminsRequest,
-	QueryAdminsResponse as _QueryAdminsResponse,
-	QueryRegisteredUsersRequest as _QueryRegisteredUsersRequest,
-	QueryRegisteredUsersResponse as _QueryRegisteredUsersResponse,
-	QueryBannedUsersRequest as _QueryBannedUsersRequest,
-	QueryBannedUsersResponse as _QueryBannedUsersResponse,
-} from './lib/proto/desmos/subspaces/v1beta1/query';
+ 	QuerySubspaceResponse as _QuerySubspaceResponse,
+ 	QuerySubspacesRequest as _QuerySubspacesRequest,
+ 	QuerySubspacesResponse as _QuerySubspacesResponse,
+ 	QueryAdminsRequest as _QueryAdminsRequest,
+ 	QueryAdminsResponse as _QueryAdminsResponse,
+ 	QueryRegisteredUsersRequest as _QueryRegisteredUsersRequest,
+ 	QueryRegisteredUsersResponse as _QueryRegisteredUsersResponse,
+ 	QueryBannedUsersRequest as _QueryBannedUsersRequest,
+ 	QueryBannedUsersResponse as _QueryBannedUsersResponse,
+ } from './lib/proto/desmos/subspaces/v1beta1/query';
 
 import {
 	MinFee as _MinFee,
-} from './lib/proto/desmos/fees/v1beta1/min_fee';
+ } from './lib/proto/desmos/fees/v1beta1/min_fee';
 
 import {
 	QueryUserChainLinkRequest as _QueryUserChainLinkRequest,
-	QueryUserChainLinkResponse as _QueryUserChainLinkResponse,
-	QueryUserChainLinksRequest as _QueryUserChainLinksRequest,
-	QueryUserChainLinksResponse as _QueryUserChainLinksResponse,
-} from './lib/proto/desmos/profiles/v1beta1/query_chain_links';
+ 	QueryUserChainLinkResponse as _QueryUserChainLinkResponse,
+ 	QueryUserChainLinksRequest as _QueryUserChainLinksRequest,
+ 	QueryUserChainLinksResponse as _QueryUserChainLinksResponse,
+ } from './lib/proto/desmos/profiles/v1beta1/query_chain_links';
 
 import {
 	QueryProfileRequest as _QueryProfileRequest,
-	QueryProfileResponse as _QueryProfileResponse,
-} from './lib/proto/desmos/profiles/v1beta1/query_profile';
+ 	QueryProfileResponse as _QueryProfileResponse,
+ } from './lib/proto/desmos/profiles/v1beta1/query_profile';
 
 import {
 	Params as _Params,
-	NicknameParams as _NicknameParams,
-	DTagParams as _DTagParams,
-	BioParams as _BioParams,
-	OracleParams as _OracleParams,
-} from './lib/proto/desmos/profiles/v1beta1/models_params';
+ 	NicknameParams as _NicknameParams,
+ 	DTagParams as _DTagParams,
+ 	BioParams as _BioParams,
+ 	OracleParams as _OracleParams,
+ } from './lib/proto/desmos/profiles/v1beta1/models_params';
 
 import {
 	Relationship as _Relationship,
-	UserBlock as _UserBlock,
-} from './lib/proto/desmos/profiles/v1beta1/models_relationships';
+ 	UserBlock as _UserBlock,
+ } from './lib/proto/desmos/profiles/v1beta1/models_relationships';
 
 import {
 	MsgSaveProfile as _MsgSaveProfile,
-	MsgSaveProfileResponse as _MsgSaveProfileResponse,
-	MsgDeleteProfile as _MsgDeleteProfile,
-	MsgDeleteProfileResponse as _MsgDeleteProfileResponse,
-} from './lib/proto/desmos/profiles/v1beta1/msgs_profile';
+ 	MsgSaveProfileResponse as _MsgSaveProfileResponse,
+ 	MsgDeleteProfile as _MsgDeleteProfile,
+ 	MsgDeleteProfileResponse as _MsgDeleteProfileResponse,
+ } from './lib/proto/desmos/profiles/v1beta1/msgs_profile';
 
 import {
 	ApplicationLink as _ApplicationLink,
-	Data as _Data,
-	OracleRequest as _OracleRequest,
-	OracleRequest_CallData as _OracleRequest_CallData,
-	Result as _Result,
-	Result_Success as _Result_Success,
-	Result_Failed as _Result_Failed,
-	ApplicationLinkState as _ApplicationLinkState,
-} from './lib/proto/desmos/profiles/v1beta1/models_app_links';
+ 	Data as _Data,
+ 	OracleRequest as _OracleRequest,
+ 	OracleRequest_CallData as _OracleRequest_CallData,
+ 	Result as _Result,
+ 	Result_Success as _Result_Success,
+ 	Result_Failed as _Result_Failed,
+ 	ApplicationLinkState as _ApplicationLinkState,
+ } from './lib/proto/desmos/profiles/v1beta1/models_app_links';
 
 import {
 	ChainLink as _ChainLink,
-	ChainConfig as _ChainConfig,
-	Proof as _Proof,
-	Bech32Address as _Bech32Address,
-	Base58Address as _Base58Address,
-} from './lib/proto/desmos/profiles/v1beta1/models_chain_links';
+ 	ChainConfig as _ChainConfig,
+ 	Proof as _Proof,
+ 	Bech32Address as _Bech32Address,
+ 	Base58Address as _Base58Address,
+ } from './lib/proto/desmos/profiles/v1beta1/models_chain_links';
 
 import {
 	LinkChainAccountPacketData as _LinkChainAccountPacketData,
-	LinkChainAccountPacketAck as _LinkChainAccountPacketAck,
-} from './lib/proto/desmos/profiles/v1beta1/models_packets';
+ 	LinkChainAccountPacketAck as _LinkChainAccountPacketAck,
+ } from './lib/proto/desmos/profiles/v1beta1/models_packets';
 
 import {
 	MsgLinkChainAccount as _MsgLinkChainAccount,
-	MsgLinkChainAccountResponse as _MsgLinkChainAccountResponse,
-	MsgUnlinkChainAccount as _MsgUnlinkChainAccount,
-	MsgUnlinkChainAccountResponse as _MsgUnlinkChainAccountResponse,
-} from './lib/proto/desmos/profiles/v1beta1/msgs_chain_links';
+ 	MsgLinkChainAccountResponse as _MsgLinkChainAccountResponse,
+ 	MsgUnlinkChainAccount as _MsgUnlinkChainAccount,
+ 	MsgUnlinkChainAccountResponse as _MsgUnlinkChainAccountResponse,
+ } from './lib/proto/desmos/profiles/v1beta1/msgs_chain_links';
 
 import {
 	MsgRequestDTagTransfer as _MsgRequestDTagTransfer,
-	MsgRequestDTagTransferResponse as _MsgRequestDTagTransferResponse,
-	MsgCancelDTagTransferRequest as _MsgCancelDTagTransferRequest,
-	MsgCancelDTagTransferRequestResponse as _MsgCancelDTagTransferRequestResponse,
-	MsgAcceptDTagTransferRequest as _MsgAcceptDTagTransferRequest,
-	MsgAcceptDTagTransferRequestResponse as _MsgAcceptDTagTransferRequestResponse,
-	MsgRefuseDTagTransferRequest as _MsgRefuseDTagTransferRequest,
-	MsgRefuseDTagTransferRequestResponse as _MsgRefuseDTagTransferRequestResponse,
-} from './lib/proto/desmos/profiles/v1beta1/msgs_dtag_requests';
+ 	MsgRequestDTagTransferResponse as _MsgRequestDTagTransferResponse,
+ 	MsgCancelDTagTransferRequest as _MsgCancelDTagTransferRequest,
+ 	MsgCancelDTagTransferRequestResponse as _MsgCancelDTagTransferRequestResponse,
+ 	MsgAcceptDTagTransferRequest as _MsgAcceptDTagTransferRequest,
+ 	MsgAcceptDTagTransferRequestResponse as _MsgAcceptDTagTransferRequestResponse,
+ 	MsgRefuseDTagTransferRequest as _MsgRefuseDTagTransferRequest,
+ 	MsgRefuseDTagTransferRequestResponse as _MsgRefuseDTagTransferRequestResponse,
+ } from './lib/proto/desmos/profiles/v1beta1/msgs_dtag_requests';
 
 import {
 	QueryUserApplicationLinkRequest as _QueryUserApplicationLinkRequest,
-	QueryUserApplicationLinkResponse as _QueryUserApplicationLinkResponse,
-	QueryUserApplicationLinksRequest as _QueryUserApplicationLinksRequest,
-	QueryUserApplicationLinksResponse as _QueryUserApplicationLinksResponse,
-	QueryApplicationLinkByClientIDRequest as _QueryApplicationLinkByClientIDRequest,
-	QueryApplicationLinkByClientIDResponse as _QueryApplicationLinkByClientIDResponse,
-} from './lib/proto/desmos/profiles/v1beta1/query_app_links';
+ 	QueryUserApplicationLinkResponse as _QueryUserApplicationLinkResponse,
+ 	QueryUserApplicationLinksRequest as _QueryUserApplicationLinksRequest,
+ 	QueryUserApplicationLinksResponse as _QueryUserApplicationLinksResponse,
+ 	QueryApplicationLinkByClientIDRequest as _QueryApplicationLinkByClientIDRequest,
+ 	QueryApplicationLinkByClientIDResponse as _QueryApplicationLinkByClientIDResponse,
+ } from './lib/proto/desmos/profiles/v1beta1/query_app_links';
 
 import {
 	QueryIncomingDTagTransferRequestsRequest as _QueryIncomingDTagTransferRequestsRequest,
-	QueryIncomingDTagTransferRequestsResponse as _QueryIncomingDTagTransferRequestsResponse,
-} from './lib/proto/desmos/profiles/v1beta1/query_dtag_requests';
+ 	QueryIncomingDTagTransferRequestsResponse as _QueryIncomingDTagTransferRequestsResponse,
+ } from './lib/proto/desmos/profiles/v1beta1/query_dtag_requests';
 
 import {
 	DTagTransferRequest as _DTagTransferRequest,
-} from './lib/proto/desmos/profiles/v1beta1/models_dtag_requests';
+ } from './lib/proto/desmos/profiles/v1beta1/models_dtag_requests';
 
 import {
 	MsgLinkApplication as _MsgLinkApplication,
-	MsgLinkApplicationResponse as _MsgLinkApplicationResponse,
-	MsgUnlinkApplication as _MsgUnlinkApplication,
-	MsgUnlinkApplicationResponse as _MsgUnlinkApplicationResponse,
-} from './lib/proto/desmos/profiles/v1beta1/msgs_app_links';
+ 	MsgLinkApplicationResponse as _MsgLinkApplicationResponse,
+ 	MsgUnlinkApplication as _MsgUnlinkApplication,
+ 	MsgUnlinkApplicationResponse as _MsgUnlinkApplicationResponse,
+ } from './lib/proto/desmos/profiles/v1beta1/msgs_app_links';
 
 import {
 	QueryUserRelationshipsRequest as _QueryUserRelationshipsRequest,
-	QueryUserRelationshipsResponse as _QueryUserRelationshipsResponse,
-	QueryUserBlocksRequest as _QueryUserBlocksRequest,
-	QueryUserBlocksResponse as _QueryUserBlocksResponse,
-} from './lib/proto/desmos/profiles/v1beta1/query_relationships';
+ 	QueryUserRelationshipsResponse as _QueryUserRelationshipsResponse,
+ 	QueryUserBlocksRequest as _QueryUserBlocksRequest,
+ 	QueryUserBlocksResponse as _QueryUserBlocksResponse,
+ } from './lib/proto/desmos/profiles/v1beta1/query_relationships';
 
 import {
 	Profile as _Profile,
-	Pictures as _Pictures,
-} from './lib/proto/desmos/profiles/v1beta1/models_profile';
+ 	Pictures as _Pictures,
+ } from './lib/proto/desmos/profiles/v1beta1/models_profile';
 
 import {
 	MsgCreateRelationship as _MsgCreateRelationship,
-	MsgCreateRelationshipResponse as _MsgCreateRelationshipResponse,
-	MsgDeleteRelationship as _MsgDeleteRelationship,
-	MsgDeleteRelationshipResponse as _MsgDeleteRelationshipResponse,
-	MsgBlockUser as _MsgBlockUser,
-	MsgBlockUserResponse as _MsgBlockUserResponse,
-	MsgUnblockUser as _MsgUnblockUser,
-	MsgUnblockUserResponse as _MsgUnblockUserResponse,
-} from './lib/proto/desmos/profiles/v1beta1/msgs_relationships';
+ 	MsgCreateRelationshipResponse as _MsgCreateRelationshipResponse,
+ 	MsgDeleteRelationship as _MsgDeleteRelationship,
+ 	MsgDeleteRelationshipResponse as _MsgDeleteRelationshipResponse,
+ 	MsgBlockUser as _MsgBlockUser,
+ 	MsgBlockUserResponse as _MsgBlockUserResponse,
+ 	MsgUnblockUser as _MsgUnblockUser,
+ 	MsgUnblockUserResponse as _MsgUnblockUserResponse,
+ } from './lib/proto/desmos/profiles/v1beta1/msgs_relationships';
 
 import {
 	ChainLinkJSON as _ChainLinkJSON,
-} from './lib/proto/desmos/profiles/v1beta1/client/cli';
+ } from './lib/proto/desmos/profiles/v1beta1/client/cli';
 export const DesmosReport = _Report;
 export type DesmosReport = _Report;
 

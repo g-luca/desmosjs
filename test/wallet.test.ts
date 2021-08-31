@@ -73,7 +73,7 @@ describe("Wallet test", () => {
         const signedTxBytes = Transaction.signTxBody(txBody, authInfo, 0, wallet.privateKey);
         const txBytesBase64 = Buffer.from(signedTxBytes as any, 'binary').toString('base64');
 
-        expect(txBytesBase64).toBe(`Co0BCooBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmoKLWRlc21vczF0MGZwbnpsOHN3aHI4YzRtcXczMzB5NDlrNmhhZDhhbjkwbDltMxItZGVzbW9zMWNscWo1ZmQ2ejY5Z3pzODRyZ2tjaGs2eThrc2FoY2ZjMDgyazA4GgoKBWRhcmljEgExEmUKTgpECh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiED4hIF0y0Mx9fnCjCJuuBoz5nva+a5uYwRzY3H6ecG5zwSBAoCCAEYZBITCg0KBnVkYXJpYxIDMjAwEMCaDBpADDjFTmY2+/sGgkSfd2vmY3/YtP0uBcQLmcpvZfQ71uFuRefftDTRY/NWDrboPvnCPDiiR65mIYc9SAz8aXFcwQ==`);
+        expect(txBytesBase64).toBe(`Co0BCooBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEmoKLWRlc21vczF0MGZwbnpsOHN3aHI4YzRtcXczMzB5NDlrNmhhZDhhbjkwbDltMxItZGVzbW9zMWNscWo1ZmQ2ejY5Z3pzODRyZ2tjaGs2eThrc2FoY2ZjMDgyazA4GgoKBWRhcmljEgExEmUKTgpECh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiED4hIF0y0Mx9fnCjCJuuBoz5nva+a5uYwRzY3H6ecG5zwSBAoCCAEYZBITCg0KBnVkYXJpYxIDMjAwEMCaDBpA07egrxQc5uG6DPE+Zt4IdUN6dKdVP2iDjPY1Qgk6QDk/GYl2evFFQ8RVO2azngAGtE7EvE5IyoIR2a9vPbyNJQ==`);
     });
 
 });
