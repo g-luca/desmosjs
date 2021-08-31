@@ -16,18 +16,21 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-    name: "Build and Test"
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '12', '14', '16' ]
+    name: Build and Test with Node ${{ matrix.node }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps: 
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: Use Node 15.x
+      - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v1
         with:
-            node-version: 15
+            node-version: ${{ matrix.node }}
       
       - name: Install dependencies
         run: npm install
