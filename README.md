@@ -1,4 +1,5 @@
 # DesmosJS
+[![CI](https://github.com/g-luca/desmosjs/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/g-luca/desmosjs/actions/workflows/tests.yml)
 
 # 👷 Work in progress
 
