@@ -15,13 +15,13 @@ Is made to work for both Browser and Node.JS/V8 environments.
 * Tree shaking
 # ✅ Version compatibility
 
-Since the Desmos Blockchain is continuously evolving with mainnet and testnets, choose the right DesmosJS version!
+Since the Desmos Blockchain is continuously evolving with mainnet and testnets, choose the right DesmosJS version to match proto definitions!
 
 <br>
 
 | Network           | Desmos  | DesmosJS |
 | ----------------- | ------- | -------- |
-| mainnet-1         | v1.0.0  | v0.x.0   |
+| mainnet-1         | v1.0.1  | v0.1.16  |
 | morpheus-apollo-2 | v0.17.6 | v0.1.14  |
 
 # 🛬 Install
