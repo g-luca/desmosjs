@@ -20,10 +20,10 @@ Since the Desmos Blockchain is continuously evolving with mainnet and testnets, 
 
 <br>
 
-| Network           | Desmos  | DesmosJS |
-| ----------------- | ------- | -------- |
-| desmos-mainnet    | v1.0.1  | v0.1.16  |
-| morpheus-apollo-2 | v0.17.6 | v0.1.14  |
+| Network           | Desmos  | DesmosJS  |
+| ----------------- | ------- | --------- |
+| desmos-mainnet    | v1.0.1  | > v0.1.17 |
+| morpheus-apollo-2 | v0.17.6 | v0.1.14   |
 
 # 🛬 Install
 <br>
@@ -97,7 +97,7 @@ if (account) {
 
     // set the fees
     const feeValue: CosmosFee = {
-        amount: [{ denom: "udaric", amount: "5000" }],
+        amount: [{ denom: "udsm", amount: "5000" }],
         gasLimit: 200000,
         payer: "",
         granter: ""
