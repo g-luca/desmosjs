@@ -49,7 +49,7 @@ export class Network {
     public async broadcast(signedTxBytes: any, broadCastMode: BroadcastMode = BroadcastMode.BROADCAST_MODE_SYNC): Promise<any | false> {
         const txBytesBase64 = Buffer.from(signedTxBytes, 'binary').toString('base64');
 
-        const endpoint = '/cosmos/tx/v1beta1/txs';
+        const endpoint = 'cosmos/tx/v1beta1/txs';
         const response = await this.postLcd(endpoint, { tx_bytes: txBytesBase64, mode: broadCastMode });
         return (response) ? response : false;
     }
