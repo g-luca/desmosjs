@@ -77,7 +77,7 @@
     "coveralls": "^3.1.0",
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
-    "esbuild": "^0.12.1",
+    "esbuild": "^0.13.2",
     "google-protobuf": "^3.17.3",
     "husky": "^7.0.2",
     "jest": "^27.1.0",
