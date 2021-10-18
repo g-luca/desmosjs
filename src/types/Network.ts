@@ -20,21 +20,39 @@ export class Network {
         const endpoint = `cosmos/auth/v1beta1/accounts/${address}`;
         const response = await this.getLcd(endpoint);
         if (response && response['account']) {
-            // need to handle vesting accounts
-            const accountWrapperRaw = response['account']['account'];
-            let accountRaw = accountWrapperRaw;
-            if (accountWrapperRaw['@type'] !== '/cosmos.auth.v1beta1.BaseAccount') {
-                accountRaw = accountWrapperRaw['base_vesting_account']['base_account'];
+
+            let accountWrapperRaw;
+
+            // check if there is a Desmos profile
+            if (response['account']['@type'] === '/desmos.profiles.v1beta1.Profile') {
+                accountWrapperRaw = response['account']['account'];
+            } else {
+                accountWrapperRaw = response['account'];
             }
 
+            let accountRaw = accountWrapperRaw;
+
+            // check if vesting account
+            if (accountRaw['@type'] === '/cosmos.vesting.v1beta1.PeriodicVestingAccount') {
+                accountRaw = accountRaw['base_vesting_account']['base_account'];
+            }
+
+            // empty pubKey
+            let pubKey = {
+                typeUrl: '',
+                value: new Uint8Array(),
+            }
+            if (accountRaw['pub_key']) {
+                pubKey = {
+                    typeUrl: accountRaw['pub_key']['@type'],
+                    value: accountRaw['pub_key']['key'],
+                }
+            }
             return {
                 address: accountRaw['address'],
                 accountNumber: accountRaw['account_number'] | 0,
                 sequence: accountRaw['sequence'] | 0,
-                pubKey: {
-                    typeUrl: accountRaw['pub_key']['@type'],
-                    value: accountRaw['pub_key']['key'],
-                }
+                pubKey
             } as CosmosBaseAccount;
         }
         return false;
