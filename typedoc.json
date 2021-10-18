@@ -1,6 +1,5 @@
 {
-  "entryPoints": ["src"],
+  "entryPoints": ["src/DesmosJS.ts"],
   "out": "docs",
-  "highlightTheme": "dark-plus",
   "name": "DesmosJS"
 }
