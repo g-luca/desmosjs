@@ -140,7 +140,6 @@ import {
 	SendEnabled as _SendEnabled,
 	Input as _Input,
 	Output as _Output,
-	Supply as _Supply,
 	DenomUnit as _DenomUnit,
 	Metadata as _Metadata,
 } from './lib/proto/cosmos/bank/v1beta1/bank';
@@ -669,9 +668,6 @@ export type CosmosInput = _Input;
 
 export const CosmosOutput = _Output;
 export type CosmosOutput = _Output;
-
-export const CosmosSupply = _Supply;
-export type CosmosSupply = _Supply;
 
 export const CosmosDenomUnit = _DenomUnit;
 export type CosmosDenomUnit = _DenomUnit;
