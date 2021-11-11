@@ -102,6 +102,6 @@
   "dependencies": {
     "bip39": "^3.0.4",
     "bitcoinjs-lib": "^5.2.0",
-    "long": "^4.0.0"
+    "long": "^5.1.0"
   }
 }
