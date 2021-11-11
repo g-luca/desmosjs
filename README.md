@@ -20,10 +20,10 @@ Since the Desmos Blockchain is continuously evolving with mainnet and testnets, 
 
 <br>
 
-| Network           | Desmos  | DesmosJS  |
-| ----------------- | ------- | --------- |
-| desmos-mainnet    | v1.0.1  | v0.1.18   |
-| morpheus-apollo-2 | v0.17.6 | v0.1.18   |
+| Network           | Desmos | DesmosJS |
+| ----------------- | ------ | -------- |
+| desmos-mainnet    | v1.0.1 | v0.1.18  |
+| morpheus-apollo-2 | v2.3.0 | v0.1.19  |
 
 # 🛬 Install
 <br>
