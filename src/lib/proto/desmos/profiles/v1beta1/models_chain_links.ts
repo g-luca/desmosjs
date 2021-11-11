@@ -43,7 +43,7 @@ export interface Proof {
   pubKey?: Any
   /** Signature represents the hex-encoded signature of the PlainText value */
   signature: string
-  /** PlainText represents the value signed in order to produce the Signature */
+  /** PlainText represents the hex-encoded value signed in order to produce the Signature */
   plainText: string
 }
 

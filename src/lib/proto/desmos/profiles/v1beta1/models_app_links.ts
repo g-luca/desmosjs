@@ -140,9 +140,9 @@ export interface Result {
  * verified
  */
 export interface Result_Success {
-  /** Value that has be signed by the profile */
+  /** Hex-encoded value that has be signed by the profile */
   value: string
-  /** Signature that has been produced by signing the value */
+  /** Hex-encoded signature that has been produced by signing the value */
   signature: string
 }
 
@@ -387,10 +387,10 @@ const baseOracleRequest: object = { id: 0, oracleScriptId: 0, clientId: '' }
 export const OracleRequest = {
   encode(message: OracleRequest, writer: Writer = Writer.create()): Writer {
     if (message.id !== 0) {
-      writer.uint32(8).int64(message.id)
+      writer.uint32(8).uint64(message.id)
     }
     if (message.oracleScriptId !== 0) {
-      writer.uint32(16).int64(message.oracleScriptId)
+      writer.uint32(16).uint64(message.oracleScriptId)
     }
     if (message.callData !== undefined) {
       OracleRequest_CallData.encode(
@@ -412,10 +412,10 @@ export const OracleRequest = {
       const tag = reader.uint32()
       switch (tag >>> 3) {
         case 1:
-          message.id = longToNumber(reader.int64() as Long)
+          message.id = longToNumber(reader.uint64() as Long)
           break
         case 2:
-          message.oracleScriptId = longToNumber(reader.int64() as Long)
+          message.oracleScriptId = longToNumber(reader.uint64() as Long)
           break
         case 3:
           message.callData = OracleRequest_CallData.decode(
@@ -782,6 +782,7 @@ export const Result_Failed = {
 
 declare var self: any | undefined
 declare var window: any | undefined
+declare var global: any | undefined
 var globalThis: any = (() => {
   if (typeof globalThis !== 'undefined') return globalThis
   if (typeof self !== 'undefined') return self

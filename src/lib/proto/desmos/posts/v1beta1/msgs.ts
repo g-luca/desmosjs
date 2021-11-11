@@ -8,7 +8,7 @@ import {
   commentsStateFromJSON,
   commentsStateToJSON,
 } from '../../../desmos/posts/v1beta1/posts'
-import { PollData } from '../../../desmos/posts/v1beta1/polls'
+import { Poll } from '../../../desmos/posts/v1beta1/polls'
 
 export const protobufPackage = 'desmos.posts.v1beta1'
 
@@ -21,7 +21,7 @@ export interface MsgCreatePost {
   additionalAttributes: Attribute[]
   creator: string
   attachments: Attachment[]
-  pollData?: PollData
+  poll?: Poll
 }
 
 /** MsgCreatePostResponse defines the Msg/CreatePost response type. */
@@ -33,7 +33,7 @@ export interface MsgEditPost {
   message: string
   commentsState: CommentsState
   attachments: Attachment[]
-  pollData?: PollData
+  poll?: Poll
   editor: string
 }
 
@@ -135,8 +135,8 @@ export const MsgCreatePost = {
     for (const v of message.attachments) {
       Attachment.encode(v!, writer.uint32(58).fork()).ldelim()
     }
-    if (message.pollData !== undefined) {
-      PollData.encode(message.pollData, writer.uint32(66).fork()).ldelim()
+    if (message.poll !== undefined) {
+      Poll.encode(message.poll, writer.uint32(66).fork()).ldelim()
     }
     return writer
   },
@@ -174,7 +174,7 @@ export const MsgCreatePost = {
           message.attachments.push(Attachment.decode(reader, reader.uint32()))
           break
         case 8:
-          message.pollData = PollData.decode(reader, reader.uint32())
+          message.poll = Poll.decode(reader, reader.uint32())
           break
         default:
           reader.skipType(tag & 7)
@@ -226,10 +226,10 @@ export const MsgCreatePost = {
         message.attachments.push(Attachment.fromJSON(e))
       }
     }
-    if (object.pollData !== undefined && object.pollData !== null) {
-      message.pollData = PollData.fromJSON(object.pollData)
+    if (object.poll !== undefined && object.poll !== null) {
+      message.poll = Poll.fromJSON(object.poll)
     } else {
-      message.pollData = undefined
+      message.poll = undefined
     }
     return message
   },
@@ -256,10 +256,8 @@ export const MsgCreatePost = {
     } else {
       obj.attachments = []
     }
-    message.pollData !== undefined &&
-      (obj.pollData = message.pollData
-        ? PollData.toJSON(message.pollData)
-        : undefined)
+    message.poll !== undefined &&
+      (obj.poll = message.poll ? Poll.toJSON(message.poll) : undefined)
     return obj
   },
 
@@ -305,10 +303,10 @@ export const MsgCreatePost = {
         message.attachments.push(Attachment.fromPartial(e))
       }
     }
-    if (object.pollData !== undefined && object.pollData !== null) {
-      message.pollData = PollData.fromPartial(object.pollData)
+    if (object.poll !== undefined && object.poll !== null) {
+      message.poll = Poll.fromPartial(object.poll)
     } else {
-      message.pollData = undefined
+      message.poll = undefined
     }
     return message
   },
@@ -373,8 +371,8 @@ export const MsgEditPost = {
     for (const v of message.attachments) {
       Attachment.encode(v!, writer.uint32(34).fork()).ldelim()
     }
-    if (message.pollData !== undefined) {
-      PollData.encode(message.pollData, writer.uint32(42).fork()).ldelim()
+    if (message.poll !== undefined) {
+      Poll.encode(message.poll, writer.uint32(42).fork()).ldelim()
     }
     if (message.editor !== '') {
       writer.uint32(50).string(message.editor)
@@ -403,7 +401,7 @@ export const MsgEditPost = {
           message.attachments.push(Attachment.decode(reader, reader.uint32()))
           break
         case 5:
-          message.pollData = PollData.decode(reader, reader.uint32())
+          message.poll = Poll.decode(reader, reader.uint32())
           break
         case 6:
           message.editor = reader.string()
@@ -439,10 +437,10 @@ export const MsgEditPost = {
         message.attachments.push(Attachment.fromJSON(e))
       }
     }
-    if (object.pollData !== undefined && object.pollData !== null) {
-      message.pollData = PollData.fromJSON(object.pollData)
+    if (object.poll !== undefined && object.poll !== null) {
+      message.poll = Poll.fromJSON(object.poll)
     } else {
-      message.pollData = undefined
+      message.poll = undefined
     }
     if (object.editor !== undefined && object.editor !== null) {
       message.editor = String(object.editor)
@@ -465,10 +463,8 @@ export const MsgEditPost = {
     } else {
       obj.attachments = []
     }
-    message.pollData !== undefined &&
-      (obj.pollData = message.pollData
-        ? PollData.toJSON(message.pollData)
-        : undefined)
+    message.poll !== undefined &&
+      (obj.poll = message.poll ? Poll.toJSON(message.poll) : undefined)
     message.editor !== undefined && (obj.editor = message.editor)
     return obj
   },
@@ -496,10 +492,10 @@ export const MsgEditPost = {
         message.attachments.push(Attachment.fromPartial(e))
       }
     }
-    if (object.pollData !== undefined && object.pollData !== null) {
-      message.pollData = PollData.fromPartial(object.pollData)
+    if (object.poll !== undefined && object.poll !== null) {
+      message.poll = Poll.fromPartial(object.poll)
     } else {
-      message.pollData = undefined
+      message.poll = undefined
     }
     if (object.editor !== undefined && object.editor !== null) {
       message.editor = object.editor

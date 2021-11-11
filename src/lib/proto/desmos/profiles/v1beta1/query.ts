@@ -14,22 +14,22 @@ import {
   QueryParamsRequest,
 } from '../../../desmos/profiles/v1beta1/query_params'
 import {
-  QueryUserRelationshipsResponse,
-  QueryUserBlocksResponse,
-  QueryUserRelationshipsRequest,
-  QueryUserBlocksRequest,
+  QueryRelationshipsResponse,
+  QueryBlocksResponse,
+  QueryRelationshipsRequest,
+  QueryBlocksRequest,
 } from '../../../desmos/profiles/v1beta1/query_relationships'
 import {
-  QueryUserChainLinksResponse,
+  QueryChainLinksResponse,
   QueryUserChainLinkResponse,
-  QueryUserChainLinksRequest,
+  QueryChainLinksRequest,
   QueryUserChainLinkRequest,
 } from '../../../desmos/profiles/v1beta1/query_chain_links'
 import {
-  QueryUserApplicationLinksResponse,
+  QueryApplicationLinksResponse,
   QueryUserApplicationLinkResponse,
   QueryApplicationLinkByClientIDResponse,
-  QueryUserApplicationLinksRequest,
+  QueryApplicationLinksRequest,
   QueryUserApplicationLinkRequest,
   QueryApplicationLinkByClientIDRequest,
 } from '../../../desmos/profiles/v1beta1/query_app_links'
@@ -54,18 +54,22 @@ export interface Query {
   /** Params queries the profiles module params */
   Params(request: QueryParamsRequest): Promise<QueryParamsResponse>
   /**
-   * UserRelationships queries the relationships for the user having the given
-   * address
+   * Relationships queries all relationships for the given user, if provided.
+   * Otherwise, it queries all the relationships stored.
    */
-  UserRelationships(
-    request: QueryUserRelationshipsRequest
-  ): Promise<QueryUserRelationshipsResponse>
-  /** UserBlocks queries the user blocks for the user having the given address */
-  UserBlocks(request: QueryUserBlocksRequest): Promise<QueryUserBlocksResponse>
-  /** UserChainLinks queries chain links for the given user */
-  UserChainLinks(
-    request: QueryUserChainLinksRequest
-  ): Promise<QueryUserChainLinksResponse>
+  Relationships(
+    request: QueryRelationshipsRequest
+  ): Promise<QueryRelationshipsResponse>
+  /**
+   * Blocks queries the blocks for the given user, if provided.
+   * Otherwise, it queries all the stored blocks.
+   */
+  Blocks(request: QueryBlocksRequest): Promise<QueryBlocksResponse>
+  /**
+   * ChainLinks queries the chain links associated to the given user, if
+   * provided. Otherwise it queries all the chain links stored.
+   */
+  ChainLinks(request: QueryChainLinksRequest): Promise<QueryChainLinksResponse>
   /**
    * UserChainLink queries the chain link for the given user, chain name and
    * target address
@@ -73,10 +77,13 @@ export interface Query {
   UserChainLink(
     request: QueryUserChainLinkRequest
   ): Promise<QueryUserChainLinkResponse>
-  /** UserApplicationLinks queries application links for the given user */
-  UserApplicationLinks(
-    request: QueryUserApplicationLinksRequest
-  ): Promise<QueryUserApplicationLinksResponse>
+  /**
+   * ApplicationLinks queries the applications links associated to the given
+   * user, if provided. Otherwise, it queries all the application links stored.
+   */
+  ApplicationLinks(
+    request: QueryApplicationLinksRequest
+  ): Promise<QueryApplicationLinksResponse>
   /**
    * UserApplicationLinks queries a single application link for a given user,
    * searching via the application name and username
@@ -101,11 +108,11 @@ export class QueryClientImpl implements Query {
     this.IncomingDTagTransferRequests =
       this.IncomingDTagTransferRequests.bind(this)
     this.Params = this.Params.bind(this)
-    this.UserRelationships = this.UserRelationships.bind(this)
-    this.UserBlocks = this.UserBlocks.bind(this)
-    this.UserChainLinks = this.UserChainLinks.bind(this)
+    this.Relationships = this.Relationships.bind(this)
+    this.Blocks = this.Blocks.bind(this)
+    this.ChainLinks = this.ChainLinks.bind(this)
     this.UserChainLink = this.UserChainLink.bind(this)
-    this.UserApplicationLinks = this.UserApplicationLinks.bind(this)
+    this.ApplicationLinks = this.ApplicationLinks.bind(this)
     this.UserApplicationLink = this.UserApplicationLink.bind(this)
     this.ApplicationLinkByClientID = this.ApplicationLinkByClientID.bind(this)
   }
@@ -144,45 +151,41 @@ export class QueryClientImpl implements Query {
     return promise.then((data) => QueryParamsResponse.decode(new Reader(data)))
   }
 
-  UserRelationships(
-    request: QueryUserRelationshipsRequest
-  ): Promise<QueryUserRelationshipsResponse> {
-    const data = QueryUserRelationshipsRequest.encode(request).finish()
+  Relationships(
+    request: QueryRelationshipsRequest
+  ): Promise<QueryRelationshipsResponse> {
+    const data = QueryRelationshipsRequest.encode(request).finish()
     const promise = this.rpc.request(
       'desmos.profiles.v1beta1.Query',
-      'UserRelationships',
+      'Relationships',
       data
     )
     return promise.then((data) =>
-      QueryUserRelationshipsResponse.decode(new Reader(data))
+      QueryRelationshipsResponse.decode(new Reader(data))
     )
   }
 
-  UserBlocks(
-    request: QueryUserBlocksRequest
-  ): Promise<QueryUserBlocksResponse> {
-    const data = QueryUserBlocksRequest.encode(request).finish()
+  Blocks(request: QueryBlocksRequest): Promise<QueryBlocksResponse> {
+    const data = QueryBlocksRequest.encode(request).finish()
     const promise = this.rpc.request(
       'desmos.profiles.v1beta1.Query',
-      'UserBlocks',
+      'Blocks',
       data
     )
-    return promise.then((data) =>
-      QueryUserBlocksResponse.decode(new Reader(data))
-    )
+    return promise.then((data) => QueryBlocksResponse.decode(new Reader(data)))
   }
 
-  UserChainLinks(
-    request: QueryUserChainLinksRequest
-  ): Promise<QueryUserChainLinksResponse> {
-    const data = QueryUserChainLinksRequest.encode(request).finish()
+  ChainLinks(
+    request: QueryChainLinksRequest
+  ): Promise<QueryChainLinksResponse> {
+    const data = QueryChainLinksRequest.encode(request).finish()
     const promise = this.rpc.request(
       'desmos.profiles.v1beta1.Query',
-      'UserChainLinks',
+      'ChainLinks',
       data
     )
     return promise.then((data) =>
-      QueryUserChainLinksResponse.decode(new Reader(data))
+      QueryChainLinksResponse.decode(new Reader(data))
     )
   }
 
@@ -200,17 +203,17 @@ export class QueryClientImpl implements Query {
     )
   }
 
-  UserApplicationLinks(
-    request: QueryUserApplicationLinksRequest
-  ): Promise<QueryUserApplicationLinksResponse> {
-    const data = QueryUserApplicationLinksRequest.encode(request).finish()
+  ApplicationLinks(
+    request: QueryApplicationLinksRequest
+  ): Promise<QueryApplicationLinksResponse> {
+    const data = QueryApplicationLinksRequest.encode(request).finish()
     const promise = this.rpc.request(
       'desmos.profiles.v1beta1.Query',
-      'UserApplicationLinks',
+      'ApplicationLinks',
       data
     )
     return promise.then((data) =>
-      QueryUserApplicationLinksResponse.decode(new Reader(data))
+      QueryApplicationLinksResponse.decode(new Reader(data))
     )
   }
 

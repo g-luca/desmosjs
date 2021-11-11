@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { util, configure, Writer, Reader } from 'protobufjs/minimal'
 import * as Long from 'long'
-import { PollData } from '../../../desmos/posts/v1beta1/polls'
+import { Poll } from '../../../desmos/posts/v1beta1/polls'
 import { Timestamp } from '../../../google/protobuf/timestamp'
 
 export const protobufPackage = 'desmos.posts.v1beta1'
@@ -60,7 +60,7 @@ export interface Post {
   additionalAttributes: Attribute[]
   creator: string
   attachments: Attachment[]
-  pollData?: PollData
+  poll?: Poll
 }
 
 /**
@@ -130,8 +130,8 @@ export const Post = {
     for (const v of message.attachments) {
       Attachment.encode(v!, writer.uint32(82).fork()).ldelim()
     }
-    if (message.pollData !== undefined) {
-      PollData.encode(message.pollData, writer.uint32(90).fork()).ldelim()
+    if (message.poll !== undefined) {
+      Poll.encode(message.poll, writer.uint32(90).fork()).ldelim()
     }
     return writer
   },
@@ -182,7 +182,7 @@ export const Post = {
           message.attachments.push(Attachment.decode(reader, reader.uint32()))
           break
         case 11:
-          message.pollData = PollData.decode(reader, reader.uint32())
+          message.poll = Poll.decode(reader, reader.uint32())
           break
         default:
           reader.skipType(tag & 7)
@@ -249,10 +249,10 @@ export const Post = {
         message.attachments.push(Attachment.fromJSON(e))
       }
     }
-    if (object.pollData !== undefined && object.pollData !== null) {
-      message.pollData = PollData.fromJSON(object.pollData)
+    if (object.poll !== undefined && object.poll !== null) {
+      message.poll = Poll.fromJSON(object.poll)
     } else {
-      message.pollData = undefined
+      message.poll = undefined
     }
     return message
   },
@@ -284,10 +284,8 @@ export const Post = {
     } else {
       obj.attachments = []
     }
-    message.pollData !== undefined &&
-      (obj.pollData = message.pollData
-        ? PollData.toJSON(message.pollData)
-        : undefined)
+    message.poll !== undefined &&
+      (obj.poll = message.poll ? Poll.toJSON(message.poll) : undefined)
     return obj
   },
 
@@ -348,10 +346,10 @@ export const Post = {
         message.attachments.push(Attachment.fromPartial(e))
       }
     }
-    if (object.pollData !== undefined && object.pollData !== null) {
-      message.pollData = PollData.fromPartial(object.pollData)
+    if (object.poll !== undefined && object.poll !== null) {
+      message.poll = Poll.fromPartial(object.poll)
     } else {
-      message.pollData = undefined
+      message.poll = undefined
     }
     return message
   },

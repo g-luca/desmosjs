@@ -163,8 +163,15 @@ export interface BroadcastTxResponse {
  * RPC method.
  */
 export interface SimulateRequest {
-  /** tx is the transaction to simulate. */
+  /**
+   * tx is the transaction to simulate.
+   * Deprecated. Send raw tx bytes instead.
+   *
+   * @deprecated
+   */
   tx?: Tx
+  /** tx_bytes is the raw transaction. */
+  txBytes: Uint8Array
 }
 
 /**
@@ -555,6 +562,9 @@ export const SimulateRequest = {
     if (message.tx !== undefined) {
       Tx.encode(message.tx, writer.uint32(10).fork()).ldelim()
     }
+    if (message.txBytes.length !== 0) {
+      writer.uint32(18).bytes(message.txBytes)
+    }
     return writer
   },
 
@@ -562,11 +572,15 @@ export const SimulateRequest = {
     const reader = input instanceof Reader ? input : new Reader(input)
     let end = length === undefined ? reader.len : reader.pos + length
     const message = { ...baseSimulateRequest } as SimulateRequest
+    message.txBytes = new Uint8Array()
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
         case 1:
           message.tx = Tx.decode(reader, reader.uint32())
+          break
+        case 2:
+          message.txBytes = reader.bytes()
           break
         default:
           reader.skipType(tag & 7)
@@ -578,10 +592,14 @@ export const SimulateRequest = {
 
   fromJSON(object: any): SimulateRequest {
     const message = { ...baseSimulateRequest } as SimulateRequest
+    message.txBytes = new Uint8Array()
     if (object.tx !== undefined && object.tx !== null) {
       message.tx = Tx.fromJSON(object.tx)
     } else {
       message.tx = undefined
+    }
+    if (object.txBytes !== undefined && object.txBytes !== null) {
+      message.txBytes = bytesFromBase64(object.txBytes)
     }
     return message
   },
@@ -590,6 +608,10 @@ export const SimulateRequest = {
     const obj: any = {}
     message.tx !== undefined &&
       (obj.tx = message.tx ? Tx.toJSON(message.tx) : undefined)
+    message.txBytes !== undefined &&
+      (obj.txBytes = base64FromBytes(
+        message.txBytes !== undefined ? message.txBytes : new Uint8Array()
+      ))
     return obj
   },
 
@@ -599,6 +621,11 @@ export const SimulateRequest = {
       message.tx = Tx.fromPartial(object.tx)
     } else {
       message.tx = undefined
+    }
+    if (object.txBytes !== undefined && object.txBytes !== null) {
+      message.txBytes = object.txBytes
+    } else {
+      message.txBytes = new Uint8Array()
     }
     return message
   },
@@ -879,6 +906,7 @@ interface Rpc {
 
 declare var self: any | undefined
 declare var window: any | undefined
+declare var global: any | undefined
 var globalThis: any = (() => {
   if (typeof globalThis !== 'undefined') return globalThis
   if (typeof self !== 'undefined') return self

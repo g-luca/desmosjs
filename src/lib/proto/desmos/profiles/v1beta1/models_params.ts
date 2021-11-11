@@ -60,11 +60,6 @@ export interface OracleParams {
    */
   executeGas: number
   /**
-   * FeePayer represents the key of the account that is going to pay for oracle
-   * fees if needed
-   */
-  feePayer: string
-  /**
    * FeeAmount represents the amount of fees to be payed in order to execute the
    * oracle script
    */
@@ -422,13 +417,12 @@ const baseOracleParams: object = {
   minCount: 0,
   prepareGas: 0,
   executeGas: 0,
-  feePayer: '',
 }
 
 export const OracleParams = {
   encode(message: OracleParams, writer: Writer = Writer.create()): Writer {
     if (message.scriptId !== 0) {
-      writer.uint32(8).int64(message.scriptId)
+      writer.uint32(8).uint64(message.scriptId)
     }
     if (message.askCount !== 0) {
       writer.uint32(16).uint64(message.askCount)
@@ -442,11 +436,8 @@ export const OracleParams = {
     if (message.executeGas !== 0) {
       writer.uint32(40).uint64(message.executeGas)
     }
-    if (message.feePayer !== '') {
-      writer.uint32(50).string(message.feePayer)
-    }
     for (const v of message.feeAmount) {
-      Coin.encode(v!, writer.uint32(58).fork()).ldelim()
+      Coin.encode(v!, writer.uint32(50).fork()).ldelim()
     }
     return writer
   },
@@ -460,7 +451,7 @@ export const OracleParams = {
       const tag = reader.uint32()
       switch (tag >>> 3) {
         case 1:
-          message.scriptId = longToNumber(reader.int64() as Long)
+          message.scriptId = longToNumber(reader.uint64() as Long)
           break
         case 2:
           message.askCount = longToNumber(reader.uint64() as Long)
@@ -475,9 +466,6 @@ export const OracleParams = {
           message.executeGas = longToNumber(reader.uint64() as Long)
           break
         case 6:
-          message.feePayer = reader.string()
-          break
-        case 7:
           message.feeAmount.push(Coin.decode(reader, reader.uint32()))
           break
         default:
@@ -516,11 +504,6 @@ export const OracleParams = {
     } else {
       message.executeGas = 0
     }
-    if (object.feePayer !== undefined && object.feePayer !== null) {
-      message.feePayer = String(object.feePayer)
-    } else {
-      message.feePayer = ''
-    }
     if (object.feeAmount !== undefined && object.feeAmount !== null) {
       for (const e of object.feeAmount) {
         message.feeAmount.push(Coin.fromJSON(e))
@@ -536,7 +519,6 @@ export const OracleParams = {
     message.minCount !== undefined && (obj.minCount = message.minCount)
     message.prepareGas !== undefined && (obj.prepareGas = message.prepareGas)
     message.executeGas !== undefined && (obj.executeGas = message.executeGas)
-    message.feePayer !== undefined && (obj.feePayer = message.feePayer)
     if (message.feeAmount) {
       obj.feeAmount = message.feeAmount.map((e) =>
         e ? Coin.toJSON(e) : undefined
@@ -575,11 +557,6 @@ export const OracleParams = {
     } else {
       message.executeGas = 0
     }
-    if (object.feePayer !== undefined && object.feePayer !== null) {
-      message.feePayer = object.feePayer
-    } else {
-      message.feePayer = ''
-    }
     if (object.feeAmount !== undefined && object.feeAmount !== null) {
       for (const e of object.feeAmount) {
         message.feeAmount.push(Coin.fromPartial(e))
@@ -591,6 +568,7 @@ export const OracleParams = {
 
 declare var self: any | undefined
 declare var window: any | undefined
+declare var global: any | undefined
 var globalThis: any = (() => {
   if (typeof globalThis !== 'undefined') return globalThis
   if (typeof self !== 'undefined') return self
