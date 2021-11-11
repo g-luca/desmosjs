@@ -49,13 +49,12 @@ export class Transaction {
         const address = crypto.ripemd160(crypto.sha256(Buffer.from(pubKey))).toString('hex').toLowerCase();
         const pub_key = Buffer.from(pubKey).toString('hex').toLowerCase(); // hex of the public key
         const signature = Buffer.from(sign(crypto.sha256(Buffer.from(username)), privKey)).toString('hex').toLowerCase(); // create the hex signaturer from the username
-
         // wrap the object
         const verificationData = {
             address,
             pub_key,
             signature,
-            value: username
+            value: Buffer.from(username).toString('hex')
         }
         return verificationData;
     }

@@ -10,6 +10,6 @@ describe("Wallet test", () => {
     it("ApplicationLink sign", () => {
         const verificationData = Transaction.signApplicationLinkData("username", Buffer.from(wallet.publicKey.value), wallet.privateKey);
         const hash = crypto.sha256(Buffer.from(JSON.stringify(verificationData))).toString('hex');
-        expect(hash).toBe("e3a58678a7312126fa69127c0381b3a953f770781a3065ed1f91a66fa3fd789c");
+        expect(hash).toBe("5db51c73f8aaabf265442541aaeb789d312b5f2a0dd4bae65d8c503fe5ae82a6");
     });
 });
