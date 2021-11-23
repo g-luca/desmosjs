@@ -12,7 +12,7 @@ export class DesmosJS {
 	public static chainId: string = 'desmos-mainnet';
 
 
-	public static usernameRegex: RegExp = /[A-Za-z0-9_]{3,30}$/;
+	public static usernameRegex: RegExp = /[A-Za-z0-9_]{6,30}$/;
 	public static addressRegex: RegExp = /^(desmos)[0-9A-Za-z]{39}$/;
 
 
