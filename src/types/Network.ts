@@ -17,7 +17,7 @@ export class Network {
      * @returns CosmosBaseAccount object or false if fails
      */
     public async getAccount(address: string): Promise<CosmosBaseAccount | false> {
-        const endpoint = `cosmos/auth/v1beta1/accounts/${address}`;
+        const endpoint = `/cosmos/auth/v1beta1/accounts/${address}`;
         const response = await this.getLcd(endpoint);
         if (response && response['account']) {
 
@@ -67,7 +67,7 @@ export class Network {
     public async broadcast(signedTxBytes: any, broadCastMode: BroadcastMode = BroadcastMode.BROADCAST_MODE_SYNC): Promise<any | false> {
         const txBytesBase64 = Buffer.from(signedTxBytes, 'binary').toString('base64');
 
-        const endpoint = 'cosmos/tx/v1beta1/txs';
+        const endpoint = '/cosmos/tx/v1beta1/txs';
         const response = await this.postLcd(endpoint, { tx_bytes: txBytesBase64, mode: broadCastMode });
         return (response) ? response : false;
     }
