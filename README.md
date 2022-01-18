@@ -22,7 +22,7 @@ Since the Desmos Blockchain is continuously evolving with mainnet and testnets, 
 
 | Network           | Desmos | DesmosJS |
 | ----------------- | ------ | -------- |
-| desmos-mainnet    | v1.0.1 | v0.1.19  |
+| desmos-mainnet    | v2.3.1 | v0.1.19  |
 | morpheus-apollo-2 | v2.3.0 | v0.1.19  |
 
 # 🛬 Install
