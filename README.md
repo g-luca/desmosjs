@@ -49,6 +49,7 @@ import { Wallet } from "desmosjs";
 const wallet: Wallet = new Wallet("state name bag two engage ...");
 // wallet.address: desmos1t0fpnzl8swhr8c4mqw330y49k6had8an90l9m3
 ```
+
 <br>
 
 #### Send a MsgSaveProfile
@@ -56,7 +57,12 @@ const wallet: Wallet = new Wallet("state name bag two engage ...");
 The example is valid for any kind of Msg\*
 
 ``` typescript
-import {DesmosMsgSaveProfile, CosmosTxBody, CosmosAuthInfo, CosmosSignerInfo, CosmosSignMode, CosmosFee, CosmosBroadcastMode, Network} from "desmosjs";
+import {DesmosMsgSaveProfile, CosmosTxBody, CosmosAuthInfo, CosmosSignerInfo, CosmosSignMode, CosmosFee, CosmosBroadcastMode, Network, DesmosJS} from "desmosjs";
+
+
+// If you are working with the testnet, this additional step is necessary:
+DesmosJS.setDesmosChainConfiguration("/44'/852'/0'/0/0", 'desmos', 'morpheus-apollo-2')
+
 
 // create your msg to send
 const msgSaveProfile: DesmosMsgSaveProfile = {
