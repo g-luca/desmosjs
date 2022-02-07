@@ -1,10 +1,10 @@
+import { Any } from "./lib/proto/google/protobuf/any";
 import { Network } from "./types/Network";
 import { Transaction } from "./types/Transaction";
 import { Wallet } from "./types/Wallet";
 export {
-	Network, Transaction, Wallet,
+	Network, Transaction, Wallet, Any
 }
-
 
 export class DesmosJS {
 	public static addressPath: string = `m/44'/852'/0'/0/0`;

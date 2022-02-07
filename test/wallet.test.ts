@@ -1,5 +1,4 @@
-import { DesmosJS, Transaction, Wallet, CosmosTxBody, CosmosAuthInfo, CosmosCoin, CosmosFee, CosmosMsgSend, CosmosSignerInfo, CosmosSignMode } from "../src/DesmosJS";
-import { Any } from "../src/lib/proto/google/protobuf/any";
+import { DesmosJS, Transaction, Wallet, CosmosTxBody, CosmosAuthInfo, CosmosCoin, CosmosFee, CosmosMsgSend, CosmosSignerInfo, CosmosSignMode, Any } from "../src/DesmosJS";
 /**
  * Wallet tests
  */
