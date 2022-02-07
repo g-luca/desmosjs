@@ -39,7 +39,7 @@ export class DesmosJS {
 import {
 	PubKey as _PubKey,
 	PrivKey as _PrivKey,
-} from './lib/proto/cosmos/crypto/secp256r1/keys';
+} from './lib/proto/cosmos/crypto/secp256k1/keys';
 
 import {
 	LegacyAminoPubKey as _LegacyAminoPubKey,
