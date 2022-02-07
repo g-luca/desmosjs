@@ -19,7 +19,7 @@
   },
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
-    "build": "npm run test:prod && rimraf dist && tsc --module amd && typedoc",
+    "build": "npm run test:prod && rimraf dist && tsc && typedoc",
     "proto-ts-export": "python3 ./tools/proto-exporter.py",
     "proto-gen": "./tools/generate_proto.sh",
     "test": "jest",
@@ -102,6 +102,7 @@
   "dependencies": {
     "bip39": "^3.0.4",
     "bitcoinjs-lib": "^5.2.0",
+    "buffer": "^6.0.3",
     "long": "^4.0.0"
   }
 }
