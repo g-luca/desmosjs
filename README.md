@@ -61,7 +61,7 @@ import {DesmosMsgSaveProfile, CosmosTxBody, CosmosAuthInfo, CosmosSignerInfo, Co
 
 
 // If you are working with the testnet, this additional step is necessary:
-DesmosJS.setDesmosChainConfiguration("/44'/852'/0'/0/0", 'desmos', 'morpheus-apollo-2')
+DesmosJS.setDesmosChainConfiguration("m/44'/852'/0'/0/0", 'desmos', 'morpheus-apollo-2')
 
 
 // create your msg to send
